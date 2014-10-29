@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'l04d4mi2ILIE4TcWrsekn64PDCgybuj6',
+	'key' => 'OLJzWrotrI1lw0sigMNvl48k2TfKUBJn',
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
@@ -122,7 +122,6 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
-        'Laracasts\Commander\CommanderServiceProvider',
 
 	),
 
@@ -190,6 +189,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+        'Carbon'          => '\Carbon\Carbon',
 
 	),
 
