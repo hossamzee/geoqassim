@@ -15,7 +15,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="members.html">الأعضاء</a></li>
-                <li>{{ link_to_route('news', 'الأخبار') }}</li>
+                <li>{{ link_to_route('news_index', 'الأخبار') }}</li>
                 <li><a href="page.html">الماجستير</a></li>
                 <li><a href="page.html">الرمّة</a></li>
                 <li><a href="page.html">وراج</a></li>
@@ -29,7 +29,7 @@
                     </ul>
                 </li>
                 <li><a href="page.html">الخدمات</a></li>
-                <li>{{ link_to_route('contact', 'اتصل بنا') }}</li>
+                <li>{{ link_to_route('contact_get', 'اتصل بنا') }}</li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-->

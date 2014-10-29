@@ -13,6 +13,11 @@
 - Update the URLs of FA and JQ to be local.
 - Remove 1.html file from app/views folder.
 - Fix the RTL to be really sass.
+- Handle no rows in many pages.
+- Do the liking to the news and others.
+- Do the printing and keep records of liking.
+- Check if there is any security issues when calling route.
+- Do Rommah database tables.
 
 ## DONE:
 

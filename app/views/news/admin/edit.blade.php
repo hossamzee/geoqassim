@@ -1,6 +1,6 @@
 @extends('layouts.admin.default')
 
-@section('title', 'إضافة خبر')
+@section('title', 'تعديل خبر - '. $news->title)
 @section('content')
 
 <!-- Add news -->
@@ -8,29 +8,29 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <h3>إضافة خبر</h3>
+                <h3>تعديل خبر - {{$news->title }}</h3>
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            {{ Form::open(['route' => 'admin_news_store']) }}
+            {{ Form::open(['route' => ['admin_news_update', $news->id]]) }}
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::label('title', 'العنوان') }}
-                            {{ Form::text('title', null, ['class' => 'form-control']) }}
+                            {{ Form::text('title', $news->title, ['class' => 'form-control']) }}
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::label('content', 'المحتوى') }}
-                            {{ Form::textarea('content', null, ['class' => 'form-control']) }}
+                            {{ Form::textarea('content', $news->content, ['class' => 'form-control']) }}
                         </div>
                     </div>
                     <div class="col-sm-12 text-right">
-                        {{ Form::submit('إضافة الخبر', ['class' => 'btn btn-primary btn-lg']) }}
+                        {{ Form::submit('تعديل الخبر', ['class' => 'btn btn-primary btn-lg']) }}
                     </div>
                 </div>
             {{ Form::close() }}

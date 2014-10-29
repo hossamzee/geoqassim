@@ -16,7 +16,7 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="/admin/members">زيارة الموقع</a></li>
                 <li><a href="/admin/members">الأعضاء</a></li>
-                <li>{{ link_to_route('news', 'الأخبار') }}</li>
+                <li>{{ link_to_route('admin_news_index', 'الأخبار') }}</li>
                 <li><a href="/admin/pages">الصفحات</a></li>
                 <li><a href="/admin/photos">الصور</a></li>
                 <li><a href="/admin/videos">الفيديو</a></li>

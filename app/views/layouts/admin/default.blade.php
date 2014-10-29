@@ -29,6 +29,7 @@
 
 <body>
 
+@include('layouts.partials.messages')
 @include('layouts.partials.admin.nav')
 
 @yield('content')
@@ -36,6 +37,13 @@
 <!-- Footer -->
 <hr />
 
+<div class="container text-muted">
+    <ul class="list-inline">
+      <li>منطقة الإدارة</li>
+      <li>قسم الجغرافيا في جامعة القصيم</li>
+      <li>1.0</li>
+    </ul>
+</div>
 
 <!-- TODO: Bootstrap core JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

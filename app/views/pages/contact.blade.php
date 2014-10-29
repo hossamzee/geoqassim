@@ -7,7 +7,7 @@
 <div id="map-canvas" class="carousel"></div>
 <!-- Map end -->
 
-@include('layouts.partials.errors')
+@include('...layouts.partials.messages')
 
 <!-- Contact -->
 <div class="container">
@@ -19,7 +19,7 @@
             <p>
                 إنه من عمق مسؤوليتنا أن نسمع رأيك، نستقبل صوتك، و هذا ما نؤمن أنه سيقودنا إلى طريق التحسين، مرحباً بك بصدق.
             </p>
-            {{ Form::open(['route' => 'contact']) }}
+            {{ Form::open(['route' => 'contact_post']) }}
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">

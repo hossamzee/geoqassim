@@ -24,12 +24,12 @@ Route::get('/', [
  */
 
 Route::get('contact', [
-    'as' => 'contact',
+    'as' => 'contact_get',
     'uses' => 'PagesController@getContact'
 ]);
 
 Route::post('contact', [
-    'as' => 'contact',
+    'as' => 'contact_post',
     'uses' => 'PagesController@postContact'
 ]);
 
@@ -38,13 +38,18 @@ Route::post('contact', [
  */
 
 Route::get('news', [
-    'as' => 'news',
+    'as' => 'news_index',
     'uses' => 'NewsController@index'
 ]);
 
 Route::get('news/{id}', [
-    'as' => 'single_news',
+    'as' => 'news_show',
     'uses' => 'NewsController@show'
+]);
+
+Route::get('news/{id}/like', [
+    'as' => 'news_like',
+    'uses' => 'NewsController@like'
 ]);
 
 /*
@@ -56,7 +61,7 @@ Route::group(['prefix' => 'admin'], function()
 {
 
     Route::get('news', [
-        'as' => 'admin_news',
+        'as' => 'admin_news_index',
         'uses' => 'NewsController@adminIndex'
     ]);
 
@@ -65,9 +70,24 @@ Route::group(['prefix' => 'admin'], function()
         'uses' => 'NewsController@create'
     ]);
 
-    Route::post('news', [
-         'as' => 'admin_news',
-         'uses' => 'NewsController@store'
+    Route::post('news/create', [
+        'as' => 'admin_news_store',
+        'uses' => 'NewsController@store'
+    ]);
+
+    Route::get('news/{id}/edit', [
+         'as' => 'admin_news_edit',
+         'uses' => 'NewsController@edit'
+    ]);
+
+    Route::post('news/{id}/edit', [
+        'as' => 'admin_news_update',
+        'uses' => 'NewsController@update'
+    ]);
+
+    Route::get('news/{id}/delete', [
+        'as' => 'admin_news_destroy',
+        'uses' => 'NewsController@destroy'
     ]);
 
 });

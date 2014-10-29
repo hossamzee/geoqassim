@@ -29,6 +29,7 @@
 
 <body>
 
+@include('layouts.partials.messages')
 @include('layouts.partials.nav')
 
 @yield('content')

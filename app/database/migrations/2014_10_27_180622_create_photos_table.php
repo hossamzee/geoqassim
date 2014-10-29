@@ -16,7 +16,7 @@ class CreatePhotosTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('album_id');
-			$table->string('slug')->unique();
+			$table->string('slug')->nullable();
 			$table->string('thumb_url');
 			$table->string('large_url');
 			$table->string('title');

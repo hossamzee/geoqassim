@@ -42,16 +42,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1><a href="#">مدير جامعة القصيم يفتتح فعاليات يوم المهنة و200 وظيفة أمام خريجيها.</a></h1>
+                <h1>{{ link_to_route('news_show', $last_news->title, [$last_news->id]) }}</h1>
                 <p>
                     <i class="fa fa-calendar-o"></i> نشر بتاريخ 24 يناير 2014.
                 </p>
+                <p>{{ $last_news->snippet }}</p>
                 <p>
-                    وقد قص معاليه شريط المعرض وتجول في أركانه مكرماً رعاة المعرض والمشاركين فيه مؤكداً أن الجامعة تنظم يوم المهنة سنوياً كجزء من رسالتها في توعية خريجي الجامعة وتثقيفهم وتعريفهم بآليات البحث عن عمل وإعداد السيرة الذاتية وإجراءات المقابلة الشخصية، والتأهيل المهني. اضافة الى تعريف الخريجين بالفرص الوظيفية المتاحة لدى الجهات المشاركة.
-                </p>
-                <p>
-                <a href="page.html" class="btn btn-primary btn-lg" role="button">المزيد</a>
-                <a href="news.html" class="btn btn-default btn-lg" role="button">المزيد من الأخبار</a>
+                {{ link_to_route('news_show', 'المزيد', [$last_news->id], ['class' => 'btn btn-primary btn-lg', 'role' => 'button']) }}
+                {{ link_to_route('news_index', 'المزيد من الأخبار', null, ['class' => 'btn btn-default btn-lg', 'role' => 'button']) }}
                 </p>
             </div>
             <div class="col-md-6">

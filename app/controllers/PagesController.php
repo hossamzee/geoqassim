@@ -4,7 +4,12 @@ class PagesController extends \BaseController {
 
     public function getHome()
     {
-        return View::make('pages.home');
+        // Get the latest news has been added.
+        // TODO: Hanlde the exception that is being throwing when there is no news.
+        $last_news = News::orderBy('created_at', 'DESC')->first();
+        $last_news->snippet = str_limit($last_news->content, 400);
+
+        return View::make('pages.home')->with('last_news', $last_news);
     }
 
     public function getContact()
