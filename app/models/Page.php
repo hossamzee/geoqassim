@@ -1,6 +1,6 @@
 <?php
 
-class News extends Eloquent
+class Page extends Eloquent
 {
     protected $fillable = ['title', 'content'];
 }

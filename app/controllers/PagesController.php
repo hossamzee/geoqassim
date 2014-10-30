@@ -2,7 +2,7 @@
 
 class PagesController extends \BaseController {
 
-    public function getHome()
+    public function home()
     {
         // Get the latest news has been added.
         // TODO: Hanlde the exception that is being throwing when there is no news.
@@ -67,19 +67,165 @@ class PagesController extends \BaseController {
         return Redirect::home()->with('message', 'Greate!');
     }
 
+    public function adminIndex()
+    {
+        return View::make('pages.admin.index')
+            ->with('pages', Page::orderBy('created_at', 'DESC')->get());
+    }
+
     public function create()
     {
-
+        return View::make('pages.admin.create');
     }
 
     public function store()
     {
+        // Validate and all.
+        $title = Input::get('title');
+        $content = Input::get('content');
 
+        $validator = Validator::make([
+            'title' => $title,
+            'content' => $content,
+        ], [
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        if ($validator->fails())
+        {
+            // Update the error language to be in Arabic.
+            return Redirect::back()->withInput()->with('error_message', 'الرجاء تعبئة الحقول بشكل صحيح.');
+        }
+
+        // Create a new page table record.
+        try
+        {
+            $page = new Page();
+            $page->title = $title;
+            $page->content = $content;
+            $page->save();
+        }
+        catch (Exception $exception)
+        {
+            // Log about the error.
+            Log::error($exception);
+            return Redirect::home()->with('error_message', 'يبدو أنّه هناك خطأ في الخادم.');
+        }
+
+        return Redirect::route("admin_pages_index")->with('success_message', 'تمّ إضافة الصفحة بنجاح.');
     }
 
-    public function show($slug)
+    public function show($id)
     {
+        $page = Page::find($id);
 
+        if (!$page)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صفحة صحيح.');
+        }
+
+        $page->views_count++;
+        $page->save();
+
+        return View::make('pages.show')->with('page', $page);
+    }
+
+    public function like($id)
+    {
+        $page = Page::find($id);
+
+        if (!$page)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صفحة صحيح.');
+        }
+
+        $page->likes_count++;
+        $page->save();
+
+        // TODO: Set that the user has liked the page before.
+
+        return Redirect::route('pages_show', [$page->id])->with('success_message', 'تمّ تسجيل إعجابك بالصفحة بنجاح.');
+    }
+
+    public function edit($id)
+    {
+        $page = Page::find($id);
+
+        if (!$page)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صفحة صحيح.');
+        }
+
+        return View::make('pages.admin.edit')->with('page', $page);
+    }
+
+    public function update($id)
+    {
+        $page = Page::find($id);
+
+        if (!$page)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صفحة صحيح.');
+        }
+
+        // Validate and all.
+        $title = Input::get('title');
+        $content = Input::get('content');
+
+        $validator = Validator::make([
+            'title' => $title,
+            'content' => $content,
+        ], [
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        if ($validator->fails())
+        {
+            // Update the message to be an appropriate one.
+            return Redirect::back()->withInput()->with('error_message', 'الرجاء تعبئة الحقول بشكل صحيح.');
+        }
+
+        // Update the current page.
+        try
+        {
+            $page->title = $title;
+            $page->content = $content;
+            $page->save();
+        }
+        catch (Exception $exception)
+        {
+            // Log about the error.
+            Log::error($exception);
+            return Redirect::home()->with('error_message', 'يبدو أنّه هناك خطأ في الخادم.');
+        }
+
+        return Redirect::route('admin_pages_index')->with('success_message', 'تمّ تحديث الصفحة بنجاح.');
+    }
+
+    public function destroy($id)
+    {
+        $page = Page::find($id);
+
+        if (!$page)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صفحة صحيح.');
+        }
+
+        // Check if the delete process has been done.
+        try
+        {
+            $page->delete();
+        }
+        catch (Exception $exception)
+        {
+            // Log about the error.
+            Log::error($exception);
+            return Redirect::home()->with('error_message', 'يبدو أنّه هناك خطأ في الخادم.');
+        }
+
+        return Redirect::route('admin_pages_index')->with('warning_message', 'تمّ حذف الصفحة بنجاح.');
     }
 
 }

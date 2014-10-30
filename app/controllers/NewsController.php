@@ -89,7 +89,6 @@ class NewsController extends \BaseController {
         return Redirect::route('news_show', [$news->id])->with('success_message', 'تمّ تسجيل إعجابك بالخبر بنجاح.');
     }
 
-
 	public function edit($id)
 	{
         $news = News::find($id);
@@ -101,7 +100,6 @@ class NewsController extends \BaseController {
 
         return View::make('news.admin.edit')->with('news', $news);
 	}
-
 
 	public function update($id)
 	{
@@ -170,6 +168,5 @@ class NewsController extends \BaseController {
 
         return Redirect::route('admin_news_index')->with('warning_message', 'تمّ حذف الخبر بنجاح.');
 	}
-
 
 }

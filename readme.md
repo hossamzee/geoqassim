@@ -18,6 +18,9 @@
 - Do the printing and keep records of liking.
 - Check if there is any security issues when calling route.
 - Do Rommah database tables.
+- Prepare DB seeds for inserting the values of news, pages, etc.
+- Consider reaching the details of a video from youtube, https://developers.google.com/youtube/v3/docs/videos/list.
+- Consider updating the width of columns.
 
 ## DONE:
 

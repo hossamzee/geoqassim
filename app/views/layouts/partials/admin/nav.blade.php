@@ -14,12 +14,13 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="/admin/members">زيارة الموقع</a></li>
                 <li><a href="/admin/members">الأعضاء</a></li>
                 <li>{{ link_to_route('admin_news_index', 'الأخبار') }}</li>
                 <li><a href="/admin/pages">الصفحات</a></li>
                 <li><a href="/admin/photos">الصور</a></li>
-                <li><a href="/admin/videos">الفيديو</a></li>
+                <li>{{ link_to_route('admin_videos_index', 'الفيديو') }}</li>
+                <li><a href="/admin/photos">الرمّة</a></li>
+                <li><a href="/admin/photos">القائمة البريدية</a></li>
                 <li><a href="#">تسجيل الخروج</a></li>
             </ul>
         </div><!--/.nav-collapse -->

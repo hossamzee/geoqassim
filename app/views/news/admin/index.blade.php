@@ -4,6 +4,23 @@
 @section('content')
 
 <!-- TODO: Show alert to check if the user is sure to delete the news. -->
+<script type="text/javascript">
+function confirm_delete(id)
+{
+    var result = confirm('هل أنت متأكّد من أنّك ترغب في حذف الخبر؟');
+
+    if (result == false)
+    {
+        return false;
+    }
+
+    var url = '{{ urldecode(route('admin_news_destroy')) }}';
+
+    url = url.replace('{id}', id);
+
+    window.location.replace(url);
+}
+</script>
 
 <!-- News -->
 <div class="container">
@@ -28,6 +45,15 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                @if(count($news) == 0)
+                    <tr>
+                        <td colspan="6">
+لا يوجد أخبار مضافة إلى قاعدة البيانات.
+                        </td>
+                    </tr>
+                @endif
+
             @foreach($news as $single_news)
                 <tr>
                     <td>{{ $single_news->id }}</td>
@@ -37,7 +63,7 @@
                     <td>{{ $single_news->likes_count }}</td>
                     <td>
                         {{ link_to_route('admin_news_edit', 'تعديل', $single_news->id, ['class' => 'btn btn-default btn-sm']) }}
-                        {{ link_to_route('admin_news_destroy', 'حذف', $single_news->id, ['class' => 'btn btn-danger btn-sm']) }}
+                        <a href="#" onclick="confirm_delete({{ $single_news->id }})" class="btn btn-danger btn-sm">حذف</a>
                     </td>
                 </tr>
             @endforeach

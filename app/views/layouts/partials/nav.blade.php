@@ -16,11 +16,11 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="members.html">الأعضاء</a></li>
                 <li>{{ link_to_route('news_index', 'الأخبار') }}</li>
-                <li><a href="page.html">الماجستير</a></li>
+                <li>{{ link_to_route('pages_show', 'الماجستير', ['1']) }}</li>
                 <li><a href="page.html">الرمّة</a></li>
                 <li><a href="page.html">وراج</a></li>
                 <li><a href="photos.html">الصور</a></li>
-                <li><a href="videos.html">الفيديو</a></li>
+                <li>{{ link_to_route('videos_index', 'الفيديو') }}</li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">الخرائط <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
