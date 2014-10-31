@@ -21,6 +21,8 @@
 - Prepare DB seeds for inserting the values of news, pages, etc.
 - Consider reaching the details of a video from youtube, https://developers.google.com/youtube/v3/docs/videos/list.
 - Consider updating the width of columns.
+- Do the printing of any page or any news.
+- Snippet of news should be by words not letters.
 
 ## DONE:
 

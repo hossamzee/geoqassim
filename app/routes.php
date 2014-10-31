@@ -73,6 +73,20 @@ Route::get('videos', [
 ]);
 
 /*
+ * Albums.
+ */
+
+Route::get('albums', [
+    'as' => 'albums_index',
+    'uses' => 'AlbumsController@index'
+]);
+
+Route::get('albums/{id}', [
+    'as' => 'albums_show',
+    'uses' => 'AlbumsController@show'
+]);
+
+/*
  * Admin.
  * TODO: Should be filtered before accessing.
  */
@@ -179,6 +193,45 @@ Route::group(['prefix' => 'admin'], function()
     Route::get('videos/{id}/delete', [
         'as' => 'admin_videos_destroy',
         'uses' => 'VideosController@destroy'
+    ]);
+
+    /*
+     * Albums.
+     */
+
+    Route::get('albums', [
+        'as' => 'admin_albums_index',
+        'uses' => 'AlbumsController@adminIndex'
+    ]);
+
+    Route::get('albums/{id}', [
+        'as' => 'admin_albums_show',
+        'uses' => 'AlbumsController@adminShow'
+    ]);
+
+    Route::get('albums/create', [
+        'as' => 'admin_albums_create',
+        'uses' => 'AlbumsController@create'
+    ]);
+
+    Route::post('albums/create', [
+        'as' => 'admin_albums_store',
+        'uses' => 'AlbumsController@store'
+    ]);
+
+    Route::get('albums/{id}/edit', [
+        'as' => 'admin_albums_edit',
+        'uses' => 'AlbumsController@edit'
+    ]);
+
+    Route::post('albums/{id}/edit', [
+        'as' => 'admin_albums_update',
+        'uses' => 'AlbumsController@update'
+    ]);
+
+    Route::get('albums/{id}/delete', [
+        'as' => 'admin_albums_destroy',
+        'uses' => 'AlbumsController@destroy'
     ]);
 
 });

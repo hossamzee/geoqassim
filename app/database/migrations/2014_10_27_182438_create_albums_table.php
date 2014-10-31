@@ -18,6 +18,8 @@ class CreateAlbumsTable extends Migration {
 			$table->string('slug')->nullable();
 			$table->string('title');
 			$table->mediumText('description')->nullable();
+			$table->integer('views_count')->default(0);
+			$table->integer('likes_count')->default(0);
 			$table->timestamps();
 		});
 	}

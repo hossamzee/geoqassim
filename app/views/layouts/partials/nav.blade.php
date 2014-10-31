@@ -19,7 +19,7 @@
                 <li>{{ link_to_route('pages_show', 'الماجستير', ['1']) }}</li>
                 <li><a href="page.html">الرمّة</a></li>
                 <li><a href="page.html">وراج</a></li>
-                <li><a href="photos.html">الصور</a></li>
+                <li><a {{ link_to_route('albums_index', 'الصور') }}</li>
                 <li>{{ link_to_route('videos_index', 'الفيديو') }}</li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">الخرائط <span class="caret"></span></a>

@@ -39,8 +39,8 @@ class PagesController extends \BaseController {
 
         if ($validator->fails())
         {
-            // TODO: Display a readable error.
-            return Redirect::back()->withErrors($validator)->withInput();
+            // Display a readable error.
+            return Redirect::back()->withInput()->with('error_message', 'الرجاء تعبئة الحقول بشكل صحيح.');;
         }
 
         //

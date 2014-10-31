@@ -7,8 +7,6 @@
 <div id="map-canvas" class="carousel"></div>
 <!-- Map end -->
 
-@include('...layouts.partials.messages')
-
 <!-- Contact -->
 <div class="container">
     <div class="row">
