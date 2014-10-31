@@ -23,8 +23,8 @@
 - Consider updating the width of columns.
 - Do the printing of any page or any news.
 - Snippet of news should be by words not letters.
+- Do the editing pages.
 
 ## DONE:
 
 - Make a lot of table columns nullable.
-

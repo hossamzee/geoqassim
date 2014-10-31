@@ -17,7 +17,7 @@
                 <li><a href="/admin/members">الأعضاء</a></li>
                 <li>{{ link_to_route('admin_news_index', 'الأخبار') }}</li>
                 <li><a href="/admin/pages">الصفحات</a></li>
-                <li><a href="/admin/photos">الصور</a></li>
+                <li>{{ link_to_route('admin_albums_index', 'الصور') }}</li>
                 <li>{{ link_to_route('admin_videos_index', 'الفيديو') }}</li>
                 <li><a href="/admin/photos">الرمّة</a></li>
                 <li><a href="/admin/photos">القائمة البريدية</a></li>

@@ -204,11 +204,6 @@ Route::group(['prefix' => 'admin'], function()
         'uses' => 'AlbumsController@adminIndex'
     ]);
 
-    Route::get('albums/{id}', [
-        'as' => 'admin_albums_show',
-        'uses' => 'AlbumsController@adminShow'
-    ]);
-
     Route::get('albums/create', [
         'as' => 'admin_albums_create',
         'uses' => 'AlbumsController@create'
@@ -232,6 +227,40 @@ Route::group(['prefix' => 'admin'], function()
     Route::get('albums/{id}/delete', [
         'as' => 'admin_albums_destroy',
         'uses' => 'AlbumsController@destroy'
+    ]);
+
+    /*
+     * Photos.
+     */
+
+    Route::get('albums/{id}/photos', [
+        'as' => 'admin_photos_index',
+        'uses' => 'PhotosController@adminIndex'
+    ]);
+
+    Route::get('albums/{id}/photos/create', [
+        'as' => 'admin_photos_create',
+        'uses' => 'PhotosController@create'
+    ]);
+
+    Route::post('albums/{id}/photos/create', [
+        'as' => 'admin_photos_store',
+        'uses' => 'PhotosController@store'
+    ]);
+
+    Route::get('photos/{id}/edit', [
+        'as' => 'admin_photos_edit',
+        'uses' => 'PhotosController@edit'
+    ]);
+
+    Route::post('photos/{id}/edit', [
+        'as' => 'admin_photos_update',
+        'uses' => 'PhotosController@update'
+    ]);
+
+    Route::get('photos/{id}/delete', [
+        'as' => 'admin_photos_destroy',
+        'uses' => 'PhotosController@destroy'
     ]);
 
 });

@@ -74,20 +74,6 @@ class AlbumsController extends \BaseController {
         return View::make('albums.show')->with('album', $album);
     }
 
-    public function adminShow($id)
-    {
-        $album = Album::find($id);
-
-        if (!$album)
-        {
-            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف ألبوم صحيح.');
-        }
-
-        return View::make('albums.admin.show')
-            ->with('albums', Album::orderBy('created_at', 'DESC')
-            ->with('photos')->get());
-    }
-
     public function like($id)
     {
         $album = Album::find($id);

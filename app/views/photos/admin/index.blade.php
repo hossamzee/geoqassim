@@ -1,20 +1,20 @@
 @extends('layouts.admin.default')
 
-@section('title', 'الألبومات')
+@section('title', 'ألبوم ' . $album->title . ' - الصور')
 @section('content')
 
-<!-- TODO: Show alert to check if the user is sure to delete the albums. -->
+<!-- TODO: Show alert to check if the user is sure to delete the photos. -->
 <script type="text/javascript">
 function confirm_delete(id)
 {
-    var result = confirm('هل أنت متأكّد من أنّك ترغب في حذف الألبوم؟');
+    var result = confirm('هل أنت متأكّد من أنّك ترغب في حذف الصورة؟');
 
     if (result == false)
     {
         return false;
     }
 
-    var url = '{{ urldecode(route('admin_albums_destroy')) }}';
+    var url = '{{ urldecode(route('admin_photos_destroy')) }}';
 
     url = url.replace('{id}', id);
 
@@ -27,7 +27,7 @@ function confirm_delete(id)
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <h3>الألبومات {{ link_to_route('admin_albums_create', 'إضافة', null, ['class' => 'btn btn-primary pull-left']) }}</h3>
+                <h3>{{ link_to_route('admin_albums_index', 'الألبومات') }} - صور ألبوم {{ $album->title}} {{ link_to_route('admin_photos_create', 'إضافة', [$album->id], ['class' => 'btn btn-primary pull-left']) }}</h3>
             </div>
         </div>
     </div>
@@ -47,25 +47,25 @@ function confirm_delete(id)
                 </thead>
                 <tbody>
 
-                @if(count($albums) == 0)
+                @if(count($photos) == 0)
                     <tr>
                         <td colspan="7">
-لا يوجد ألبومات مضافة إلى قاعدة البيانات.
+لا يوجد صور مضافة إلى قاعدة البيانات.
                         </td>
                     </tr>
                 @endif
 
-            @foreach($albums as $album)
+            @foreach($photos as $photo)
                 <tr>
-                    <td>{{ $album->id }}</td>
-                    <td>{{ link_to_route('admin_photos_index', $album->title, [$album->id]) }}</td>
-                    <td>{{ $album->created_at }}</td>
-                    <td>{{ count($album->photos) }}</td>
-                    <td>{{ $album->views_count }}</td>
-                    <td>{{ $album->likes_count }}</td>
+                    <td>{{ $photo->id }}</td>
+                    <td><img src="{{ $photo->thumb_url }}" class="img-responsive" /></td>
+                    <td>{{ $photo->created_at }}</td>
+                    <td>{{ count($photo->photos) }}</td>
+                    <td>{{ $photo->views_count }}</td>
+                    <td>{{ $photo->likes_count }}</td>
                     <td>
-                        {{ link_to_route('admin_albums_edit', 'تعديل', [$album->id], ['class' => 'btn btn-default btn-sm']) }}
-                        <a href="#" onclick="confirm_delete({{ $album->id }})" class="btn btn-danger btn-sm">حذف</a>
+                        {{ link_to_route('admin_photos_edit', 'تعديل', [$photo->id], ['class' => 'btn btn-default btn-sm']) }}
+                        <a href="#" onclick="confirm_delete({{ $photo->id }})" class="btn btn-danger btn-sm">حذف</a>
                     </td>
                 </tr>
             @endforeach
