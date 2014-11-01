@@ -88,7 +88,7 @@ class AlbumsController extends \BaseController {
 
         // TODO: Set that the user has liked the album before.
 
-        return Redirect::route('albums_show', [$album->id])->with('success_message', 'تمّ تسجيل إعجابك بالألبوم بنجاح.');
+        return Redirect::route('photos_index', [$album->id])->with('success_message', 'تمّ تسجيل إعجابك بالألبوم بنجاح.');
     }
 
     public function edit($id)
@@ -113,16 +113,13 @@ class AlbumsController extends \BaseController {
         }
 
         // Validate and all.
-        $url = Input::get('url');
         $title = Input::get('title');
         $description = Input::get('description');
 
         $validator = Validator::make([
-            'url' => $url,
             'title' => $title,
             'description' => $description,
         ], [
-            'url' => 'required|url',
             'title' => 'required',
             'description' => 'required',
         ]);
@@ -136,7 +133,6 @@ class AlbumsController extends \BaseController {
         // Update the current album.
         try
         {
-            $album->url = $url;
             $album->title = $title;
             $album->description = $description;
             $album->save();

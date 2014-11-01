@@ -17,11 +17,7 @@
         <div class="row">
             @foreach($albumsRow as $album)
             <div class="col-md-4">
-                <!-- 4:3 aspect ratio -->
-                <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{ $album['youtube_id'] }}?rel=0&showinfo=0&controls=0" allowfullscreen></iframe>
-                </div>
-                <h4><a href="//www.youtube.com/embed/{{ $album['youtube_id'] }}?rel=0&showinfo=0&controls=0">{{ $album['title'] }} <small>({{ $album['created_at'] }})</small></a></h4>
+                <h4>{{ link_to_route('photos_index', $album['title'], [$album['id']]) }}</h4>
                 <p>{{ $album['description'] }}</p>
             </div>
             @endforeach

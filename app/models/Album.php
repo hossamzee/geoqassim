@@ -8,4 +8,6 @@ class Album extends Eloquent
     {
         return $this->hasMany('Photo');
     }
+
+    // TODO: Delete every photo related to the desired album to be deleted.
 }

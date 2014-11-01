@@ -18,13 +18,15 @@
 - Do the printing and keep records of liking.
 - Check if there is any security issues when calling route.
 - Do Rommah database tables.
-- Prepare DB seeds for inserting the values of news, pages, etc.
-- Consider reaching the details of a video from youtube, https://developers.google.com/youtube/v3/docs/videos/list.
+- Prepare database seeds for inserting the values of news, pages, etc.
 - Consider updating the width of columns.
 - Do the printing of any page or any news.
 - Snippet of news should be by words not letters.
 - Do the editing pages.
+- Remove the photos whenever destroy method is being called.
+- Make the date readable as possible.
 
 ## DONE:
 
 - Make a lot of table columns nullable.
+- Consider reaching the details of a video from youtube, https://developers.google.com/youtube/v3/docs/videos/list.
