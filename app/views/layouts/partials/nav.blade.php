@@ -14,7 +14,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="members.html">الأعضاء</a></li>
+                <li>{{ link_to_route('members_index', 'الأعضاء') }}</li>
                 <li>{{ link_to_route('news_index', 'الأخبار') }}</li>
                 <li>{{ link_to_route('pages_show', 'الماجستير', ['1']) }}</li>
                 <li><a href="page.html">الرمّة</a></li>

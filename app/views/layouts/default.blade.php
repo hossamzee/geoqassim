@@ -66,9 +66,9 @@
             <div class="col-md-3">
                 <h4>آخر الأخبار</h4>
                 <ul class="list-unstyled">
-                    <li><span class="fa fa-file-o"></span> <a href="#">مدير جامعة القصيم يفتتح فعاليات يوم المهنة و200 وظيفة أمام خريجيها.</a></li>
-                    <li><span class="fa fa-file-o"></span> <a href="#">نورة بنت محمد تزف 4914 خريجة من مختلف التخصصات.</a></li>
-                    <li><span class="fa fa-file-o"></span> <a href="#">فيصل بن بندر يزف “14 ” خريجاً بدبلومات كلية المجتمع من الدفعة الثالثة في سجن بريدة.</a></li>
+                    @foreach ($footer_latest_news as $footer_single_news)
+                    <li><span class="fa fa-file-o"></span> {{ link_to_route('news_show', $footer_single_news->title, [$footer_single_news->id]) }}</li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-3">

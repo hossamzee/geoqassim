@@ -58,7 +58,7 @@ function confirm_delete(id)
             @foreach($albums as $album)
                 <tr>
                     <td>{{ $album->id }}</td>
-                    <td>{{ link_to_route('admin_photos_index', $album->title, [$album->id]) }}</td>
+                    <td>{{ link_to_route('admin_photos_index', $album->title, [$album->id]) }}<br /><span class="text-muted">{{ $album->description }}</span></td>
                     <td>{{ $album->created_at }}</td>
                     <td>{{ count($album->photos) }}</td>
                     <td>{{ $album->views_count }}</td>

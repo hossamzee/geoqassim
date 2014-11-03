@@ -86,6 +86,22 @@ Route::get('albums/{id}/photos', [
     'uses' => 'PhotosController@index'
 ]);
 
+// TODO: Maybe I'll do the liking.
+
+/*
+ * Members.
+ */
+
+Route::get('members', [
+    'as' => 'members_index',
+    'uses' => 'MembersController@index'
+]);
+
+Route::get('members/{id}', [
+    'as' => 'members_show',
+    'uses' => 'MembersController@show'
+]);
+
 /*
  * Admin.
  * TODO: Should be filtered before accessing.
