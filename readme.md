@@ -14,7 +14,7 @@
 - Do the liking to the news and make sure that the visitor cannot like a news twice.
 - Do the printing of any page or any news.
 - Check if there is any security issues when calling route.
-- Do Rommah database tables.
+- Do Rummah database tables.
 - Prepare database seeds for inserting the values of news, pages, etc.
 - Consider updating the width of columns.
 - Snippet of news should be by words not letters.
@@ -23,6 +23,12 @@
 - Make the date readable as possible.
 - Add alternative text to every image in the website.
 - Do the page tree correctly.
+- Do the unfulfilled URLs, e.g. RSS, and Twitter.
+- Do the users page in the control panel, so as, the login/logout page.
+- Do the maillist/newsletter.
+- Make a photo that consists of combined photos for each album.
+- Handle exceptions in production, never show the enduser what happened.
+- Check the style of the control panel rows.
 
 ## DONE:
 

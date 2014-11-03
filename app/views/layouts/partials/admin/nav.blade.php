@@ -16,10 +16,10 @@
             <ul class="nav navbar-nav navbar-left">
                 <li>{{ link_to_route('admin_members_index', 'الأعضاء') }}</li>
                 <li>{{ link_to_route('admin_news_index', 'الأخبار') }}</li>
-                <li><a href="/admin/pages">الصفحات</a></li>
+                <li>{{ link_to_route('admin_pages_index', 'الصفحات') }}</li>
                 <li>{{ link_to_route('admin_albums_index', 'الصور') }}</li>
                 <li>{{ link_to_route('admin_videos_index', 'الفيديو') }}</li>
-                <li><a href="/admin/photos">الرمّة</a></li>
+                <li>{{ link_to_route('admin_rummahs_index', 'الرمّة') }}</li>
                 <li><a href="/admin/photos">القائمة البريدية</a></li>
                 <li><a href="#">تسجيل الخروج</a></li>
             </ul>

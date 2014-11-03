@@ -9,9 +9,11 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
+		// Ungarde the fields to fulfill them directly.
 		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
+		// Start calling the seeds.
+		$this->call('NewsTableSeeder');
 	}
 
 }

@@ -92,7 +92,6 @@ class PhotosController extends \BaseController {
         }
         catch (Exception $exception)
         {
-            dd($exception);
             // Log about the error.
             Log::error($exception);
             return Redirect::home()->with('error_message', 'يبدو أنّه هناك خطأ في الخادم.');

@@ -87,7 +87,6 @@ class MembersController extends \BaseController {
         catch (Exception $exception)
         {
             // Log about the error.
-            dd($exception);
             Log::error($exception);
             return Redirect::home()->with('error_message', 'يبدو أنّه هناك خطأ في الخادم.');
         }

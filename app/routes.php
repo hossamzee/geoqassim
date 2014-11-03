@@ -86,7 +86,7 @@ Route::get('albums/{id}/photos', [
     'uses' => 'PhotosController@index'
 ]);
 
-// TODO: Maybe I'll do the liking.
+// TODO: Maybe I'll do the liking for albums ofcourse.
 
 /*
  * Members.
@@ -101,6 +101,26 @@ Route::get('members/{id}', [
     'as' => 'members_show',
     'uses' => 'MembersController@show'
 ]);
+
+/*
+ * Rummahs.
+ */
+
+Route::get('rummahs', [
+    'as' => 'rummahs_index',
+    'uses' => 'RummahsController@index'
+]);
+
+Route::get('rummahs/{id}', [
+    'as' => 'rummahs_show',
+    'uses' => 'RummahsController@show'
+]);
+
+Route::get('rummahs/{id}/like', [
+    'as' => 'rummahs_like',
+    'uses' => 'RummahsController@like'
+]);
+
 
 /*
  * Admin.
@@ -247,7 +267,7 @@ Route::group(['prefix' => 'admin'], function()
 
     /*
      * Photos.
-     * TODO: Not all controllers are done.
+     * TODO: Not all controller methods are done.
      */
 
     Route::get('albums/{id}/photos', [
@@ -312,6 +332,40 @@ Route::group(['prefix' => 'admin'], function()
     Route::get('members/{id}/delete', [
         'as' => 'admin_members_destroy',
         'uses' => 'MembersController@destroy'
+    ]);
+
+    /*
+     * Rummahs.
+     */
+
+    Route::get('rummahs', [
+        'as' => 'admin_rummahs_index',
+        'uses' => 'RummahsController@adminIndex'
+    ]);
+
+    Route::get('rummahs/create', [
+        'as' => 'admin_rummahs_create',
+        'uses' => 'RummahsController@create'
+    ]);
+
+    Route::post('rummahs/create', [
+        'as' => 'admin_rummahs_store',
+        'uses' => 'RummahsController@store'
+    ]);
+
+    Route::get('rummahs/{id}/edit', [
+        'as' => 'admin_rummahs_edit',
+        'uses' => 'RummahsController@edit'
+    ]);
+
+    Route::post('rummahs/{id}/edit', [
+        'as' => 'admin_rummahs_update',
+        'uses' => 'RummahsController@update'
+    ]);
+
+    Route::get('rummahs/{id}/delete', [
+        'as' => 'admin_rummahs_destroy',
+        'uses' => 'RummahsController@destroy'
     ]);
 
 });

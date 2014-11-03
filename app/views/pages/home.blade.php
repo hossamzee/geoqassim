@@ -44,7 +44,7 @@
             <div class="col-md-6">
                 <h1>{{ link_to_route('news_show', $last_news->title, [$last_news->id]) }}</h1>
                 <p>
-                    <i class="fa fa-calendar-o"></i> نشر بتاريخ 24 يناير 2014.
+                    <i class="fa fa-calendar-o"></i> نشر بتاريخ {{ $last_news->created_at }}.
                 </p>
                 <p>{{ $last_news->snippet }}</p>
                 <p>
@@ -80,7 +80,7 @@
             </p>
         </div>
         <div class="col-md-4">
-            <h2><a href="#">نشرة الرمة</a></h2>
+            <h2>{{ link_to_route('rummahs_index', 'نشرة الرمة') }}</h2>
             <p>كلمة الرمة باسم الله نبدأ، وبحمد لله نستفتح العدد الأول من نشرة «الرمة», الصادرة عن قسم الجغرافيا بجامعة القصيم، وهي وريقات جغرافية متواضعة، تعكس صورة ما جرى من قبل وما يجري حالياً في فلك الجغرافيين في القسم من أنشطة علمية، وأخبار جغرافية، ومخرجات معرفية، ورحلات ميد</p>
             <p>
                 <a class="btn btn-primary" href="#" role="button">تحميل آخر نسخة <span>(PDF)</span></a>
