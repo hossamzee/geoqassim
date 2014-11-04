@@ -29,6 +29,7 @@
 - Make a photo that consists of combined photos for each album.
 - Handle exceptions in production, never show the enduser what happened.
 - Check the style of the control panel rows.
+- Do the control panel home page.
 
 ## DONE:
 
@@ -36,3 +37,4 @@
 - Consider reaching the details of a video from youtube, https://developers.google.com/youtube/v3/docs/videos/list.
 - Remove 1.html file from app/views folder.
 - Fix the style of error message.
+- Fix the navbar when the visitor is using mobile.

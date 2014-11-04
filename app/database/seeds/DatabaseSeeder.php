@@ -13,7 +13,10 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		// Start calling the seeds.
+		$this->call('PagesTableSeeder');
 		$this->call('NewsTableSeeder');
+		$this->call('VideosTableSeeder');
+		$this->call('RummahsTableSeeder');
 	}
 
 }

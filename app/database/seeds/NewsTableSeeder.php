@@ -11,7 +11,7 @@ class NewsTableSeeder extends Seeder {
     {
         News::create([
           'title' => 'My first news',
-          'content' => 'This is the first news to be added.'
+          'content' => 'This is the first news to be added.',
         ]);
 
     }

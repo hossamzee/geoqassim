@@ -55,7 +55,7 @@
             <div class="col-md-6">
                 <!-- 4:3 aspect ratio -->
                 <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/XuTuCmjSbZI?rel=0&showinfo=0&controls=0" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{ $last_video->youtube_id }}?rel=0&showinfo=0&controls=0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -66,25 +66,25 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <h2><a href="#">الجغرافيا في القصيم</a></h2>
+            <h2>{{ link_to_route('pages_show', 'الجغرافيا في القصيم', ['1']) }}</h2>
             <p>يعد قسم الجغرافيا بكلية اللغة العربية والدراسات الاجتماعية بجامعة القصيم ضمن أقدم خمسة أقسام جغرافية على مستوى الجامعات السعودية، وكانت للقسم مشاركات علمية رائدة على مستوى الندوات الجغرافية، وخلال هذه المسيرة التي تقترب من ثلاثة عقود استطاع أن يضخ للمجتمع كوادر بشرية ساهمت في البناء والتنمية والتعليم لهذا الوطن.</p>
             <p>
-                <a class="btn btn-default" href="#" role="button">المزيد</a>
+                {{ link_to_route('pages_show', 'المزيد', ['1'], ['class' => 'btn btn-default']) }}
             </p>
         </div>
         <div class="col-md-4">
-            <h2><a href="#">وراج <small>(وحدة الرحلات الاستكشافية الجغرافية)</small></a></h2>
+            <h2>{{ link_to_route('pages_show', 'وراج', ['3']) }} <small>(وحدة الرحلات الاستكشافية الجغرافية)</small></h2>
             <p>وراج وقام (العازمي، 2009) بقياس زحف الكثبان الهلالية في صحراء الدهناء, باستخدام مرئيات الاستشعار عن بعد للفترة من 2003م حتى 2007م، وتوصلت الدراسة إلى أن المعدل السنوي لزحف الكثبان الرملية خلال فترة الدراسة يبلغ 9,7م، وأن اتجاه زحف الكثبان الهلالية يتوافق مع اتجاه الرياح السائدة،</p>
             <p>
-                <a class="btn btn-default" href="#" role="button">المزيد</a>
+                {{ link_to_route('pages_show', 'المزيد', ['3'], ['class' => 'btn btn-default']) }}
             </p>
         </div>
         <div class="col-md-4">
             <h2>{{ link_to_route('rummahs_index', 'نشرة الرمة') }}</h2>
             <p>كلمة الرمة باسم الله نبدأ، وبحمد لله نستفتح العدد الأول من نشرة «الرمة», الصادرة عن قسم الجغرافيا بجامعة القصيم، وهي وريقات جغرافية متواضعة، تعكس صورة ما جرى من قبل وما يجري حالياً في فلك الجغرافيين في القسم من أنشطة علمية، وأخبار جغرافية، ومخرجات معرفية، ورحلات ميد</p>
             <p>
-                <a class="btn btn-primary" href="#" role="button">تحميل آخر نسخة <span>(PDF)</span></a>
-                <a class="btn btn-default" href="#" role="button">نسخ سابقة</a>
+                {{ link_to_route('rummahs_show', 'تحميل آخر نسخة (PDF)', [$last_rummah->id], ['class' => 'btn btn-primary']) }}
+                {{ link_to_route('rummahs_index', 'نسخ سابقة', null, ['class' => 'btn btn-default']) }}
             </p>
         </div>
     </div>

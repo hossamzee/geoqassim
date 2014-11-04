@@ -4,11 +4,16 @@ class PagesController extends \BaseController {
 
     public function home()
     {
-        // Get the latest news has been added.
+        // Get the latest everything has been added.
         // TODO: Hanlde the exception that is being throwing when there is no news.
         $last_news = News::orderBy('created_at', 'DESC')->first();
+        $last_rummah = Rummah::orderBy('created_at', 'DESC')->first();
+        $last_video = Video::orderBy('created_at', 'DESC')->first();
 
-        return View::make('pages.home')->with('last_news', $last_news);
+        return View::make('pages.home')
+                ->with('last_news', $last_news)
+                ->with('last_rummah', $last_rummah)
+                ->with('last_video', $last_video);
     }
 
     public function getContact()

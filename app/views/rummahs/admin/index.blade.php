@@ -57,7 +57,7 @@ function confirm_delete(id)
             @foreach($rummahs as $rummah)
                 <tr>
                     <td>{{ $rummah->id }}</td>
-                    <td><strong><a href="{{ $rummah->url }}">{{ $rummah->title }}</a></strong><br /><span class="text-muted">{{ $rummah->description }}</span></td>
+                    <td><a href="{{ $rummah->url }}">{{ $rummah->title }}</a><br /><span class="text-muted">{{ $rummah->description }}</span></td>
                     <td>{{ $rummah->created_at }}</td>
                     <td>{{ $rummah->views_count }}</td>
                     <td>{{ $rummah->likes_count }}</td>

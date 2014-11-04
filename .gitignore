@@ -7,5 +7,6 @@ composer.lock
 .env.php
 .DS_Store
 Thumbs.db
-
-tests/_output/*
+/tests/_output/*
+/public/photos/large/*
+/public/photos/thumb/*
