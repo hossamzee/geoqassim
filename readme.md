@@ -5,7 +5,7 @@
 - Fix many issues when viewing the website from the mobile.
 - Consider indexing the database tables.
 - Update the locale in Laravel to be an Arabic/Saudi Arabia.
-- Make the messages to be sent good looking ones (Update the design of emails.)
+- Make the messages to be sent good looking ones (Update the design of emails.) and not spams.
 - Consider having a weekly/monthly emails.
 - Google Analytics implementing.
 - Update the URLs of FA and JQ to be local.
@@ -30,6 +30,9 @@
 - Handle exceptions in production, never show the enduser what happened.
 - Check the style of the control panel rows.
 - Do the control panel home page.
+- Consider deleting the photos whenever destroy method is being called.
+- Check form with the attribute files, they maybe do not need it.
+- Fix the URL to the admin homepage.
 
 ## DONE:
 

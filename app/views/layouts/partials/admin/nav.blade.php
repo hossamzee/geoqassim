@@ -21,7 +21,8 @@
                 <li>{{ link_to_route('admin_videos_index', 'الفيديو') }}</li>
                 <li>{{ link_to_route('admin_rummahs_index', 'الرمّة') }}</li>
                 <li><a href="/admin/photos">القائمة البريدية</a></li>
-                <li><a href="#">تسجيل الخروج</a></li>
+                <li>{{ link_to_route('admin_users_index', 'المستخدمون') }}</li>
+                <li>{{ link_to_route('admin_users_logout', 'تسجيل الخروج') }}</li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-->

@@ -43,7 +43,7 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::guest('users/login');
 		}
 	}
 });
@@ -52,6 +52,11 @@ Route::filter('auth', function()
 Route::filter('auth.basic', function()
 {
 	return Auth::basic();
+});
+
+Route::filter('auth.admin', function()
+{
+		if (Auth::user()->role != 'admin') return Redirect::home()->with('error_message', 'لا تملك صلاحية الوصول إلى هذه الصفحة.');
 });
 
 /*

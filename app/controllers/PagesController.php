@@ -16,6 +16,12 @@ class PagesController extends \BaseController {
                 ->with('last_video', $last_video);
     }
 
+    public function adminHome()
+    {
+        return View::make('pages.admin.home');
+    }
+
+
     public function getContact()
     {
         return View::make('pages.contact');

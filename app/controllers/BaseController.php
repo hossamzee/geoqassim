@@ -8,7 +8,10 @@ class BaseController extends Controller {
 	public function __construct()
 	{
 		$latest_news = News::limit(10)->orderBy('created_at', 'DESC')->get();
+		$random_photo = Photo::orderBy(DB::raw('RAND()'))->first();
+
 		View::share('footer_latest_news', $latest_news);
+		View::share('footer_random_photo', $random_photo);
 	}
 
 	/**

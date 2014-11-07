@@ -146,24 +146,24 @@ class PhotosController extends \BaseController {
 
     public function update($id)
     {
-        $photo = Photo::find($id);
+        $current_photo = Photo::find($id);
 
-        if (!$photo)
+        if (!$current_photo)
         {
             return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صورة صحيح.');
         }
 
         // Validate and all.
-        $url = Input::get('url');
+        $photo = Input::file('photo');
         $title = Input::get('title');
         $description = Input::get('description');
 
         $validator = Validator::make([
-            'url' => $url,
+            'photo' => $photo,
             'title' => $title,
             'description' => $description,
         ], [
-            'url' => 'required|url',
+            'photo' => 'image',
             'title' => 'required',
             'description' => 'required',
         ]);
@@ -177,10 +177,35 @@ class PhotosController extends \BaseController {
         // Update the current photo.
         try
         {
-            $photo->url = $url;
-            $photo->title = $title;
-            $photo->description = $description;
-            $photo->save();
+            if ($photo)
+            {
+                // Create the two photos, large and thumb.
+                $photo_name = Str::random(40) . '.png';
+
+                // Make the large photo first.
+                $large_photo = Image::make($photo->getRealPath());
+                $large_photo->save(public_path() . '/photos/large/' . $photo_name);
+
+                // Make the thumb photo secondly.
+                $thumb_photo = Image::make($photo->getRealPath());
+
+                $thumb_photo->widen(389, function ($constraint) {
+                  $constraint->upsize();
+                });
+
+                $thumb_photo->save(public_path() . '/photos/thumb/' . $photo_name);
+
+                // Set the URLs for both, large and thumb.
+                $large_photo_url = url('/photos/large/' . $photo_name);
+                $thumb_photo_url = url('/photos/thumb/' . $photo_name);
+
+                $photo->large_url = $large_photo_url;
+                $photo->thumb_url = $thumb_photo_url;
+            }
+
+            $current_photo->title = $title;
+            $current_photo->description = $description;
+            $current_photo->save();
         }
         catch (Exception $exception)
         {
@@ -189,7 +214,7 @@ class PhotosController extends \BaseController {
             return Redirect::home()->with('error_message', 'يبدو أنّه هناك خطأ في الخادم.');
         }
 
-        return Redirect::route('admin_photos_index')->with('success_message', 'تمّ تحديث الصورة بنجاح.');
+        return Redirect::route('admin_photos_index', [$current_photo->album_id])->with('success_message', 'تمّ تحديث الصورة بنجاح.');
     }
 
     public function destroy($id)

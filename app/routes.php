@@ -121,13 +121,38 @@ Route::get('rummahs/{id}/like', [
     'uses' => 'RummahsController@like'
 ]);
 
+/*
+ * Users
+ */
+
+Route::get('users/login', [
+    'as' => 'users_login_get',
+    'uses' => 'UsersController@getLogin'
+]);
+
+Route::post('users/login', [
+    'as' => 'users_login_post',
+    'uses' => 'UsersController@postLogin'
+]);
+
+Route::get('users/changepassword', [
+    'before' => 'auth',
+    'as' => 'users_changepassword_get',
+    'uses' => 'UsersController@getChangePassword'
+]);
+
+Route::post('users/changepassword', [
+    'before' => 'auth',
+    'as' => 'users_changepassword_post',
+    'uses' => 'UsersController@postChangePassword'
+]);
 
 /*
  * Admin.
  * TODO: Should be filtered before accessing.
  */
 
-Route::group(['prefix' => 'admin'], function()
+Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
 {
     /*
      * News.
@@ -166,6 +191,11 @@ Route::group(['prefix' => 'admin'], function()
     /*
      * Pages.
      */
+
+     Route::get('/', [
+         'as' => 'admin_home',
+         'uses' => 'PagesController@adminHome'
+     ]);
 
     Route::get('pages', [
         'as' => 'admin_pages_index',
@@ -366,6 +396,52 @@ Route::group(['prefix' => 'admin'], function()
     Route::get('rummahs/{id}/delete', [
         'as' => 'admin_rummahs_destroy',
         'uses' => 'RummahsController@destroy'
+    ]);
+
+    /*
+     * Users.
+     */
+
+    Route::get('users', [
+        'before' => 'auth.admin',
+        'as' => 'admin_users_index',
+        'uses' => 'UsersController@index'
+    ]);
+
+    Route::get('users/create', [
+        'before' => 'auth.admin',
+        'as' => 'admin_users_create',
+        'uses' => 'UsersController@create'
+    ]);
+
+    Route::post('users/create', [
+        'before' => 'auth.admin',
+        'as' => 'admin_users_store',
+        'uses' => 'UsersController@store'
+    ]);
+
+    Route::get('users/{id}/edit', [
+        'before' => 'auth.admin',
+        'as' => 'admin_users_edit',
+        'uses' => 'UsersController@edit'
+    ]);
+
+    Route::post('users/{id}/edit', [
+        'before' => 'auth.admin',
+        'as' => 'admin_users_update',
+        'uses' => 'UsersController@update'
+    ]);
+
+    Route::get('users/{id}/delete', [
+        'before' => 'auth.admin',
+        'as' => 'admin_users_destroy',
+        'uses' => 'UsersController@destroy'
+    ]);
+
+    Route::get('users/logout', [
+        'before' => 'auth',
+        'as' => 'admin_users_logout',
+        'uses' => 'UsersController@logout'
     ]);
 
 });

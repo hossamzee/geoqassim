@@ -72,15 +72,17 @@
                 </ul>
             </div>
             <div class="col-md-3">
-                <h4>صورة عشوائة</h4>
+                <h4>صورة عشوائية</h4>
                 <p>
-                    <a href="#"><img src="/assets/images/photo1.jpg" class="img-responsive" /></a>
+                    @if ($footer_random_photo)
+                      <a href="#"><img src="{{ $footer_random_photo->thumb_url }}" class="img-responsive" /></a>
+                    @endif
                 </p>
             </div>
             <div class="col-md-3">
                 <h4>جميع الحقوق محفوظة <small>(2014)</small></h4>
                 <p>
-                    <a href="#" class="btn btn-default btn-sm">تصميم و تطوير حسام الزغيبي</a>
+                    <a href="//hossamzee.github.io/about.html" class="btn btn-default btn-sm">تصميم و تطوير حسام الزغيبي</a>
                 </p>
             </div>
         </div>
