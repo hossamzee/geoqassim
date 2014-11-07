@@ -37,7 +37,7 @@ function confirm_delete(id)
                 <thead>
                     <tr>
                         <th>م</th>
-                        <th>العنوان</th>
+                        <th class="col-md-6">العنوان</th>
                         <th>التاريخ</th>
                         <th>القراءات</th>
                         <th>الإعجاب</th>

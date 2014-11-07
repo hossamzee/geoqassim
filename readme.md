@@ -33,6 +33,7 @@
 - Consider deleting the photos whenever destroy method is being called.
 - Check form with the attribute files, they maybe do not need it.
 - Fix the URL to the admin homepage.
+- Do the searching and indexing.
 
 ## DONE:
 
