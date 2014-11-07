@@ -19,31 +19,31 @@
             </p>
             {{ Form::open(['route' => 'contact_post']) }}
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {{ Form::label('name', 'الاسم') }}
                             {{ Form::text('name', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {{ Form::label('email', 'البريد الإلكتروني') }}
                             {{ Form::text('email', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('subject', 'الموضوع') }}
                             {{ Form::text('subject', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('content', 'المحتوى') }}
                             {{ Form::textarea('content', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12 text-right">
+                    <div class="col-md-12 text-right">
                         {{ Form::submit('إرسال الرسالة', ['class' => 'btn btn-primary btn-lg']) }}
                     </div>
                 </div>

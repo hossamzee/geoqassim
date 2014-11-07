@@ -38,7 +38,7 @@ function confirm_delete(id)
                     <tr>
                         <th>م</th>
                         <th class="col-md-6">العنوان (الوصف)</th>
-                        <th>الرابط</th>
+                        <th class="hidden-xs">الرابط</th>
                         <th>التاريخ</th>
                         <th class="col-md-2">الإجراءات</th>
                     </tr>
@@ -57,7 +57,7 @@ function confirm_delete(id)
                 <tr>
                     <td>{{ $video->id }}</td>
                     <td><strong>{{ $video->title }}</strong><br /><span class="text-muted">{{ $video->description }}</span></td>
-                    <td><a href="{{ $video->url }}" target="_blank"><i class="fa fa-external-link"></i> {{ $video->url }}</a></td>
+                    <td class="hidden-xs"><a href="{{ $video->url }}" target="_blank"><i class="fa fa-external-link"></i> {{ $video->url }}</a></td>
                     <td>{{ $video->created_at }}</td>
                     <td>
                         {{ link_to_route('admin_videos_edit', 'تعديل', $video->id, ['class' => 'btn btn-default btn-sm']) }}

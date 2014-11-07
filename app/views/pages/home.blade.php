@@ -17,7 +17,6 @@
                 </script>
 
                 <a href="#" class="btn btn-default">القصيم، درجة الحرارة <span id="weather-temp"></span></a>
-
             </div>
             <div class="col-md-6 col-sm-8">
                 <form>
