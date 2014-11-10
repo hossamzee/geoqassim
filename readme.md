@@ -12,7 +12,6 @@
 - Do the unfulfilled URLs, e.g. Youtube, and Twitter.
 - Handle exceptions in production, never show the enduser what happened.
 - Do the control panel home page.
-- Consider doing some styling, specially, with photos_show page.
 
 ## TODO - Major Changes
 
@@ -47,6 +46,7 @@
 - Prepare database seeds for inserting the values of news, pages, etc.
 - Check form with the attribute files, they maybe do not need it.
 - Update the main album photo, in a good way of course.
+- Consider doing some styling, specially, with photos_show page.
 
 # Future Imporvements
 - Google Analytics implementing.
