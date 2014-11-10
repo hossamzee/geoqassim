@@ -42,25 +42,25 @@
                 <h4>القائمة البريدية</h4>
 
                 <p>
-                <form>
+                {{ Form::open(['route' => 'newsletters_subscribe']) }}
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="subscribe-email" placeholder="أدخل بريدك الإلكتروني.">
+                                {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'أدخل بريدك الإلكتروني']) }}
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i></button>
                             </span>
                             </div>
                         </div>
                     </div>
-                </form>
+                {{ Form::close() }}
                 </p>
                 <p>
                     تفضل بالاشتراك معنا في القائمة البريدية ليصلك جديد الموقع.
                 </p>
                 <p>
                     <a href="#" class="btn btn-info"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="btn btn-warning"><i class="fa fa-rss"></i></a>
+                    <a href="#" class="btn btn-danger"><i class="fa fa-youtube"></i></a>
                 </p>
             </div>
             <div class="col-md-3">

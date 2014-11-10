@@ -5,7 +5,7 @@ class AlbumsController extends \BaseController {
     public function index()
     {
         // Get the albums.
-        $albums = Album::orderBy('created_at', 'DESC')->get();
+        $albums = Album::orderBy('created_at', 'DESC')->with('photos')->get();
         return View::make('albums.index')->with('albums', $albums);
     }
 

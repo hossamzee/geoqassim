@@ -288,7 +288,7 @@ class UsersController extends \BaseController {
         if (Auth::attempt(['username' => $username, 'password' => $password], true))
         {
             // TODO: This should go to the admin homepage.
-            return Redirect::intended('admin_home')->with('success_message', 'تمّ تسجيل الدخول بنجاح.');
+            return Redirect::intended('admin')->with('success_message', 'تمّ تسجيل الدخول بنجاح.');
         }
         else
         {

@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}"><img src="/assets/images/admin.logo.png"/></a>
+            <a class="navbar-brand" href="{{ route('admin_home') }}"><img src="/assets/images/admin.logo.png"/></a>
             {{ link_to_route('home', '', null, ['class' => 'navbar-brand']) }}
         </div>
         <div class="navbar-collapse collapse" id="geoqassim-navbar-collapse">
@@ -20,7 +20,7 @@
                 <li>{{ link_to_route('admin_albums_index', 'الصور') }}</li>
                 <li>{{ link_to_route('admin_videos_index', 'الفيديو') }}</li>
                 <li>{{ link_to_route('admin_rummahs_index', 'الرمّة') }}</li>
-                <li><a href="/admin/photos">القائمة البريدية</a></li>
+                <li>{{ link_to_route('admin_newsletters_index', 'القائمة البريديّة') }}</li>
                 <li>{{ link_to_route('admin_users_index', 'المستخدمون') }}</li>
                 <li>{{ link_to_route('admin_users_logout', 'تسجيل الخروج') }}</li>
             </ul>

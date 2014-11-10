@@ -2,11 +2,55 @@
 
 class PhotosController extends \BaseController {
 
-    public function index()
+    public function index($album_id)
     {
-        // Get the photos.
-        $photos = Photo::orderBy('created_at', 'DESC')->get();
-        return View::make('photos.index')->with('photos', $photos);
+        return $this->show($album_id, null);
+    }
+
+    public function show($album_id, $id)
+    {
+        // Check if the album does exist.
+        $album = Album::find($album_id);
+
+        if (!$album)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكّد من طلب معرّف ألبوم صحيح.');
+        }
+
+        // Get the chosen or the latest photo.
+        if ($id == null)
+        {
+            $photo = Photo::where('album_id', '=', $album->id)->orderBy('id', 'DESC')->first();
+        }
+        else
+        {
+            $photo = Photo::where('album_id', '=', $album->id)->where('id', '=', $id)->orderBy('id', 'DESC')->first();
+        }
+
+        if ($photo == null)
+        {
+            return Redirect::home()->with('error_message', 'لم يتم إضافة صور حتّى الآن أو أن معرّف الصورة غير صحيح.');
+        }
+
+        // Update the views count.
+        $photo->views_count++;
+        $photo->save();
+
+        // Get the previous photos.
+        $previous_photos = Photo::where('album_id', '=', $album->id)->where('id', '<', $photo->id)->orderBy('id', 'DESC')->limit(Photo::PHOTOS_PER_PAGE/2)->get();
+
+        // Get the next photos.
+        $next_photos = Photo::where('album_id', '=', $album->id)->where('id', '>', $photo->id)->orderBy('id', 'ASC')->limit(Photo::PHOTOS_PER_PAGE/2)->get();
+
+        // Set the related photos.
+        $related_photos = $previous_photos->merge($next_photos);
+
+        return View::make("photos.show")
+                ->with('album', $album)
+                ->with('photo', $photo)
+                ->with('previous_photos', $previous_photos)
+                ->with('next_photos', $next_photos)
+                ->with('related_photos', $related_photos);
     }
 
     public function adminIndex($album_id)
@@ -71,7 +115,7 @@ class PhotosController extends \BaseController {
             // Make the thumb photo secondly.
             $thumb_photo = Image::make($photo->getRealPath());
 
-            $thumb_photo->widen(389, function ($constraint) {
+            $thumb_photo->widen(165, function ($constraint) {
               $constraint->upsize();
             });
 
@@ -100,21 +144,6 @@ class PhotosController extends \BaseController {
         return Redirect::route("admin_photos_index", [$album_id])->with('success_message', 'تمّ إضافة الصورة بنجاح.');
     }
 
-    public function show($id)
-    {
-        $photo = Photo::find($id);
-
-        if (!$photo)
-        {
-            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صورة صحيح.');
-        }
-
-        $photo->views_count++;
-        $photo->save();
-
-        return View::make('photos.show')->with('photo', $photo);
-    }
-
     public function like($id)
     {
         $photo = Photo::find($id);
@@ -129,7 +158,7 @@ class PhotosController extends \BaseController {
 
         // TODO: Set that the user has liked the photo before.
 
-        return Redirect::route('photos_show', [$photo->id])->with('success_message', 'تمّ تسجيل إعجابك بالصورة بنجاح.');
+        return Redirect::route('photos_show', [$photo->album_id, $photo->id])->with('success_message', 'تمّ تسجيل إعجابك بالصورة بنجاح.');
     }
 
     public function edit($id)
@@ -189,7 +218,7 @@ class PhotosController extends \BaseController {
                 // Make the thumb photo secondly.
                 $thumb_photo = Image::make($photo->getRealPath());
 
-                $thumb_photo->widen(389, function ($constraint) {
+                $thumb_photo->widen(165, function ($constraint) {
                   $constraint->upsize();
                 });
 
@@ -199,8 +228,8 @@ class PhotosController extends \BaseController {
                 $large_photo_url = url('/photos/large/' . $photo_name);
                 $thumb_photo_url = url('/photos/thumb/' . $photo_name);
 
-                $photo->large_url = $large_photo_url;
-                $photo->thumb_url = $thumb_photo_url;
+                $current_photo->large_url = $large_photo_url;
+                $current_photo->thumb_url = $thumb_photo_url;
             }
 
             $current_photo->title = $title;

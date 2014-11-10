@@ -10,9 +10,9 @@ class VideosTableSeeder extends Seeder {
     public function run()
     {
         Video::create([
-          'url' => 'http://www.youtube.com/watch?v=TqKWrLO0_5s',
-          'title' => 'THE APPLE STORY in MOTION DESIGN',
-          'description' => 'From the beginning of Apple Computing in 1976 to the release of the Iphone 5 in 2012, the firm headquartered in Cupertino has had a fascinating and unique history.',
+          'url' => 'http://www.youtube.com/watch?v=i-hd2aFUY-E',
+          'title' => 'بين العلا وحائل.. تصوير جوي HD يناير 2014م',
+          'description' => 'بين العلا وحائل رحلة قمت بها مع الزملاء الأفاضل الأستاذ حمد الواصل، والدكتور محمد الدغيري، والدكتور أحمد الدغيري .. وذلك في شهر يناير 2014م، شملت جبال المسمى، وجبل عرنان، وجبل المحجة، وروضة الهايس، ومجموعة أقواس، ومظاهر جيومورفولوجية متنوعة كما شملت العلا وجبال المداخيل والهوية وحرة خيبر وكهف أم جرسان وفوة بركان الأبيض.',
         ]);
 
     }

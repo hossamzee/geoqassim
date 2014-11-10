@@ -73,7 +73,7 @@ Route::get('videos', [
 ]);
 
 /*
- * Albums.
+ * Albums & Photos.
  */
 
 Route::get('albums', [
@@ -84,6 +84,16 @@ Route::get('albums', [
 Route::get('albums/{id}/photos', [
     'as' => 'photos_index',
     'uses' => 'PhotosController@index'
+]);
+
+Route::get('albums/{album_id}/photos/{id}', [
+    'as' => 'photos_show',
+    'uses' => 'PhotosController@show'
+]);
+
+Route::get('photos/{id}/like', [
+    'as' => 'photos_like',
+    'uses' => 'PhotosController@like'
 ]);
 
 // TODO: Maybe I'll do the liking for albums ofcourse.
@@ -145,6 +155,20 @@ Route::post('users/changepassword', [
     'before' => 'auth',
     'as' => 'users_changepassword_post',
     'uses' => 'UsersController@postChangePassword'
+]);
+
+/*
+ * Newsletters
+ */
+
+Route::post('newsletters/subscribe', [
+    'as' => 'newsletters_subscribe',
+    'uses' => 'NewslettersController@subscribe'
+]);
+
+Route::get('newsletters/{token}/unsubscribe', [
+    'as' => 'newsletters_unsubscribe',
+    'uses' => 'NewslettersController@unsubscribe'
 ]);
 
 /*
@@ -442,6 +466,15 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
         'before' => 'auth',
         'as' => 'admin_users_logout',
         'uses' => 'UsersController@logout'
+    ]);
+
+    /*
+     * Newsletters
+     */
+
+    Route::get('newsletters', [
+        'as' => 'admin_newsletters_index',
+        'uses' => 'NewslettersController@adminIndex'
     ]);
 
 });

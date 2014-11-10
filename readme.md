@@ -16,7 +16,6 @@
 - Check if there is any security issues when calling route.
 - Do Rummah database tables.
 - Prepare database seeds for inserting the values of news, pages, etc.
-- Consider updating the width of columns.
 - Snippet of news should be by words not letters.
 - Do the editing pages.
 - Remove the photos whenever destroy method is being called.
@@ -34,6 +33,8 @@
 - Check form with the attribute files, they maybe do not need it.
 - Fix the URL to the admin homepage.
 - Do the searching and indexing.
+- Consider doing some styling, specially, with photos_show page.
+- Update the main album photo, in a good way of course.
 
 ## DONE:
 
@@ -42,3 +43,4 @@
 - Remove 1.html file from app/views folder.
 - Fix the style of error message.
 - Fix the navbar when the visitor is using mobile.
+- Consider updating the width of columns.
