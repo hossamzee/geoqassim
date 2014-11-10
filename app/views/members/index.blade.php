@@ -8,10 +8,17 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h3>الأعضاء <small>({{ count($members) }})</small></h3>
+                        <h3>الأعضاء <small>({{ $members->count() }})</small></h3>
                     </div>
                 </div>
             </div>
+
+            @if ($members->count() == 0)
+              <p>
+                  <i class="fa fa-warning"></i>
+                  لم يتم إضافة أعضاء حتّى الآن.
+              </p>
+            @endif
 
     @foreach(array_chunk($members->toArray(), 3) as $membersRow)
         <div class="row">

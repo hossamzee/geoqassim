@@ -8,11 +8,17 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h3>الألبومات <small>({{ count($albums) }})</small></h3>
+                        <h3>الألبومات <small>({{ $albums->count() }})</small></h3>
                     </div>
                 </div>
             </div>
 
+    @if ($albums->count() == 0)
+      <p>
+          <i class="fa fa-warning"></i>
+          لم يتم إضافة صور حتّى الآن.
+      </p>
+    @endif
     @foreach(array_chunk($albums->toArray(), 3) as $albumsRow)
         <div class="row">
             @foreach($albumsRow as $album)
