@@ -8,7 +8,6 @@
 - Update the weather box to import more information like Foreca.
 - Update the locale in Laravel to be an Arabic/Saudi Arabia.
 - Make the messages to be sent good looking ones (Update the design of emails.) and not spams.
-- Handle no rows in many pages.
 - Do the liking to the news and make sure that the visitor cannot like a news twice.
 - Do the printing of any page or any news.
 - Prepare database seeds for inserting the values of news, pages, etc.
@@ -47,6 +46,7 @@
 - Remove the photos whenever destroy method is being called (no need for this one).
 - Do the editing pages.
 - Snippet of news should be by words not letters.
+- Handle no rows in many pages.
 
 # Future Imporvements
 - Google Analytics implementing.
