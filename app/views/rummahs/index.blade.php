@@ -8,10 +8,17 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h3>الرمّة <small>({{ count($rummahs) }})</small></h3>
+                        <h3>الرمّة <small>({{ $rummahs->count() }})</small></h3>
                     </div>
                 </div>
             </div>
+
+      @if ($rummahs->count() == 0)
+      <p>
+          <i class="fa fa-warning"></i>
+          لم يتم إضافة رمّة حتّى الآن.
+      </p>
+    @endif
 
     @foreach(array_chunk($rummahs->toArray(), 3) as $rummahsRow)
         <div class="row">
