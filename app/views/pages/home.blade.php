@@ -41,6 +41,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
+                @if ($last_news)
                 <h1>{{ link_to_route('news_show', $last_news->title, [$last_news->id]) }}</h1>
                 <p>
                     <i class="fa fa-calendar-o"></i> نشر بتاريخ {{ $last_news->created_at }}.
@@ -50,12 +51,15 @@
                 {{ link_to_route('news_show', 'المزيد', [$last_news->id], ['class' => 'btn btn-primary btn-lg', 'role' => 'button']) }}
                 {{ link_to_route('news_index', 'المزيد من الأخبار', null, ['class' => 'btn btn-default btn-lg', 'role' => 'button']) }}
                 </p>
+                @endif
             </div>
             <div class="col-md-6">
+                @if ($last_video)
                 <!-- 4:3 aspect ratio -->
                 <div class="embed-responsive embed-responsive-4by3">
                     <iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{ $last_video->youtube_id }}?rel=0&showinfo=0&controls=0" allowfullscreen></iframe>
                 </div>
+                @endif
             </div>
         </div>
     </div>
@@ -82,8 +86,10 @@
             <h2>{{ link_to_route('rummahs_index', 'نشرة الرمة') }}</h2>
             <p>كلمة الرمة باسم الله نبدأ، وبحمد لله نستفتح العدد الأول من نشرة «الرمة», الصادرة عن قسم الجغرافيا بجامعة القصيم، وهي وريقات جغرافية متواضعة، تعكس صورة ما جرى من قبل وما يجري حالياً في فلك الجغرافيين في القسم من أنشطة علمية، وأخبار جغرافية، ومخرجات معرفية، ورحلات ميد</p>
             <p>
+                @if ($last_rummah)
                 {{ link_to_route('rummahs_show', 'تحميل آخر نسخة (PDF)', [$last_rummah->id], ['class' => 'btn btn-primary']) }}
                 {{ link_to_route('rummahs_index', 'نسخ سابقة', null, ['class' => 'btn btn-default']) }}
+                @endif
             </p>
         </div>
     </div>
