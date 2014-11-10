@@ -8,5 +8,3 @@ composer.lock
 .DS_Store
 Thumbs.db
 /tests/_output/*
-/public/photos/large/*
-/public/photos/thumb/*
