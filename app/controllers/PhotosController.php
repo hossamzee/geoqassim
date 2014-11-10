@@ -153,12 +153,24 @@ class PhotosController extends \BaseController {
             return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صورة صحيح.');
         }
 
+        // Check if the user already liked the photo.
+        $cookie_name = 'photos_' . $photo->id;
+        $photos_like = Cookie::get($cookie_name);
+
+        if ($photos_like)
+        {
+            return Redirect::route('photos_show', [$photo->album_id, $photo->id])->with('error_message', 'لقد أبديت إعجابك مسبقاً بهذه الصورة.');
+        }
+
+        // Make it forever.
+        $cookie = Cookie::forever($cookie_name, 'true');
+
         $photo->likes_count++;
         $photo->save();
 
         // TODO: Set that the user has liked the photo before.
 
-        return Redirect::route('photos_show', [$photo->album_id, $photo->id])->with('success_message', 'تمّ تسجيل إعجابك بالصورة بنجاح.');
+        return Redirect::route('photos_show', [$photo->album_id, $photo->id])->with('success_message', 'تمّ تسجيل إعجابك بالصورة بنجاح.')->withCookie($cookie);
     }
 
     public function edit($id)

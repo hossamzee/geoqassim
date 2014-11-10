@@ -63,7 +63,7 @@
                     <a href="#" class="btn btn-danger"><i class="fa fa-youtube"></i></a>
                 </p>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h4>آخر الأخبار</h4>
                 <ul class="list-unstyled">
                     @foreach ($footer_latest_news as $footer_single_news)
@@ -71,7 +71,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <h4>صورة عشوائية</h4>
                 <p>
                     @if ($footer_random_photo)
