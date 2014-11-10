@@ -107,12 +107,24 @@ class RummahsController extends \BaseController {
             return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف رمّة صحيح.');
         }
 
+        // Check if the user already liked the rummah.
+        $cookie_name = 'rummahs_' . $rummah->id;
+        $rummahs_like = Cookie::get($cookie_name);
+
+        if ($rummahs_like)
+        {
+            return Redirect::route('rummahs_index')->with('error_message', 'لقد أبديت إعجابك مسبقاً بهذه الرمّة.');
+        }
+
+        // Make it forever.
+        $cookie = Cookie::forever($cookie_name, 'true');
+
         $rummah->likes_count++;
         $rummah->save();
 
         // TODO: Set that the user has liked the news before.
 
-        return Redirect::route('rummahs_index')->with('success_message', 'تمّ تسجيل إعجابك بالرمّة بنجاح.');
+        return Redirect::route('rummahs_index')->with('success_message', 'تمّ تسجيل إعجابك بالرمّة بنجاح.')->withCookie($cookie);
     }
 
     public function edit($id)
