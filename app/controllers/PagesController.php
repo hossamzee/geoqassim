@@ -150,12 +150,24 @@ class PagesController extends \BaseController {
             return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صفحة صحيح.');
         }
 
+        // Check if the user already liked the page.
+        $cookie_name = 'pages_' . $page->id;
+        $pages_like = Cookie::get($cookie_name);
+
+        if ($pages_like)
+        {
+            return Redirect::route('pages_show', [$page->id])->with('error_message', 'لقد أبديت إعجابك مسبقاً بهذه الصفحة.');
+        }
+
+        // Make it forever.
+        $cookie = Cookie::forever($cookie_name, 'true');
+
         $page->likes_count++;
         $page->save();
 
         // TODO: Set that the user has liked the page before.
 
-        return Redirect::route('pages_show', [$page->id])->with('success_message', 'تمّ تسجيل إعجابك بالصفحة بنجاح.');
+        return Redirect::route('pages_show', [$page->id])->with('success_message', 'تمّ تسجيل إعجابك بالصفحة بنجاح.')->withCookie($cookie);
     }
 
     public function edit($id)

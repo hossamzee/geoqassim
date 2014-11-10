@@ -83,7 +83,7 @@ class AlbumsController extends \BaseController {
             return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف ألبوم صحيح.');
         }
 
-        // Check if the user already liked the albums.
+        // Check if the user already liked the album.
         $cookie_name = 'albums_' . $album->id;
         $albums_like = Cookie::get($cookie_name);
 
