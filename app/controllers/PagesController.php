@@ -73,8 +73,8 @@ class PagesController extends \BaseController {
                     ->subject('موقع قسم الجغرافيا بجامعة القصيم - '. $subject);
         });
 
-        // TODO: Make sure that the flash message displays appropriately.
-        return Redirect::home()->with('message', 'Greate!');
+        // Make sure that the flash message displays appropriately.
+        return Redirect::home()->with('succes_message', 'تمّ إرسال رسالتك بنجاح.');
     }
 
     public function adminIndex()
