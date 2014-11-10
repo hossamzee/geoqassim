@@ -8,11 +8,11 @@ class NewsController extends \BaseController {
             ->with('news', News::orderBy('created_at', 'DESC')->get());
 	}
 
-    public function adminIndex()
-    {
-        return View::make('news.admin.index')
-            ->with('news', News::orderBy('created_at', 'DESC')->get());
-    }
+  public function adminIndex()
+  {
+      return View::make('news.admin.index')
+          ->with('news', News::orderBy('created_at', 'DESC')->get());
+  }
 
 	public function create()
 	{
@@ -81,12 +81,22 @@ class NewsController extends \BaseController {
             return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف خبر صحيح.');
         }
 
+				// Check if the user already liked the news.
+				$cookie_name = 'news_' . $news->id;
+				$news_like = Cookie::get($cookie_name);
+
+				if ($news_like)
+				{
+						return Redirect::route('news_show', [$news->id])->with('error_message', 'لقد أبديت إعجابك مسبقاً بهذا الخبر.');
+				}
+
+				// Make it forever.
+				$cookie = Cookie::forever($cookie_name, 'true');
+
         $news->likes_count++;
         $news->save();
 
-        // TODO: Set that the user has liked the news before.
-
-        return Redirect::route('news_show', [$news->id])->with('success_message', 'تمّ تسجيل إعجابك بالخبر بنجاح.');
+        return Redirect::route('news_show', [$news->id])->with('success_message', 'تمّ تسجيل إعجابك بالخبر بنجاح.')->withCookie($cookie);
     }
 
 	public function edit($id)
