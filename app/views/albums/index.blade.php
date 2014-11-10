@@ -26,6 +26,7 @@
                 <a href="{{ route('photos_index', [$album['id']]) }}"><img src="/assets/images/default_album.png" class="img-responsive" /></a>
                 <h4>{{ link_to_route('photos_index', $album['title'], [$album['id']]) }} <small>({{ count($album['photos']) }})</small></h4>
                 <p>{{ $album['description'] }}</p>
+                <p><a href="{{  route('albums_like', [$album['id']]) }}" class="btn btn-default"><i class="fa fa-thumbs-up"></i> {{ $album['likes_count'] }}</a></p>
             </div>
             @endforeach
         </div>

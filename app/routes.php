@@ -91,12 +91,15 @@ Route::get('albums/{album_id}/photos/{id}', [
     'uses' => 'PhotosController@show'
 ]);
 
+Route::get('albums/{id}/like', [
+    'as' => 'albums_like',
+    'uses' => 'AlbumsController@like'
+]);
+
 Route::get('photos/{id}/like', [
     'as' => 'photos_like',
     'uses' => 'PhotosController@like'
 ]);
-
-// TODO: Maybe I'll do the liking for albums ofcourse.
 
 /*
  * Members.

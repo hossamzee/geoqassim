@@ -83,12 +83,22 @@ class AlbumsController extends \BaseController {
             return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف ألبوم صحيح.');
         }
 
+        // Check if the user already liked the albums.
+        $cookie_name = 'albums_' . $album->id;
+        $albums_like = Cookie::get($cookie_name);
+
+        if ($albums_like)
+        {
+            return Redirect::route('albums_index')->with('error_message', 'لقد أبديت إعجابك مسبقاً بهذا الألبوم.');
+        }
+
+        // Make it forever.
+        $cookie = Cookie::forever($cookie_name, 'true');
+
         $album->likes_count++;
         $album->save();
 
-        // TODO: Set that the user has liked the album before.
-
-        return Redirect::route('photos_index', [$album->id])->with('success_message', 'تمّ تسجيل إعجابك بالألبوم بنجاح.');
+        return Redirect::route('albums_index')->with('success_message', 'تمّ تسجيل إعجابك بالألبوم بنجاح.')->withCookie($cookie);
     }
 
     public function edit($id)
