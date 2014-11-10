@@ -1,4 +1,8 @@
 
+## HOW TO INSTALL:
+
+- Set the environment variables, starting with APP_ENV = production.
+
 ## TODO:
 
 - Update the weather box to import more information like Foreca.
@@ -22,16 +26,13 @@
 - Make the date readable as possible.
 - Add alternative text to every image in the website.
 - Do the page tree correctly.
-- Do the unfulfilled URLs, e.g. RSS, and Twitter.
-- Do the users page in the control panel, so as, the login/logout page.
+- Do the unfulfilled URLs, e.g. Youtube, and Twitter.
 - Do the maillist/newsletter.
 - Make a photo that consists of combined photos for each album.
 - Handle exceptions in production, never show the enduser what happened.
 - Check the style of the control panel rows.
 - Do the control panel home page.
-- Consider deleting the photos whenever destroy method is being called.
 - Check form with the attribute files, they maybe do not need it.
-- Fix the URL to the admin homepage.
 - Do the searching and indexing.
 - Consider doing some styling, specially, with photos_show page.
 - Update the main album photo, in a good way of course.
@@ -44,3 +45,6 @@
 - Fix the style of error message.
 - Fix the navbar when the visitor is using mobile.
 - Consider updating the width of columns.
+- Fix the URL to the admin homepage.
+- Consider deleting the photos whenever destroy method is being called (I see there is no need).
+- Do the users page in the control panel, so as, the login/logout page.
