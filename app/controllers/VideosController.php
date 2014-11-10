@@ -77,23 +77,6 @@ class VideosController extends \BaseController {
         return View::make('videos.show')->with('video', $video);
     }
 
-    public function like($id)
-    {
-        $video = Video::find($id);
-
-        if (!$video)
-        {
-            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف فيديو صحيح.');
-        }
-
-        $video->likes_count++;
-        $video->save();
-
-        // TODO: Set that the user has liked the video before.
-
-        return Redirect::route('videos_show', [$video->id])->with('success_message', 'تمّ تسجيل إعجابك بالفيديو بنجاح.');
-    }
-
     public function edit($id)
     {
         $video = Video::find($id);
