@@ -33,8 +33,8 @@
                         {{ link_to_route('photos_show', 'السابق', [$previous_photos->first()->album_id, $previous_photos->first()->id], ['class' => 'btn btn-primary btn-photo']) }}
                     @endif
                 </div>
-                <div class="col-md-10 text-center">
-                    <img src="{{ $photo->large_url }}" class="img-responsive" id="photo" />
+                <div class="col-md-10">
+                    <img src="{{ $photo->large_url }}" class="img-responsive center-block" id="photo" />
                 </div>
                 <div class="col-md-1 text-center">
                     @if ($next_photos->first())

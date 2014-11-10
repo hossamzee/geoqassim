@@ -13,7 +13,6 @@
 - Handle exceptions in production, never show the enduser what happened.
 - Do the control panel home page.
 - Consider doing some styling, specially, with photos_show page.
-- Update the main album photo, in a good way of course.
 
 ## TODO - Major Changes
 
@@ -46,6 +45,8 @@
 - Do the liking to the news and make sure that the visitor cannot like a news twice.
 - Do the printing of any page or any news (no need for printing).
 - Prepare database seeds for inserting the values of news, pages, etc.
+- Check form with the attribute files, they maybe do not need it.
+- Update the main album photo, in a good way of course.
 
 # Future Imporvements
 - Google Analytics implementing.
