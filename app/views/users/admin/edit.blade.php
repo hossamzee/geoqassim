@@ -15,7 +15,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            {{ Form::open(['route' => ['admin_users_update', $user->id], 'files' => true]) }}
+            {{ Form::open(['route' => ['admin_users_update', $user->id]]) }}
               <div class="row">
                   <div class="col-sm-12">
                       <div class="form-group">

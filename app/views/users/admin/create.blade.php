@@ -15,7 +15,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            {{ Form::open(['route' => 'admin_users_store', 'files' => true]) }}
+            {{ Form::open(['route' => 'admin_users_store']) }}
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">

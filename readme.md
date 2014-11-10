@@ -12,7 +12,6 @@
 - Do the unfulfilled URLs, e.g. Youtube, and Twitter.
 - Handle exceptions in production, never show the enduser what happened.
 - Do the control panel home page.
-- Check form with the attribute files, they maybe do not need it.
 - Consider doing some styling, specially, with photos_show page.
 - Update the main album photo, in a good way of course.
 
