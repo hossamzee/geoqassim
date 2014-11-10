@@ -13,7 +13,6 @@
 - Prepare database seeds for inserting the values of news, pages, etc.
 - Add alternative text to every image in the website.
 - Do the unfulfilled URLs, e.g. Youtube, and Twitter.
-- Make a photo that consists of combined photos for each album.
 - Handle exceptions in production, never show the enduser what happened.
 - Do the control panel home page.
 - Check form with the attribute files, they maybe do not need it.
@@ -47,6 +46,7 @@
 - Do the editing pages.
 - Snippet of news should be by words not letters.
 - Handle no rows in many pages.
+- Make a photo that consists of combined photos for each album (in an alternative way).
 
 # Future Imporvements
 - Google Analytics implementing.
