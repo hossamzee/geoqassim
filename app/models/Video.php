@@ -4,7 +4,7 @@ class Video extends BaseModel
 {
     protected $fillable = ['title', 'description'];
 
-    protected $appends = ['youtube_id'];
+    protected $appends = ['youtube_id', 'readable_created_at'];
 
     public function getYoutubeIdAttribute()
     {
