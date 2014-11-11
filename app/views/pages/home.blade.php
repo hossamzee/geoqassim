@@ -44,7 +44,7 @@
                 @if ($last_news)
                 <h1>{{ link_to_route('news_show', $last_news->title, [$last_news->id]) }}</h1>
                 <p>
-                    <i class="fa fa-calendar-o"></i> نشر بتاريخ {{ $last_news->created_at }}.
+                    <i class="fa fa-calendar-o"></i> نشر {{ $last_news->readable_created_at }}.
                 </p>
                 <p>{{ $last_news->snippet }}</p>
                 <p>
