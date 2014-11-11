@@ -1,8 +1,8 @@
 <?php
 
-class Video extends Eloquent
+class Video extends BaseModel
 {
-    protected $fillable = ['url', 'title', 'description'];
+    protected $fillable = ['title', 'description'];
 
     protected $appends = ['youtube_id'];
 

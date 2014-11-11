@@ -1,6 +1,6 @@
 <?php
 
-class Album extends Eloquent
+class Album extends BaseModel
 {
     protected $fillable = ['title', 'description'];
 

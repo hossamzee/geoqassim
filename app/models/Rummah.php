@@ -1,6 +1,6 @@
 <?php
 
-class Rummah extends Eloquent
+class Rummah extends BaseModel
 {
     protected $fillable = ['title', 'description'];
 }

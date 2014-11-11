@@ -1,6 +1,6 @@
 <?php
 
-class News extends Eloquent
+class News extends BaseModel
 {
     protected $fillable = ['title', 'content'];
 

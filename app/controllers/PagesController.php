@@ -74,7 +74,7 @@ class PagesController extends \BaseController {
         });
 
         // Make sure that the flash message displays appropriately.
-        return Redirect::home()->with('succes_message', 'تمّ إرسال رسالتك بنجاح.');
+        return Redirect::home()->with('success_message', 'تمّ إرسال رسالتك بنجاح.');
     }
 
     public function adminIndex()

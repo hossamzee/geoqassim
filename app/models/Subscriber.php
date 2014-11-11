@@ -1,7 +1,9 @@
 <?php
 
-class Subscriber extends Eloquent
+class Subscriber extends BaseModel
 {
+    protected $searchable = false;
+
     protected $fillable = ['email'];
 
     protected $appends = ['readable_is_active'];

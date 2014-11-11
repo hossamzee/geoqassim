@@ -1,6 +1,6 @@
 <?php
 
-class Page extends Eloquent
+class Page extends BaseModel
 {
     protected $fillable = ['title', 'content'];
 }

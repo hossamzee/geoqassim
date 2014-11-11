@@ -1,6 +1,6 @@
 <?php
 
-class Photo extends Eloquent
+class Photo extends BaseModel
 {
     const PHOTOS_PER_PAGE = 6;
 

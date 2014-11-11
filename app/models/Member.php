@@ -1,8 +1,8 @@
 <?php
 
-class Member extends Eloquent
+class Member extends BaseModel
 {
-    protected $fillable = ['name', 'role', 'bio', 'cv'];
+    protected $fillable = ['name', 'bio', 'cv'];
 
     protected $appends = ['readable_role', 'twitter_account_url'];
 
