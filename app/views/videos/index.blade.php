@@ -28,7 +28,7 @@
                 <div class="embed-responsive embed-responsive-4by3">
                     <iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{ $video['youtube_id'] }}?rel=0&showinfo=0&controls=0" allowfullscreen></iframe>
                 </div>
-                <h4><a href="//www.youtube.com/embed/{{ $video['youtube_id'] }}?rel=0&showinfo=0&controls=0">{{ $video['title'] }} <small>({{ $video['created_at'] }})</small></a></h4>
+                <h4><a href="//www.youtube.com/embed/{{ $video['youtube_id'] }}?rel=0&showinfo=0&controls=0">{{ $video['title'] }} <small>({{ $video['readable_created_at'] }})</small></a></h4>
                 <p>{{ $video['description'] }}</p>
             </div>
             @endforeach
