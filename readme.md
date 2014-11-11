@@ -7,7 +7,6 @@
 
 - Update the weather box to import more information like Foreca.
 - Update the locale in Laravel to be an Arabic/Saudi Arabia.
-- Make the messages to be sent good looking ones (Update the design of emails.) and not spams.
 - Add alternative text to every image in the website.
 - Do the unfulfilled URLs, e.g. Youtube, and Twitter.
 - Handle exceptions in production, never show the enduser what happened.
@@ -48,6 +47,7 @@
 - Check form with the attribute files, they maybe do not need it.
 - Update the main album photo, in a good way of course.
 - Consider doing some styling, specially, with photos_show page.
+- Make the messages to be sent good looking ones (Update the design of emails.) and not spams.
 
 # Future Imporvements
 - Google Analytics implementing.
