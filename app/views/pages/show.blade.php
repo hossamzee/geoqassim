@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="page-header">
                 <h3>{{ $page->title }}
-                    <small>({{ $page->created_at }})</small>
+                    <small>({{ $page->readable_created_at }})</small>
                     <div class="pull-left">
                         <a href="#" class="btn btn-default"><i class="fa fa-eye"></i> {{ $page->views_count }}</a>
                         <a href="{{ route('pages_like', [$page->id]) }}" class="btn btn-default"><i class="fa fa-thumbs-up"></i> {{ $page->likes_count }}</a>
