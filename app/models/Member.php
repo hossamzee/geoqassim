@@ -20,4 +20,14 @@ class Member extends BaseModel
     {
       return 'https://twitter.com/' . $this->twitter_account;
     }
+
+    public function getSearchableTitle()
+    {
+        return $this->name;
+    }
+
+    public function getSearchableUrl()
+    {
+        return route('members_show', [$this->id]);
+    }
 }

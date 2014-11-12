@@ -72,6 +72,11 @@ Route::get('videos', [
     'uses' => 'VideosController@index'
 ]);
 
+Route::get('videos/{id}', [
+    'as' => 'videos_show',
+    'uses' => 'VideosController@index'
+]);
+
 /*
  * Albums & Photos.
  */

@@ -10,4 +10,9 @@ class News extends BaseModel
     {
       return Str::words($this->content);
     }
+
+    public function getSearchableUrl()
+    {
+        return route('news_show', [$this->id]);
+    }
 }

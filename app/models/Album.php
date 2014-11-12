@@ -9,5 +9,8 @@ class Album extends BaseModel
         return $this->hasMany('Photo');
     }
 
-    // TODO: Delete every photo related to the desired album to be deleted.
+    public function getSearchableUrl()
+    {
+        return route('albums_show', [$this->id]);
+    }
 }

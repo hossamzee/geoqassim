@@ -12,7 +12,6 @@
 - Do the unfulfilled URLs, e.g. Youtube, and Twitter.
 - Handle exceptions in production, never show the enduser what happened.
 - Do the control panel home page.
-- Fix the git stuff.
 
 ## TODO - Major Changes
 
@@ -49,6 +48,7 @@
 - Update the main album photo, in a good way of course.
 - Consider doing some styling, specially, with photos_show page.
 - Make the messages to be sent good looking ones (Update the design of emails.) and not spams.
+- Fix the git stuff.
 
 # Future Imporvements
 - Google Analytics implementing.

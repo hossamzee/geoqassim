@@ -10,4 +10,9 @@ class Photo extends BaseModel
     {
         return $this->belongsTo('Album');
     }
+
+    public function getSearchableUrl()
+    {
+        return route('photos_show', [$this->album_id, $this->id]);
+    }
 }
