@@ -18,8 +18,8 @@ function getYoutubeVideoDetails(url)
         success: function (xml){
 
             var entry = $(xml).find('entry').first();
-            var title = entry.find('title').text();
-            var description = entry.find('description').text();
+            var title = entry.find('title').first().text();
+            var description = entry.find('description').first().text();
 
             // Set the values on the other fields.
             $('#v_title').val(title);

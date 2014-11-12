@@ -9,7 +9,6 @@
 - Update the weather box to import more information like Foreca.
 - Handle exceptions in production, never show the enduser what happened.
 - Do the control panel home page.
-- Fix the issue of the Youtube title, it seems to be duplicated.
 
 ## TODO - Major Changes
 - Check if there is any security issues when calling route.
@@ -46,6 +45,7 @@
 - Do the searching and indexing.
 - Update the locale in Laravel to be an Arabic/Saudi Arabia.
 - Add alternative text to every image in the website.
+- Fix the issue of the Youtube title, it seems to be duplicated.
 
 # Future Improvements
 

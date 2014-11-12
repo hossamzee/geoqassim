@@ -75,15 +75,16 @@
                 <h4>صورة عشوائية</h4>
                 <p>
                     @if ($footer_random_photo)
-                      <a href="#"><img src="{{ $footer_random_photo->thumb_url }}" class="img-responsive" alt="{{ $footer_random_photo->title }}" /></a>
+                      <a href="{{ route('photos_show', [$footer_random_photo->album_id, $footer_random_photo->id]) }}"><img src="{{ $footer_random_photo->thumb_url }}" class="img-responsive" alt="{{ $footer_random_photo->title }}" /></a>
                     @endif
                 </p>
             </div>
             <div class="col-md-3">
                 <h4>جميع الحقوق محفوظة <small>(2014)</small></h4>
-                <p>
-                    <a href="//hossamzee.github.io/about.html" class="btn btn-default btn-sm">تصميم و تطوير حسام الزغيبي</a>
-                </p>
+                <ul class="list-unstyled">
+                    <li><span class="fa fa-code"></span> <a href="//hossamzee.github.io/about.html">تصميم و تطوير حسام الزغيبي</a></li>
+                    <li><span class="fa fa-warning"></span> <a href="mailto:hossam_zee@yahoo.com" >إبلاغ عن خطأ أو ملاحظة</a></li>
+                </ul>
             </div>
         </div>
     </div>
