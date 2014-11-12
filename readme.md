@@ -2,6 +2,7 @@
 ## HOW TO INSTALL:
 
 - Set the environment variables, starting with APP_ENV = production.
+- Set debug = false.
 
 ## TODO - Minor Changes
 
