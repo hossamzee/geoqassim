@@ -24,7 +24,7 @@
         <div class="row">
             @foreach($rummahsRow as $rummah)
             <div class="col-md-4">
-              <a href="{{ route('rummahs_show', [$rummah['id']]) }}"><img src="{{ $rummah['cover_url'] }}" class="img-responsive" /></a>
+              <a href="{{ route('rummahs_show', [$rummah['id']]) }}"><img src="{{ $rummah['cover_url'] }}" class="img-responsive" alt="{{ $rummah['title'] }}" /></a>
               <h4><a href="{{ route('rummahs_show', [$rummah['id']]) }}">{{ $rummah['title'] }} <small>({{ $rummah['version'] }})</small></a></h4>
               <p>{{ $rummah['description'] }}</p>
               <p>

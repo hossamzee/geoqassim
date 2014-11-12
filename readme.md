@@ -7,7 +7,6 @@
 ## TODO - Minor Changes
 
 - Update the weather box to import more information like Foreca.
-- Add alternative text to every image in the website.
 - Do the unfulfilled URLs, e.g. Youtube, and Twitter.
 - Handle exceptions in production, never show the enduser what happened.
 - Do the control panel home page.
@@ -47,8 +46,10 @@
 - Fix the git stuff.
 - Do the searching and indexing.
 - Update the locale in Laravel to be an Arabic/Saudi Arabia.
+- Add alternative text to every image in the website.
 
 # Future Imporvements
 - Google Analytics implementing.
 - Consider indexing the database tables.
 - Fix many issues when viewing the website from the mobile.
+- The email should be cleaner, honestly.

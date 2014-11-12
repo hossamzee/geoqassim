@@ -34,7 +34,7 @@
                     @endif
                 </div>
                 <div class="col-md-10">
-                    <img src="{{ $photo->large_url }}" class="img-responsive center-block" id="photo" />
+                    <img src="{{ $photo->large_url }}" class="img-responsive center-block" id="photo" alt="{{ $photo->title }}" />
                 </div>
                 <div class="col-md-1 text-center">
                     @if ($next_photos->first())
@@ -49,7 +49,7 @@
             <div class="row img-related">
                 @foreach ($related_photos as $related_photo)
                   <div class="col-md-2">
-                      <a href="{{ route('photos_show', [$related_photo->album_id, $related_photo->id]) }}"><img src="{{ $related_photo->thumb_url }}" class="img-responsive" /></a>
+                      <a href="{{ route('photos_show', [$related_photo->album_id, $related_photo->id]) }}"><img src="{{ $related_photo->thumb_url }}" class="img-responsive" alt="{{ $related_photo->title }}" /></a>
                   </div>
                 @endforeach
             </div>
