@@ -13,8 +13,9 @@ class Video extends BaseModel
         return array_key_exists("v", $querystrings) ? $querystrings["v"] : null;
     }
 
-    public function getSearchableUrl()
+    //
+    public function getSearchableUri()
     {
-        return route('videos_show', [$this->id]);
+        return route('videos_show', [$this->id], false);
     }
 }

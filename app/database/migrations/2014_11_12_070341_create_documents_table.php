@@ -16,9 +16,9 @@ class CreateDocumentsTable extends Migration {
 		{
 			$table->engine = 'MyISAM';
 			$table->increments('id');
-			$table->string('url');
+			$table->string('uri')->unique();
 			$table->string('title');
-			$table->text('content');
+			$table->text('content')->nullable();
 			$table->timestamps();
 		});
 

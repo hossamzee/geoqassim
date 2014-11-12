@@ -9,8 +9,8 @@ class Album extends BaseModel
         return $this->hasMany('Photo');
     }
 
-    public function getSearchableUrl()
+    public function getSearchableUri()
     {
-        return route('albums_show', [$this->id]);
+        return route('albums_show', [$this->id], false);
     }
 }

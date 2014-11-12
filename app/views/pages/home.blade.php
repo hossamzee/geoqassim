@@ -19,18 +19,18 @@
                 <a href="#" class="btn btn-default">القصيم، درجة الحرارة <span id="weather-temp"></span></a>
             </div>
             <div class="col-md-6 col-sm-8">
-                <form>
+                {{ Form::open(['route' => 'search']) }}
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="subscribe-email" placeholder="أدخل عبارة للبحث عنها في الأرشيف.">
+                                {{ Form::text('query', null, ['class' => 'form-control', 'placeholder' => 'أدخل عبارة للبحث عنها في الأرشيف.']) }}
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                             </span>
                             </div>
                         </div>
                     </div>
-                </form>
+                {{ Form::close() }}
             </div>
         </div>
     </div>

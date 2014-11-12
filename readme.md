@@ -16,8 +16,6 @@
 ## TODO - Major Changes
 
 - Fix many issues when viewing the website from the mobile.
-- Consider indexing the database tables.
-- Do the searching and indexing.
 - Check if there is any security issues when calling route.
 - Do the maillist/newsletter.
 
@@ -49,6 +47,8 @@
 - Consider doing some styling, specially, with photos_show page.
 - Make the messages to be sent good looking ones (Update the design of emails.) and not spams.
 - Fix the git stuff.
+- Do the searching and indexing.
 
 # Future Imporvements
 - Google Analytics implementing.
+- Consider indexing the database tables.

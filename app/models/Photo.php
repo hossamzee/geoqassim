@@ -11,8 +11,8 @@ class Photo extends BaseModel
         return $this->belongsTo('Album');
     }
 
-    public function getSearchableUrl()
+    public function getSearchableUri()
     {
-        return route('photos_show', [$this->album_id, $this->id]);
+        return route('photos_show', [$this->album_id, $this->id], false);
     }
 }

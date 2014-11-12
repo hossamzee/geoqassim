@@ -49,6 +49,11 @@ Route::get('pages/{id}/like', [
     'uses' => 'PagesController@like'
 ]);
 
+Route::post('search', [
+    'as' => 'search',
+    'uses' => 'PagesController@search'
+]);
+
 /*
  * Contact.
  */

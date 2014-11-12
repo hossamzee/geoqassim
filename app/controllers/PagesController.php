@@ -21,7 +21,6 @@ class PagesController extends \BaseController {
         return View::make('pages.admin.home');
     }
 
-
     public function getContact()
     {
         return View::make('pages.contact');
@@ -250,4 +249,36 @@ class PagesController extends \BaseController {
         return Redirect::route('admin_pages_index')->with('warning_message', 'تمّ حذف الصفحة بنجاح.');
     }
 
+    // Thanks to Antoine Augusti.
+    // http://blog.antoine-augusti.fr/2014/05/laravel-fulltext-selection-and-ordering/
+
+    public function search()
+    {
+        $query = Input::get('query');
+
+        // Validate the input.
+        $validator = Validator::make([
+            'query' => $query,
+        ], [
+            'query' => 'required|min:4'
+        ]);
+
+        // Check the validation.
+        if ($validator->fails())
+        {
+            return Redirect::home()->with('error_message', 'الرجاء إدخال كلمة البحث و التي لا تقل عن 3 أحرف.');
+        }
+
+        // Other than that, everything is great.
+        // TODO: Maybe rank them then order them by the ranking.
+        $results = Document::whereRaw('MATCH(title, content) AGAINST(?)', [$query])->get();
+
+        if ($results->count() == 0)
+        {
+            return Redirect::home()->with('warning_message', 'لم يتم العثور على نتائج لبحثك.');
+        }
+
+        // If there is at least one result, show it.
+        return View::make('pages.search')->with('results', $results)->with('query', $query);
+    }
 }

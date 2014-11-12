@@ -13,7 +13,20 @@ class BaseModel extends Eloquent
             {
                 // Create a new document to be used for searching.
                 Document::create([
-                    'url' => $model->getSearchableUrl(),
+                    'uri' => $model->getSearchableUri(),
+                    'title' => $model->getSearchableTitle(),
+                    'content' => $model->getSearchableContent(),
+                ]);
+            }
+        });
+
+        // Listen when the user updated a model.
+        static::updated(function($model)
+        {
+            if ($model->searchable == true)
+            {
+                // Update the document to be used for searching.
+                $affected_rows = Document::where('uri', '=', $model->getSearchableUri())->update([
                     'title' => $model->getSearchableTitle(),
                     'content' => $model->getSearchableContent(),
                 ]);
@@ -45,7 +58,7 @@ class BaseModel extends Eloquent
         return $content;
     }
 
-    public function getSearchableUrl()
+    public function getSearchableUri()
     {
         //
     }

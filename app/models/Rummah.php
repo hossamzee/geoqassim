@@ -4,8 +4,8 @@ class Rummah extends BaseModel
 {
     protected $fillable = ['title', 'description'];
 
-    public function getSearchableUrl()
+    public function getSearchableUri()
     {
-        return route('rummahs_show', [$this->id]);
+        return route('rummahs_show', [$this->id], false);
     }
 }

@@ -4,8 +4,8 @@ class Page extends BaseModel
 {
     protected $fillable = ['title', 'content'];
 
-    public function getSearchableUrl()
+    public function getSearchableUri()
     {
-        return route('pages_show', [$this->id]);
+        return route('pages_show', [$this->id], false);
     }
 }

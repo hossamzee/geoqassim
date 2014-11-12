@@ -26,8 +26,8 @@ class Member extends BaseModel
         return $this->name;
     }
 
-    public function getSearchableUrl()
+    public function getSearchableUri()
     {
-        return route('members_show', [$this->id]);
+        return route('members_show', [$this->id], false);
     }
 }
