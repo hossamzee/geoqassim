@@ -7,7 +7,6 @@
 ## TODO - Minor Changes
 
 - Update the weather box to import more information like Foreca.
-- Do the unfulfilled URLs, e.g. Youtube, and Twitter.
 - Handle exceptions in production, never show the enduser what happened.
 - Do the control panel home page.
 - Fix the issue of the Youtube title, it seems to be duplicated.
@@ -48,7 +47,9 @@
 - Update the locale in Laravel to be an Arabic/Saudi Arabia.
 - Add alternative text to every image in the website.
 
-# Future Imporvements
+# Future Improvements
+
+- Do the unfulfilled URLs, e.g. Youtube, and Twitter.
 - Google Analytics implementing.
 - Consider indexing the database tables.
 - Fix many issues when viewing the website from the mobile.
