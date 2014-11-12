@@ -75,7 +75,7 @@
                 <h4>صورة عشوائية</h4>
                 <p>
                     @if ($footer_random_photo)
-                      <a href="#"><img src="{{ $footer_random_photo->thumb_url }}" class="img-responsive" /></a>
+                      <a href="#"><img src="{{ $footer_random_photo->thumb_url }}" class="img-responsive" alt="{{ $footer_random_photo->title }}" /></a>
                     @endif
                 </p>
             </div>
