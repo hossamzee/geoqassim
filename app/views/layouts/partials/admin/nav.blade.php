@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('admin_home') }}"><img src="/assets/images/admin.logo.png"/></a>
+            <a class="navbar-brand" href="{{ route('admin_home') }}"><img src="/assets/images/admin-logo.png"/></a>
             {{ link_to_route('home', '', null, ['class' => 'navbar-brand']) }}
         </div>
         <div class="navbar-collapse collapse" id="geoqassim-navbar-collapse">
