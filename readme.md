@@ -13,6 +13,7 @@
 ## TODO - Major Changes
 - Check if there is any security issues when calling route.
 - Do the maillist/newsletter.
+- Reserve/Register a domain.
 
 ## Done
 
@@ -54,3 +55,10 @@
 - Consider indexing the database tables.
 - Fix many issues when viewing the website from the mobile.
 - The email should be cleaner, honestly.
+
+# Suggested Domains
+- geoqassim.org
+- geographyqassim.com
+- geography-qassim.com
+- geo-qassim.com
+- qassim-geo.com
