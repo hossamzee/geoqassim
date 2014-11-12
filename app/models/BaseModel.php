@@ -4,6 +4,11 @@ class BaseModel extends Eloquent
 {
     protected $searchable = true;
 
+    public function __construct()
+    {
+        Lang::setLocale('ar');
+    }
+
     public static function boot()
     {
         // Listen when the user created a new model.
@@ -36,7 +41,7 @@ class BaseModel extends Eloquent
 
     public function getReadableCreatedAtAttribute()
     {
-        return $this->created_at->diffForHumans();
+        return Date::parse($this->created_at->diffForHumans())->diffForHumans();
     }
 
     // This method is to be used for searching, and could be overridden.

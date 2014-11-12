@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9ea928df519317fbb983fefb9ff7f96b",
+    "hash": "e146c41a4359e97e5c0ffde2ba017c98",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -356,6 +356,53 @@
                 "password"
             ],
             "time": "2013-04-30 19:58:08"
+        },
+        {
+            "name": "jenssegers/date",
+            "version": "v2.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jenssegers/laravel-date.git",
+                "reference": "d9bac3cb8e1c3d0b8b87e7091f2fdbf995f2f06a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jenssegers/laravel-date/zipball/d9bac3cb8e1c3d0b8b87e7091f2fdbf995f2f06a",
+                "reference": "d9bac3cb8e1c3d0b8b87e7091f2fdbf995f2f06a",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "*",
+                "php": ">=5.3.0",
+                "symfony/translation": "*"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Jenssegers\\Date": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jens Segers",
+                    "homepage": "http://jenssegers.be"
+                }
+            ],
+            "description": "A date library to help you work with dates",
+            "keywords": [
+                "date",
+                "datetime",
+                "laravel",
+                "time"
+            ],
+            "time": "2014-10-11 16:18:33"
         },
         {
             "name": "jeremeamia/SuperClosure",

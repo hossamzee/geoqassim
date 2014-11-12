@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
     'Way\Generators\GeneratorsServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
+		'Jenssegers\Date\DateServiceProvider',
 
 	),
 
@@ -192,6 +193,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
     'Carbon'          => '\Carbon\Carbon',
 		'Image'           => 'Intervention\Image\Facades\Image',
+		'Date'            => 'Jenssegers\Date\Date',
 
 	),
 
