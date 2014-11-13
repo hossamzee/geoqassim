@@ -186,7 +186,6 @@ Route::get('newsletters/{token}/unsubscribe', [
 
 /*
  * Admin.
- * TODO: Should be filtered before accessing.
  */
 
 Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
@@ -334,7 +333,6 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
 
     /*
      * Photos.
-     * TODO: Not all controller methods are done.
      */
 
     Route::get('albums/{id}/photos', [

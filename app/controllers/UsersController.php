@@ -148,8 +148,6 @@ class UsersController extends \BaseController {
 
     public function edit($id)
     {
-        // TODO: Has to be an admin.
-
         $user = User::find($id);
 
         if (!$user)
@@ -173,8 +171,6 @@ class UsersController extends \BaseController {
 
     public function update($id)
     {
-        // TODO: Has to be an admin.
-
         $user = User::find($id);
 
         if (!$user)
@@ -231,7 +227,6 @@ class UsersController extends \BaseController {
 
     public function destroy($id)
     {
-        // TODO: Has to be an admin.
         $user = User::find($id);
 
         if (!$user)
@@ -256,12 +251,12 @@ class UsersController extends \BaseController {
 
     public function getLogin()
     {
+        // Check if the user logged in, then, there is no need to show the form.
         if (!Auth::guest())
         {
             return Redirect::home()->with('error_message', 'لا يمكنك تسجيل الدخول مرّة أخرى.');
         }
 
-        // TODO: Check if the user logged in, then, there is no need to show the form.
         return View::make('users.login');
     }
 
@@ -287,7 +282,6 @@ class UsersController extends \BaseController {
 
         if (Auth::attempt(['username' => $username, 'password' => $password], true))
         {
-            // TODO: This should go to the admin homepage.
             return Redirect::intended('admin')->with('success_message', 'تمّ تسجيل الدخول بنجاح.');
         }
         else

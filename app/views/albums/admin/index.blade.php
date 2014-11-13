@@ -3,7 +3,7 @@
 @section('title', 'الألبومات')
 @section('content')
 
-<!-- TODO: Show alert to check if the user is sure to delete the albums. -->
+<!-- Show alert to check if the user is sure to delete the albums. -->
 <script type="text/javascript">
 function confirm_delete(id)
 {

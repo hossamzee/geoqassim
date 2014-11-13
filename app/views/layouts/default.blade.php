@@ -10,8 +10,6 @@
 
     <title>قسم الجغرافيا في جامعة القصيم - @yield('title')</title>
 
-    <!-- CSS, TODO: Font Awesome to be local -->
-
     <link rel="stylesheet" href="/assets/stylesheets/geoqassim.css?version=1.0" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 

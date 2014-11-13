@@ -168,8 +168,6 @@ class PhotosController extends \BaseController {
         $photo->likes_count++;
         $photo->save();
 
-        // TODO: Set that the user has liked the photo before.
-
         return Redirect::route('photos_show', [$photo->album_id, $photo->id])->with('success_message', 'تمّ تسجيل إعجابك بالصورة بنجاح.')->withCookie($cookie);
     }
 

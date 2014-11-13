@@ -5,7 +5,7 @@ class PagesController extends \BaseController {
     public function home()
     {
         // Get the latest everything has been added.
-        // TODO: Hanlde the exception that is being throwing when there is no news.
+        // The view hanldes the exception that is being throwing when there is no news.
         $last_news = News::orderBy('created_at', 'DESC')->first();
         $last_rummah = Rummah::orderBy('created_at', 'DESC')->first();
         $last_video = Video::orderBy('created_at', 'DESC')->first();
@@ -186,8 +186,6 @@ class PagesController extends \BaseController {
 
         $page->likes_count++;
         $page->save();
-
-        // TODO: Set that the user has liked the page before.
 
         return Redirect::route('pages_show', [$page->id])->with('success_message', 'تمّ تسجيل إعجابك بالصفحة بنجاح.')->withCookie($cookie);
     }

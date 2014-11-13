@@ -27,7 +27,6 @@ class BaseController extends Controller {
 	{
 		if ( ! is_null($this->layout))
 		{
-			// TODO: I beleive there is another way.
 			$this->layout = View::make($this->layout);
 		}
 	}

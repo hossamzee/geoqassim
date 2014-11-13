@@ -10,8 +10,6 @@
 
     <title>قسم الجغرافيا في جامعة القصيم - منطقة الإدارة - @yield('title')</title>
 
-    <!-- CSS, TODO: Font Awesome to be local -->
-
     <link rel="stylesheet" href="/assets/stylesheets/geoqassim.css?version=1.0" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -45,7 +43,7 @@
     </ul>
 </div>
 
-<!-- TODO: Bootstrap core JavaScript -->
+<!-- Bootstrap core JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 

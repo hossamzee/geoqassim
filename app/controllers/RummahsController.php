@@ -56,7 +56,7 @@ class RummahsController extends \BaseController {
             $cover_name = Str::random(40) . '.png';
 
             // Make the large photo.
-            // TODO: Resize the cover to be appropriate.
+            // Resize the cover to be appropriate.
             $large_cover = Image::make($cover->getRealPath());
             $large_cover->save(public_path() . '/photos/large/' . $cover_name);
 
@@ -122,8 +122,6 @@ class RummahsController extends \BaseController {
         $rummah->likes_count++;
         $rummah->save();
 
-        // TODO: Set that the user has liked the news before.
-
         return Redirect::route('rummahs_index')->with('success_message', 'تمّ تسجيل إعجابك بالرمّة بنجاح.')->withCookie($cookie);
     }
 
@@ -184,7 +182,7 @@ class RummahsController extends \BaseController {
                 $cover_name = Str::random(40) . '.png';
 
                 // Make the large photo.
-                // TODO: Resize the cover to be appropriate.
+                // Resize the cover to be appropriate.
                 $large_cover = Image::make($cover->getRealPath());
                 $large_cover->save(public_path() . '/photos/large/' . $cover_name);
 
