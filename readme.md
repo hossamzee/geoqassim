@@ -59,16 +59,15 @@ php artisan db:seed --env=production
 - Make sure that the user receive the password whenever created.
 - The email should be lighter.
 - Google Analytics implementing.
+- The email should be cleaner, honestly.
 
 # Future Improvements
 
 - Do the unfulfilled URLs, e.g. Youtube, and Twitter.
 - Consider indexing the database tables.
 - Fix many issues when viewing the website from the mobile.
-- The email should be cleaner, honestly.
 - Do the maillist/newsletter.
 - Add escaping the characters that are not welcomed.
-- Fix the environment, forge way.
 - Version number or build number.
 
 # Suggested Domains
