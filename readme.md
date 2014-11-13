@@ -58,11 +58,11 @@ php artisan db:seed --env=production
 - Check if there is any security issues when calling route.
 - Make sure that the user receive the password whenever created.
 - The email should be lighter.
+- Google Analytics implementing.
 
 # Future Improvements
 
 - Do the unfulfilled URLs, e.g. Youtube, and Twitter.
-- Google Analytics implementing.
 - Consider indexing the database tables.
 - Fix many issues when viewing the website from the mobile.
 - The email should be cleaner, honestly.
