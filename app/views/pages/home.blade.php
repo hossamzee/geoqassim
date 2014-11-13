@@ -10,19 +10,32 @@
             <div class="col-md-6 col-sm-4 hidden-xs">
                 <script>
                     $(function(){
-                        $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=Riyadh&&units=metric", function(data){
-                            $("#weather-temp").html(data.main.temp + "°م");
-                            $("#weather-pressure").html(data.main.pressure + "م");
+
+                        $.ajaxSetup({ cache: false });
+
+                        // Hide the weather links and icons untill the weather is being read.
+                        $('.not-ready-link').hide();
+
+                        $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=26.33&lon=43.97&units=metric', function(data){
+
+                            $('#weather-temp').html(data.main.temp + '°م');
+                            $('#weather-pressure').html(data.main.pressure + 'م');
+                            $('#weather-humidity').html(data.main.humidity + '%');
+                            $('#weather-wind').html(data.wind.speed + 'كم، ' + data.wind.deg + '°');
+
+                            // Show the icons and hide the waiting link.
+                            $('.not-ready-link').show();
+                            $('#waiting').hide();
                         });
                     })
                 </script>
 
-                <!--<a href="#" class="btn btn-default">القصيم، درجة الحرارة <span id="weather-temp"></span></a>-->
-                <!--<a href="#" class="btn btn-default disabled" id="weather-city-name">القصيم</a>-->
-                <a href="#" class="btn btn-info"><i class="fa fa-sun-o"></i> <span id="weather-temp"></span></a>
-                <a href="#" class="btn btn-default"><i class="fa fa-cloud"></i> <span id="weather-pressure">PR</span></a>
-                <a href="#" class="btn btn-default" id="weather-humidity">HM</a>
-                <a href="#" class="btn btn-default" id="weather-wind">WN</a>
+                <a href="#" class="btn btn-link" title="معلومات الطقس مقدّمة من openweathermap.org">القصيم</a>
+                <a href="#" class="btn btn-link disabled" id="waiting">يجري جلب معلومات الطقس...</a>
+                <a href="#" class="btn btn-link not-ready-link" title="درجة الحرارة"><i class="fa fa-sun-o"></i> <span id="weather-temp"></span></a>
+                <a href="#" class="btn btn-link not-ready-link" title="الضغط الجوّي"><i class="fa fa-cloud-download"></i> <span id="weather-pressure"></span></a>
+                <a href="#" class="btn btn-link not-ready-link" title="الرطوبة"><i class="fa fa-tint"></i> <span id="weather-humidity"></span></a>
+                <a href="#" class="btn btn-link not-ready-link" title="الرياح"><i class="fa fa-paper-plane"></i> <span id="weather-wind"></span></a>
 
             </div>
             <div class="col-md-6 col-sm-8">

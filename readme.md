@@ -6,13 +6,13 @@
 
 ## TODO - Minor Changes
 
-- Update the weather box to import more information like Foreca.
 - Handle exceptions in production, never show the enduser what happened.
 - Do the control panel home page.
 
 ## TODO - Major Changes
 - Check if there is any security issues when calling route.
 - Do the maillist/newsletter.
+- Fix the environment, forge way.
 
 ## Done
 
@@ -47,6 +47,7 @@
 - Add alternative text to every image in the website.
 - Fix the issue of the Youtube title, it seems to be duplicated.
 - Reserve/Register a domain.
+- Update the weather box to import more information like Foreca.
 
 # Future Improvements
 
