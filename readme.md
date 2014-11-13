@@ -1,9 +1,18 @@
 
 ## HOW TO INSTALL:
 
-// - Set the environment variables, starting with APP_ENV = production.
+- Set the environment variables, starting with APP_ENV = production.
 - Set debug = false.
 - Generate a new key.
+
+<!--
+cd /home/forge/default
+git pull origin master
+composer install --env=production
+php artisan key:generate
+php artisan migrate --force --env=production
+php artisan db:seed --env=production
+-->
 
 ## TODO - Minor Changes
 
