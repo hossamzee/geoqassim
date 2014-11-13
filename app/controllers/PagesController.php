@@ -18,7 +18,30 @@ class PagesController extends \BaseController {
 
     public function adminHome()
     {
-        return View::make('pages.admin.home');
+        $user = Auth::user();
+
+        // Get some statistics about everything.
+        $news_count = News::count();
+        $albums_count = Album::count();
+        $photos_count = Photo::count();
+        $videos_count = Video::count();
+        $pages_count  = Page::count();
+        $rummahs_count = Rummah::count();
+        $members_count = Member::count();
+        $users_count = User::count();
+        $subscribers_count = Subscriber::count();
+
+        return View::make('pages.admin.home')
+                ->with('user', $user)
+                ->with('news_count', $news_count)
+                ->with('albums_count', $albums_count)
+                ->with('photos_count', $photos_count)
+                ->with('videos_count', $videos_count)
+                ->with('pages_count', $pages_count)
+                ->with('rummahs_count', $rummahs_count)
+                ->with('members_count', $members_count)
+                ->with('users_count', $users_count)
+                ->with('subscribers_count', $subscribers_count);
     }
 
     public function getContact()

@@ -3,7 +3,7 @@
 @section('title', 'المستخدمون')
 @section('content')
 
-<!-- TODO: Show alert to check if the user is sure to delete the users. -->
+<!-- Show alert to check if the user is sure to delete the users. -->
 
 <script type="text/javascript">
 function confirm_delete(id)

@@ -9,6 +9,8 @@
 
 - Handle exceptions in production, never show the enduser what happened.
 - Do the control panel home page.
+- Version number or build number.
+- The email should be lighter.
 
 ## TODO - Major Changes
 - Check if there is any security issues when calling route.

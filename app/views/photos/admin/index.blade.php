@@ -58,7 +58,17 @@ function confirm_delete(id)
             @foreach($photos as $photo)
                 <tr>
                     <td>{{ $photo->id }}</td>
-                    <td><img src="{{ $photo->thumb_url }}" class="img-responsive" /></td>
+                    <td>
+                      <div class="media">
+                        <a class="pull-right" href="{{ route('photos_show', [$photo->album_id, $photo->id]) }}">
+                          <img src="{{ $photo->thumb_url }}" alt="{{ $photo->title }}.">
+                        </a>
+                        <div class="media-body">
+                          {{ link_to_route('photos_show', $photo->title, [$photo->album_id, $photo->id]) }}<br />
+                          <span class="text-muted">{{ $photo->description }}</span>
+                        </div>
+                      </div
+                    </td>
                     <td>{{ $photo->created_at }}</td>
                     <td>{{ count($photo->photos) }}</td>
                     <td>{{ $photo->views_count }}</td>
