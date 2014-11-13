@@ -8,7 +8,6 @@
 ## TODO - Minor Changes
 
 - Handle exceptions in production, never show the enduser what happened.
-- The email should be lighter.
 
 ## TODO - Major Changes
 
