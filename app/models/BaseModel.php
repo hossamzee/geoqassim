@@ -4,13 +4,10 @@ class BaseModel extends Eloquent
 {
     protected $searchable = true;
 
-    public function __construct()
-    {
-        Lang::setLocale('ar');
-    }
-
     public static function boot()
     {
+        Lang::setLocale('ar');
+
         // Listen when the user created a new model.
         static::created(function($model)
         {
@@ -35,6 +32,16 @@ class BaseModel extends Eloquent
                     'title' => $model->getSearchableTitle(),
                     'content' => $model->getSearchableContent(),
                 ]);
+            }
+        });
+
+        // Listen when the user deleted a model.
+        static::deleted(function($model)
+        {
+            if ($model->searchable == true)
+            {
+                // Update the document to be used for searching.
+                $affected_rows = Document::where('uri', '=', $model->getSearchableUri())->delete();
             }
         });
     }

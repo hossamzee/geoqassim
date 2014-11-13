@@ -4,7 +4,7 @@ class Document extends BaseModel
 {
     protected $searchable = false;
 
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['uri', 'title', 'content'];
 
     protected $appends = ['snippet', 'url'];
 

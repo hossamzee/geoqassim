@@ -13,7 +13,6 @@
 
 ## TODO - Major Changes
 - Check if there is any security issues when calling route.
-- Do the maillist/newsletter.
 - Fix the environment, forge way.
 - Make sure that the user receive the password whenever created.
 
@@ -60,6 +59,7 @@
 - Consider indexing the database tables.
 - Fix many issues when viewing the website from the mobile.
 - The email should be cleaner, honestly.
+- Do the maillist/newsletter.
 
 # Suggested Domains
 - geoqassim.org
