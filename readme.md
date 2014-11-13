@@ -8,7 +8,6 @@
 ## TODO - Minor Changes
 
 - Handle exceptions in production, never show the enduser what happened.
-- Do the control panel home page.
 - Version number or build number.
 - The email should be lighter.
 
@@ -16,6 +15,7 @@
 - Check if there is any security issues when calling route.
 - Do the maillist/newsletter.
 - Fix the environment, forge way.
+- Make sure that the user receive the password whenever created.
 
 ## Done
 
@@ -51,6 +51,7 @@
 - Fix the issue of the Youtube title, it seems to be duplicated.
 - Reserve/Register a domain.
 - Update the weather box to import more information like Foreca.
+- Do the control panel home page.
 
 # Future Improvements
 

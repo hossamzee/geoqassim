@@ -58,7 +58,7 @@ function confirm_delete(id)
                     <td>{{ $member->id }}</td>
                     <td><strong>{{ $member->name }}</strong><br /><span class="text-muted">{{ $member->bio }}</span></td>
                     <td>{{ $member->readable_role }}</td>
-                    <td>{{ $member->email }}</td>
+                    <td><a href="mailto:{{ $member->email }}">{{ $member->email }}</a></td>
                     <td>
                         {{ link_to_route('admin_members_edit', 'تعديل', [$member->id], ['class' => 'btn btn-default btn-sm']) }}
                         <a href="#" onclick="confirm_delete({{ $member->id }})" class="btn btn-danger btn-sm">حذف</a>
