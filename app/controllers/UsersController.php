@@ -85,7 +85,7 @@ class UsersController extends \BaseController {
                 'subject' => 'بيانات عضويتك',
                 'from' => Config::get('mail.from.address'),
                 'name' => 'قسم الجغرافيا في جامعة القصيم',
-                'content' => 'السلام عليكم، عضويتك في موقع قسم جامعة القصيم، اسم المستخدم ' . $username . 'و كلمة المرور ' . $password,
+                'content' => nl2br("السلام عليكم، عضويتك في موقع قسم جامعة القصيم.\n\nاسم المستخدم\n $username\n\nكلمة المرور\n$password"),
             ];
 
             // Make sure this email has been sent.

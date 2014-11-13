@@ -80,19 +80,19 @@ class PagesController extends \BaseController {
 
         //
         $data = [
-            'subject' => $subject,
+            'subject' => e($subject),
             'from' => $from,
-            'name' => $name,
-            'content' => $content,
+            'name' => e($name),
+            'content' => nl2br(e($content)),
         ];
 
         // Make sure this email has been sent.
         // TODO: This should be queued rather than taking a time and then response to the user.
 
-        Mail::send('emails.contact', $data, function($message) use ($from, $name, $to, $subject) {
-            $message->from($from, $name)
+        Mail::send('emails.contact', $data, function($message) use ($to, $data) {
+            $message->from($data['from'], $data['name'])
                     ->to($to)
-                    ->subject('موقع قسم الجغرافيا بجامعة القصيم - '. $subject);
+                    ->subject('موقع قسم الجغرافيا بجامعة القصيم - '. $data['subject']);
         });
 
         // Make sure that the flash message displays appropriately.

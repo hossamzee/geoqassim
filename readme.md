@@ -11,7 +11,6 @@
 - The email should be lighter.
 
 ## TODO - Major Changes
-- Make sure that the user receive the password whenever created.
 
 ## Done
 
@@ -49,6 +48,7 @@
 - Update the weather box to import more information like Foreca.
 - Do the control panel home page.
 - Check if there is any security issues when calling route.
+- Make sure that the user receive the password whenever created.
 
 # Future Improvements
 
