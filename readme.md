@@ -12,7 +12,6 @@
 - The email should be lighter.
 
 ## TODO - Major Changes
-- Check if there is any security issues when calling route.
 - Fix the environment, forge way.
 - Make sure that the user receive the password whenever created.
 
@@ -51,6 +50,7 @@
 - Reserve/Register a domain.
 - Update the weather box to import more information like Foreca.
 - Do the control panel home page.
+- Check if there is any security issues when calling route.
 
 # Future Improvements
 
@@ -60,6 +60,7 @@
 - Fix many issues when viewing the website from the mobile.
 - The email should be cleaner, honestly.
 - Do the maillist/newsletter.
+- Add escaping the characters that are not welcomed.
 
 # Suggested Domains
 - geoqassim.org
