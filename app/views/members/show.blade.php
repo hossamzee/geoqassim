@@ -25,13 +25,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <blockquote>
-              <p>{{ $member->bio }}</p>
-            </blockquote>
-
-            <p class="lead">
-                {{ nl2br($member->cv) }}
-            </p>
+            {{ $member->cv }}
         </div>
     </div>
 </div><!-- Single member end-->

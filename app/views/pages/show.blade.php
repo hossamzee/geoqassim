@@ -21,9 +21,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <p class="lead">
-                {{ nl2br($page->content) }}
-            </p>
+            {{ $page->content }}
         </div>
     </div>
 </div><!-- Single page end-->
