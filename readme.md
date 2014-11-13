@@ -48,6 +48,7 @@
 - Do the control panel home page.
 - Check if there is any security issues when calling route.
 - Make sure that the user receive the password whenever created.
+- The email should be lighter.
 
 # Future Improvements
 
