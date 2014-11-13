@@ -8,7 +8,6 @@
 ## TODO - Minor Changes
 
 - Handle exceptions in production, never show the enduser what happened.
-- Version number or build number.
 - The email should be lighter.
 
 ## TODO - Major Changes
@@ -61,6 +60,7 @@
 - Do the maillist/newsletter.
 - Add escaping the characters that are not welcomed.
 - Fix the environment, forge way.
+- Version number or build number.
 
 # Suggested Domains
 - geoqassim.org

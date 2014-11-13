@@ -41,7 +41,7 @@
     <ul class="list-inline">
       <li>منطقة الإدارة</li>
       <li>قسم الجغرافيا في جامعة القصيم</li>
-      <li>1.0</li>
+      <li>{{ $version }}</li>
     </ul>
 </div>
 

@@ -12,7 +12,7 @@
                   مرحباً {{ $user->username }}
                   <div class="pull-left">
                     {{ link_to_route('users_changepassword_get', 'تغيير كلمة المرور', null, ['class' => 'btn btn-default']) }}
-                    {{ link_to_route('home', 'زيارة الصفحة الرئيسية', null, ['class' => 'btn btn-primary']) }}
+                    {{ link_to_route('home', 'زيارة الصفحة الرئيسية', null, ['class' => 'btn btn-info']) }}
                   </div>
                 </h3>
             </div>

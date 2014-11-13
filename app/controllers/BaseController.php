@@ -15,6 +15,7 @@ class BaseController extends Controller {
 
 		View::share('footer_latest_news', $latest_news);
 		View::share('footer_random_photo', $random_photo);
+		View::share('version', Config::get('version.tag'));
 	}
 
 	/**

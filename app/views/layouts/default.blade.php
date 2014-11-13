@@ -67,7 +67,7 @@
                 <h4>آخر الأخبار</h4>
                 <ul class="list-unstyled">
                     @foreach ($footer_latest_news as $footer_single_news)
-                    <li><span class="fa fa-file-o"></span> {{ link_to_route('news_show', $footer_single_news->title, [$footer_single_news->id]) }}</li>
+                    <li><h5><span class="fa fa-file-o"></span> {{ link_to_route('news_show', $footer_single_news->title, [$footer_single_news->id]) }}</h5></li>
                     @endforeach
                 </ul>
             </div>
@@ -82,8 +82,10 @@
             <div class="col-md-3">
                 <h4>جميع الحقوق محفوظة <small>(2014)</small></h4>
                 <ul class="list-unstyled">
-                    <li><span class="fa fa-code"></span> <a href="//hossamzee.github.io/about.html">تصميم و تطوير حسام الزغيبي</a></li>
-                    <li><span class="fa fa-warning"></span> <a href="mailto:hossam_zee@yahoo.com" >إبلاغ عن خطأ أو ملاحظة</a></li>
+                    <li><h5><span class="fa fa-code"></span> <a href="//hossamzee.github.io/about.html">تصميم و تطوير حسام الزغيبي</a></h5></li>
+                    <li><h5><span class="fa fa-check"></span> <a href="mailto:hossam_zee@yahoo.com" >إبلاغ عن خطأ أو ملاحظة</a></h5></li>
+                    <li>&nbsp;</li>
+                    <li><h5>النسخة {{ $version }}</h5></li>
                 </ul>
             </div>
         </div>
