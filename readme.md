@@ -12,7 +12,6 @@
 - The email should be lighter.
 
 ## TODO - Major Changes
-- Fix the environment, forge way.
 - Make sure that the user receive the password whenever created.
 
 ## Done
@@ -61,6 +60,7 @@
 - The email should be cleaner, honestly.
 - Do the maillist/newsletter.
 - Add escaping the characters that are not welcomed.
+- Fix the environment, forge way.
 
 # Suggested Domains
 - geoqassim.org
