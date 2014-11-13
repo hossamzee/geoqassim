@@ -12,11 +12,18 @@
                     $(function(){
                         $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=Riyadh&&units=metric", function(data){
                             $("#weather-temp").html(data.main.temp + "°م");
+                            $("#weather-pressure").html(data.main.pressure + "م");
                         });
                     })
                 </script>
 
-                <a href="#" class="btn btn-default">القصيم، درجة الحرارة <span id="weather-temp"></span></a>
+                <!--<a href="#" class="btn btn-default">القصيم، درجة الحرارة <span id="weather-temp"></span></a>-->
+                <!--<a href="#" class="btn btn-default disabled" id="weather-city-name">القصيم</a>-->
+                <a href="#" class="btn btn-info"><i class="fa fa-sun-o"></i> <span id="weather-temp"></span></a>
+                <a href="#" class="btn btn-default"><i class="fa fa-cloud"></i> <span id="weather-pressure">PR</span></a>
+                <a href="#" class="btn btn-default" id="weather-humidity">HM</a>
+                <a href="#" class="btn btn-default" id="weather-wind">WN</a>
+
             </div>
             <div class="col-md-6 col-sm-8">
                 {{ Form::open(['route' => 'search']) }}

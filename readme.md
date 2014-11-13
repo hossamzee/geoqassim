@@ -13,7 +13,6 @@
 ## TODO - Major Changes
 - Check if there is any security issues when calling route.
 - Do the maillist/newsletter.
-- Reserve/Register a domain.
 
 ## Done
 
@@ -47,6 +46,7 @@
 - Update the locale in Laravel to be an Arabic/Saudi Arabia.
 - Add alternative text to every image in the website.
 - Fix the issue of the Youtube title, it seems to be duplicated.
+- Reserve/Register a domain.
 
 # Future Improvements
 
