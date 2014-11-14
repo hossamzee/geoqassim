@@ -154,6 +154,9 @@ class AlbumsController extends \BaseController {
         // Check if the delete process has been done.
         try
         {
+            // Delete all related photos.
+            Photo::where('album_id', '=', $album->id)->delete();
+
             $album->delete();
         }
         catch (Exception $exception)

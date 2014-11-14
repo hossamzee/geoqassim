@@ -350,6 +350,16 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
         'uses' => 'PhotosController@store'
     ]);
 
+    Route::get('albums/{id}/photos/bulk', [
+        'as' => 'admin_photos_bulk_get',
+        'uses' => 'PhotosController@getBulk'
+    ]);
+
+    Route::post('albums/{id}/photos/bulk', [
+        'as' => 'admin_photos_bulk_post',
+        'uses' => 'PhotosController@postBulk'
+    ]);
+
     Route::get('photos/{id}/edit', [
         'as' => 'admin_photos_edit',
         'uses' => 'PhotosController@edit'

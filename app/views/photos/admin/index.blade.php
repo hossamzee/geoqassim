@@ -27,7 +27,14 @@ function confirm_delete(id)
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <h3>{{ link_to_route('admin_albums_index', 'الألبومات') }} - صور ألبوم {{ $album->title}} {{ link_to_route('admin_photos_create', 'إضافة', [$album->id], ['class' => 'btn btn-primary pull-left']) }}</h3>
+                <h3>
+                    {{ link_to_route('admin_albums_index', 'الألبومات') }}
+                     - صور ألبوم {{ $album->title }}
+                    <div class="pull-left">
+                      {{ link_to_route('admin_photos_create', 'إضافة', [$album->id], ['class' => 'btn btn-primary']) }}
+                      {{ link_to_route('admin_photos_bulk_get', 'إضافة عدّة صور', [$album->id], ['class' => 'btn btn-info']) }}
+                    </div>
+                </h3>
             </div>
         </div>
     </div>

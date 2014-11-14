@@ -21,7 +21,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::label('photo', 'الصورة') }}
-                            {{ Form::file('photo', null, ['class' => 'form-control']) }}
+                            {{ Form::file('photo') }}
                         </div>
                     </div>
                     <div class="col-sm-12">

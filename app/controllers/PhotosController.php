@@ -147,6 +147,92 @@ class PhotosController extends \BaseController {
         return Redirect::route("admin_photos_index", [$album_id])->with('success_message', 'تمّ إضافة الصورة بنجاح.');
     }
 
+    public function getBulk($album_id)
+    {
+        $album = Album::find($album_id);
+
+        if (!$album)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف ألبوم صحيح.');
+        }
+
+        return View::make('photos.admin.bulk')->with('album', $album);
+    }
+
+    public function postBulk($album_id)
+    {
+        // TODO: Check if the total size of the photos is accepted.
+
+        $photos = Input::file('photos');
+
+        // Validate and all.
+        foreach ($photos as $photo)
+        {
+            $validator = Validator::make([
+                'photo' => $photo,
+            ], [
+                'photo' => 'required|image',
+            ]);
+
+            if ($validator->fails())
+            {
+                // Update the error language to be in Arabic.
+                return Redirect::back()->withInput()->with('error_message', 'الرجاء التأكد من اختيار ملفات صور.');
+            }
+        }
+
+        $failed_photos_count = 0;
+
+        // Try to upload the photos.
+        foreach ($photos as $photo)
+        {
+            // Create a new photo table record.
+            try
+            {
+                // Create the two photos, large and thumb.
+                $photo_name = Str::random(40) . '.png';
+
+                // Make the large photo first.
+                $large_photo = Image::make($photo->getRealPath());
+                $large_photo->save(public_path() . '/photos/large/' . $photo_name);
+
+                // Make the thumb photo secondly.
+                $thumb_photo = Image::make($photo->getRealPath());
+
+                $thumb_photo->widen(165, function ($constraint) {
+                  $constraint->upsize();
+                });
+
+                $thumb_photo->save(public_path() . '/photos/thumb/' . $photo_name);
+
+                // Set the URLs for both, large and thumb.
+                $large_photo_url = url('/photos/large/' . $photo_name);
+                $thumb_photo_url = url('/photos/thumb/' . $photo_name);
+
+                // After everything, save the photo in photos table.
+                $_photo = new Photo();
+                $_photo->album_id = $album_id;
+                $_photo->title = $photo->getClientOriginalName();
+                $_photo->large_url = $large_photo_url;
+                $_photo->thumb_url = $thumb_photo_url;
+                $_photo->save();
+            }
+            catch (Exception $exception)
+            {
+                // Log about the error.
+                Log::error($exception);
+                $failed_photos_count++;
+            }
+        }
+
+        if ($failed_photos_count > 0)
+        {
+            return Redirect::route("admin_photos_index", [$album_id])->with('warning_message', 'تمّ إضافة الصور بنجاح مع تعذّر ' . $failed_photos_count . ' صور عن الرفع.');
+        }
+
+        return Redirect::route("admin_photos_index", [$album_id])->with('success_message', 'تمّ إضافة الصور بنجاح.');
+    }
+
     public function like($id)
     {
         $photo = Photo::find($id);
