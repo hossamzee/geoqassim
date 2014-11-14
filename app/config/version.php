@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'tag' => getenv('VERSION_TAG'),
+    'tag' => '0.1', // getenv('VERSION_TAG')
 ];
