@@ -1,5 +1,5 @@
 <?php
 
-return [
-    'tag' => '0.1', // getenv('VERSION_TAG')
-];
+return array (
+  'tag' => '0.1',
+);
