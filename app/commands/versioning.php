@@ -4,7 +4,7 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class versioning extends Command {
+class Versioning extends Command {
 
 	/**
 	 * Big thanks to afarazit.
