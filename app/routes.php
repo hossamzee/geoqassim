@@ -428,6 +428,11 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
         'uses' => 'RummahsController@store'
     ]);
 
+    Route::post('rummahs/upload', [
+        'as' => 'admin_rummahs_upload',
+        'uses' => 'RummahsController@upload'
+    ]);
+
     Route::get('rummahs/{id}/edit', [
         'as' => 'admin_rummahs_edit',
         'uses' => 'RummahsController@edit'

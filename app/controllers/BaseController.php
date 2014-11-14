@@ -7,8 +7,8 @@ class BaseController extends Controller {
 	 */
 	public function __construct()
 	{
-		// Perform CSRF check on all post/put/patch/delete requests.
-    $this->beforeFilter('csrf', ['on' => ['post', 'put', 'patch', 'delete']]);
+		// TODO: Perform CSRF check on all post/put/patch/delete requests.
+    // $this->beforeFilter('csrf', ['on' => ['post', 'put', 'patch', 'delete']]);
 
 		$latest_news = News::limit(10)->orderBy('created_at', 'DESC')->get();
 		$random_photo = Photo::orderBy(DB::raw('RAND()'))->first();

@@ -17,7 +17,8 @@ class RummahsController extends \BaseController {
 
     public function create()
     {
-        return View::make('rummahs.admin.create');
+        $token = Session::token();
+        return View::make('rummahs.admin.create')->with('token', $token);
     }
 
     public function store()
@@ -80,6 +81,49 @@ class RummahsController extends \BaseController {
         }
 
         return Redirect::route("admin_rummahs_index")->with('success_message', 'تمّ إضافة الرمّة بنجاح.');
+    }
+
+    public function upload()
+    {
+        $pdf = Input::file('pdf');
+
+        // Validate and all.
+        $validator = Validator::make([
+            'pdf' => $pdf,
+        ], [
+            'pdf' => 'required|mimes:pdf',
+        ]);
+
+        if ($validator->fails())
+        {
+            return Response::json([
+                'message' => 'There is an error with your request.',
+            ], 400);
+        }
+
+        // Initialize the URL.
+        $url = null;
+
+        try
+        {
+            $pdf_name = Str::random(40) . '.pdf';
+            $pdf->move(public_path() . '/pdfs', $pdf_name);
+            $url = url('/pdfs/' . $pdf_name);
+        }
+        catch (Exception $exception)
+        {
+            // Log about the error.
+            Log::error($exception);
+
+            return Response::json([
+                'message' => 'An internal server error.'
+            ], 500);
+        }
+
+        // Done.
+        return Response::json([
+            'url' => $url,
+        ], 200);
     }
 
     public function show($id)
