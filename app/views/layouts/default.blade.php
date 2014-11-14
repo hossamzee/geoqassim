@@ -83,7 +83,7 @@
                     <li><h5><span class="fa fa-code"></span> <a href="//hossamzee.github.io/about.html">تصميم و تطوير حسام الزغيبي</a></h5></li>
                     <li><h5><span class="fa fa-check"></span> <a href="mailto:hossam_zee@yahoo.com" >إبلاغ عن خطأ أو ملاحظة</a></h5></li>
                     <li>&nbsp;</li>
-                    <li><h5>النسخة {{ $version }}</h5></li>
+                    <li><h5>{{ $version }}</h5></li>
                 </ul>
             </div>
         </div>
