@@ -17,6 +17,9 @@ class PhotosController extends \BaseController {
             return Redirect::home()->with('error_message', 'الرجاء التأكّد من طلب معرّف ألبوم صحيح.');
         }
 
+        $album->views_count++;
+        $album->save();
+
         // Get the chosen or the latest photo.
         if ($id == null)
         {

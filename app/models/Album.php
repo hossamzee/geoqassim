@@ -11,6 +11,6 @@ class Album extends BaseModel
 
     public function getSearchableUri()
     {
-        return route('albums_show', [$this->id], false);
+        return route('photos_index', [$this->id], false);
     }
 }
