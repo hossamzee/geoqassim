@@ -17,7 +17,7 @@ class BaseModel extends Eloquent
                 Document::create([
                     'uri' => $model->getSearchableUri(),
                     'title' => $model->getSearchableTitle(),
-                    'content' => $model->getSearchableContent(),
+                    'content' => strip_tags($model->getSearchableContent()),
                 ]);
             }
         });
@@ -30,7 +30,7 @@ class BaseModel extends Eloquent
                 // Update the document to be used for searching.
                 $affected_rows = Document::where('uri', '=', $model->getSearchableUri())->update([
                     'title' => $model->getSearchableTitle(),
-                    'content' => $model->getSearchableContent(),
+                    'content' => strip_tags($model->getSearchableContent()),
                 ]);
             }
         });

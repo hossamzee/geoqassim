@@ -22,4 +22,7 @@ class Document extends BaseModel
     {
         return url($this->uri);
     }
+
+    // TODO:  Create a static method and call it 'sanitize'.
+    //        It would be used to clean the field to be added to be searchable.
 }
