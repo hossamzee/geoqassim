@@ -65,12 +65,16 @@ class MembersController extends \BaseController {
             // Create a new photo, or upload it.
             $photo_name = Str::random(40) . '.png';
 
-            // Make the large photo.
-            $large_photo = Image::make($photo->getRealPath());
-            $large_photo->save(public_path() . '/photos/large/' . $photo_name);
+            // Make the thumb photo secondly.
+            $thumb_photo = Image::make($photo->getRealPath());
 
-            // Set the URL for the large.
-            $large_photo_url = url('/photos/large/' . $photo_name);
+            $thumb_photo->widen(Member::PHOTO_WIDTH, function ($constraint) {
+              $constraint->upsize();
+            });
+
+            $thumb_photo->save(public_path() . '/photos/thumb/' . $photo_name);
+
+            $thumb_photo_url = url('/photos/thumb/' . $photo_name);
 
             // After everything, save the member into the database.
             $member = new Member();
@@ -78,7 +82,7 @@ class MembersController extends \BaseController {
             $member->role = $role;
             $member->bio = $bio;
             $member->cv = $cv;
-            $member->photo_url = $large_photo_url;
+            $member->photo_url = $thumb_photo_url;
             $member->email = $email;
             $member->twitter_account = $twitter_account;
             $member->linkedin_account = $linkedin_account;
