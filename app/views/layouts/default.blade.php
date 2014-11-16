@@ -31,7 +31,7 @@
 
     <title>قسم الجغرافيا في جامعة القصيم - @yield('title')</title>
 
-    <link rel="stylesheet" href="/assets/stylesheets/geoqassim.css?version=1.0" />
+    <link rel="stylesheet" href="/assets/stylesheets/geoqassim.css?version={{ $version }}" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

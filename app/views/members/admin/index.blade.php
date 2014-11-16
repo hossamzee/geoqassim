@@ -56,7 +56,7 @@ function confirm_delete(id)
             @foreach($members as $member)
                 <tr>
                     <td>{{ $member->id }}</td>
-                    <td><strong>{{ $member->name }}</strong><br /><span class="text-muted">{{ $member->bio }}</span></td>
+                    <td>{{ link_to_route('members_show', $member->name, [$member->id]) }}<br /><span class="text-muted">{{ $member->bio }}</span></td>
                     <td>{{ $member->readable_role }}</td>
                     <td><a href="mailto:{{ $member->email }}">{{ $member->email }}</a></td>
                     <td>

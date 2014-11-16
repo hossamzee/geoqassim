@@ -2,6 +2,8 @@
 
 class Member extends BaseModel
 {
+    const PHOTO_WIDTH = 100;
+
     protected $fillable = ['name', 'bio', 'cv'];
 
     protected $appends = ['readable_role', 'twitter_account_url'];

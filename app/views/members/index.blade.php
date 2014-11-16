@@ -24,7 +24,12 @@
         <div class="row">
             @foreach($membersRow as $member)
             <div class="col-md-4">
-              <a href="{{ route('members_show', [$member['id']]) }}"><img src="{{ $member['photo_url'] }}" class="img-responsive" alt="{{ $member['name'] }}" /></a>
+              <a href="{{ route('members_show', [$member['id']]) }}">
+                <!--<img src="{{ $member['photo_url'] }}" class="img-responsive" alt="{{ $member['name'] }}" />-->
+                <div class="member-div">
+                  <img src="{{ $member['photo_url'] }}" class="img-circle" alt="{{ $member['name'] }}" />
+                </div>
+              </a>
               <h4><a href="{{ route('members_show', [$member['id']]) }}">{{ $member['name'] }} <small>({{ $member['readable_role'] }})</small></a></h4>
               <p>{{ $member['bio'] }}</p>
               <p>
