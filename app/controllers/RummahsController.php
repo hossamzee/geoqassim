@@ -56,20 +56,23 @@ class RummahsController extends \BaseController {
             // Create a new cover, or upload it.
             $cover_name = Str::random(40) . '.png';
 
-            // Make the large photo.
-            // Resize the cover to be appropriate.
-            $large_cover = Image::make($cover->getRealPath());
-            $large_cover->save(public_path() . '/photos/large/' . $cover_name);
+            // Make the thumb photo secondly.
+            $thumb_cover = Image::make($cover->getRealPath());
 
-            // Set the URL for the large.
-            $large_cover_url = url('/photos/large/' . $cover_name);
+            $thumb_cover->widen(Rummah::PHOTO_WIDTH, function ($constraint) {
+              $constraint->upsize();
+            });
+
+            $thumb_cover->save(public_path() . '/photos/thumb/' . $cover_name);
+
+            $thumb_cover_url = url('/photos/thumb/' . $cover_name);
 
             // After everything, save the rummah into the database.
             $rummah = new Rummah();
             $rummah->title = $title;
             $rummah->version = $version;
             $rummah->description = $description;
-            $rummah->cover_url = $large_cover_url;
+            $rummah->cover_url = $thumb_cover_url;
             $rummah->url = $url;
             $rummah->save();
         }
@@ -225,16 +228,19 @@ class RummahsController extends \BaseController {
                 // Create a new cover, or upload it.
                 $cover_name = Str::random(40) . '.png';
 
-                // Make the large photo.
-                // Resize the cover to be appropriate.
-                $large_cover = Image::make($cover->getRealPath());
-                $large_cover->save(public_path() . '/photos/large/' . $cover_name);
+                // Make the thumb photo secondly.
+                $thumb_cover = Image::make($cover->getRealPath());
 
-                // Set the URL for the large.
-                $large_cover_url = url('/photos/large/' . $cover_name);
+                $thumb_cover->widen(Rummah::PHOTO_WIDTH, function ($constraint) {
+                  $constraint->upsize();
+                });
+
+                $thumb_cover->save(public_path() . '/photos/thumb/' . $cover_name);
+
+                $thumb_cover_url = url('/photos/thumb/' . $cover_name);
 
                 // Update the URL in the database.
-                $rummah->cover_url = $large_cover_url;
+                $rummah->cover_url = $thumb_cover_url;
             }
 
             $rummah->title = $title;

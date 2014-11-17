@@ -2,6 +2,8 @@
 
 class Rummah extends BaseModel
 {
+    const PHOTO_WIDTH = 100;
+
     protected $fillable = ['title', 'description'];
 
     public function getSearchableUri()
