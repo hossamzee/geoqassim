@@ -13,7 +13,7 @@
                     <div class="pull-left">
                         <a href="#" class="btn btn-default"><i class="fa fa-eye"></i> {{ $news->views_count }}</a>
                         <a href="{{ route('news_like', [$news->id]) }}" class="btn btn-default"><i class="fa fa-thumbs-up"></i> {{ $news->likes_count }}</a>
-                        <!-- <a href="#" class="btn btn-default"><i class="fa fa-print"></i></a> -->
+                        <a href="#" onclick="window.print();" class="btn btn-default"><i class="fa fa-print"></i></a>
                     </div>
                 </h3>
             </div>

@@ -22,12 +22,14 @@
                     <small>({{ $member->readableRole }})</small>
                     <div class="pull-left">
                         @if ($member->email)
-                        <a href="mailto:{{ $member->email }}" class="btn btn-primary"><i class="fa fa-envelope"></i></a>
+                        <a href="mailto:{{ $member->email }}" class="btn btn-default"><i class="fa fa-envelope"></i></a>
                         @endif
 
                         @if ($member->twitter_account)
-                        <a href="{{ $member->twitter_account_url }}" class="btn btn-primary"><i class="fa fa-twitter"></i></a>
+                        <a href="{{ $member->twitter_account_url }}" class="btn btn-default"><i class="fa fa-twitter"></i></a>
                         @endif
+
+                        <a href="#" onclick="window.print();" class="btn btn-default"><i class="fa fa-print"></i></a>
                     </div>
                 </h3>
             </div>
