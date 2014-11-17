@@ -34,14 +34,14 @@ class RummahsController extends \BaseController {
             'title' => $title,
             'version' => $version,
             'description' => $description,
-            'cover' => $cover,
             'url' => $url,
+            'cover' => $cover,
         ], [
             'title' => 'required',
             'version' => 'required',
             'description' => 'required',
-            'cover' => 'required|image',
             'url' => 'required|url',
+            'cover' => 'required|image',
         ]);
 
         if ($validator->fails())

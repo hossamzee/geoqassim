@@ -3,7 +3,7 @@
 @section('title', 'إضافة رمّة')
 @section('content')
 
-<script type="text/javascript" src="http://www.sanwebe.com/assets/ajax-image-upload-progressbar/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="/assets/javascripts/jquery.form.min.js"></script>
 
 <script type="text/javascript">
 
@@ -61,8 +61,6 @@
 
 </script>
 
-<div id="output"></div>
-
 <div class="progress" id="progress-div">
     <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress"></div>
 </div>
@@ -85,7 +83,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{ Form::label('title', 'ملف PDF (إن وُجد)') }}
+                            {{ Form::label('title', 'ملف PDF (اختياري)') }}
                             {{ Form::file('pdf') }}
                             <p class="help-block">في حال لم يتم رفع النشرة إلى أيّ خادم آخر؛ قم برفع الملف من هنا.</p>
                         </div>
