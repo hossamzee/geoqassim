@@ -49,19 +49,19 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            {{ Form::label('email', 'البريد الإلكتروني') }}
+                            {{ Form::label('email', 'البريد الإلكتروني (اختياري)') }}
                             {{ Form::text('email', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            {{ Form::label('twitter_account', 'حساب Twitter') }}
+                            {{ Form::label('twitter_account', 'حساب Twitter (اختياري)') }}
                             {{ Form::text('twitter_account', null, ['class' => 'form-control', 'placeholder' => 'حساب Twitter دون رمز (@)']) }}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            {{ Form::label('linkedin_account', 'حساب Linkedin') }}
+                            {{ Form::label('linkedin_account', 'حساب Linkedin (اختياري)') }}
                             {{ Form::text('linkedin_account', null, ['class' => 'form-control']) }}
                         </div>
                     </div>

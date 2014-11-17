@@ -6,7 +6,7 @@ class Member extends BaseModel
 
     protected $fillable = ['name', 'bio', 'cv'];
 
-    protected $appends = ['readable_role', 'twitter_account_url'];
+    protected $appends = ['readable_role', 'twitter_account_url', 'htmlized_cv'];
 
     public static $roles = [
       'member'  => 'عضو',
@@ -31,5 +31,10 @@ class Member extends BaseModel
     public function getSearchableUri()
     {
         return route('members_show', [$this->id], false);
+    }
+
+    public function getHtmlizedCvAttribute()
+    {
+        // TODO: This should be done.
     }
 }
