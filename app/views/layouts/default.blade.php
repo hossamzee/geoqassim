@@ -94,7 +94,7 @@
                 <h4>صورة عشوائية</h4>
                 <p>
                     @if ($footer_random_photo)
-                      <a href="{{ route('photos_show', [$footer_random_photo->album_id, $footer_random_photo->id]) }}"><img src="{{ $footer_random_photo->thumb_url }}" class="img-responsive" alt="{{ $footer_random_photo->title }}" /></a>
+                      <a href="{{ route('photos_show', [$footer_random_photo->album_id, $footer_random_photo->id]) }}"><img src="{{ $footer_random_photo->thumb_url }}" class="img-thumbnail" alt="{{ $footer_random_photo->title }}" /></a>
                     @endif
                 </p>
             </div>
