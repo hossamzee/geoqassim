@@ -3,6 +3,16 @@
 @section('title', 'الأعضاء - ' . $member->name)
 @section('content')
 
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+              <center><img src="{{ $member->photo_url }}" class="img-circle" alt="{{ $member->name }}" /></center>
+            </div>
+        </div>
+    </div>
+</header>
+
 <!-- Single member -->
 <div class="container">
     <div class="row">
