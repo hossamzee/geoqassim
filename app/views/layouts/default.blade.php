@@ -78,7 +78,7 @@
                     تفضل بالاشتراك معنا في القائمة البريدية ليصلك جديد الموقع.
                 </p>
                 <p>
-                    <a href="#" class="btn btn-info"><i class="fa fa-twitter"></i></a>
+                    <a href="https://twitter.com/2013Qugeo" class="btn btn-info"><i class="fa fa-twitter"></i></a>
                     <a href="#" class="btn btn-danger"><i class="fa fa-youtube"></i></a>
                 </p>
             </div>
