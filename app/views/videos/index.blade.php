@@ -33,6 +33,7 @@
             </div>
             @endforeach
         </div>
+        <hr />
     @endforeach
 
 </div><!-- Videos end-->

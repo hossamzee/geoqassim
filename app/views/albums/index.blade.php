@@ -30,6 +30,7 @@
             </div>
             @endforeach
         </div>
+        <hr />
     @endforeach
 
 </div><!-- Albums end-->
