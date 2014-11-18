@@ -6,7 +6,7 @@ class Member extends BaseModel
 
     protected $fillable = ['name', 'bio', 'cv'];
 
-    protected $appends = ['readable_role', 'twitter_account_url', 'htmlized_cv'];
+    protected $appends = ['readable_role', 'twitter_account_url'];
 
     public static $roles = [
       'member'  => 'عضو',
@@ -33,8 +33,33 @@ class Member extends BaseModel
         return route('members_show', [$this->id], false);
     }
 
-    public function getHtmlizedCvAttribute()
+    public function getParsedCvAttribute()
     {
-        // TODO: This should be done.
+        // Define some variables.
+        $parsed_cv = [];
+        $cv = $this->cv;
+
+        // Try to get the lists out of the cv.
+        //preg_match_all('/\= ([^\\n]*)\\n([^=]*)/is', $cv, $matches);
+        preg_match_all('/\= ([^\\n]*)\\n(.*?(?=\= |$))/is', $cv, $matches);
+
+        $headings = $matches[1];
+        $lists_as_string = $matches[2];
+
+        for ($heading_index=0; $heading_index<count($headings); $heading_index++)
+        {
+            $list_items_as_string_without_leading_dash = ltrim($lists_as_string[$heading_index], '- ');
+            $list_items = explode(PHP_EOL . '- ', $list_items_as_string_without_leading_dash);
+
+            // Add a new heading.
+            $parsed_cv[$heading_index]["heading"] = $headings[$heading_index];
+
+            for ($list_item_index=0; $list_item_index<count($list_items); $list_item_index++)
+            {
+                $parsed_cv[$heading_index]["items"][$list_item_index] = trim($list_items[$list_item_index]);
+            }
+        }
+
+        return $parsed_cv;
     }
 }

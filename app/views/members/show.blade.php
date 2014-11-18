@@ -37,7 +37,30 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            {{ $member->cv }}
+
+            @foreach ($member->parsed_cv as $one_parsed_cv)
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>
+                       <h4>{{ $one_parsed_cv['heading'] }}</h4>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="lead">
+                    <ul>
+                        @foreach ($one_parsed_cv['items'] as $item)
+                          <li> {{ $item }}</li>
+                        @endforeach
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            @endforeach
+
         </div>
     </div>
 </div><!-- Single member end-->
