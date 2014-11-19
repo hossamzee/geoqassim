@@ -2,6 +2,8 @@
 
 class Photo extends BaseModel
 {
+    const PHOTO_WIDTH = 165;
+
     const PHOTOS_PER_PAGE = 6;
 
     protected $fillable = ['title', 'description'];

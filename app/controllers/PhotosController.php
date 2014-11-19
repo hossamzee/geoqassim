@@ -118,7 +118,7 @@ class PhotosController extends \BaseController {
             // Make the thumb photo secondly.
             $thumb_photo = Image::make($photo->getRealPath());
 
-            $thumb_photo->widen(165, function ($constraint) {
+            $thumb_photo->widen(Photo::PHOTO_WIDTH, function ($constraint) {
               $constraint->upsize();
             });
 
@@ -199,7 +199,7 @@ class PhotosController extends \BaseController {
                 // Make the thumb photo secondly.
                 $thumb_photo = Image::make($photo->getRealPath());
 
-                $thumb_photo->widen(165, function ($constraint) {
+                $thumb_photo->widen(Photo::PHOTO_WIDTH, function ($constraint) {
                   $constraint->upsize();
                 });
 
