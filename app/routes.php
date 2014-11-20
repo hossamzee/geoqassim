@@ -360,6 +360,11 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
         'uses' => 'PhotosController@postBulk'
     ]);
 
+    Route::post('photos/upload', [
+        'as' => 'admin_photos_upload',
+        'uses' => 'PhotosController@upload'
+    ]);
+
     Route::get('photos/{id}/edit', [
         'as' => 'admin_photos_edit',
         'uses' => 'PhotosController@edit'

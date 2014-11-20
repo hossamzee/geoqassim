@@ -9,8 +9,6 @@
 
     $(function(){
 
-        $('#progress-div').hide();
-
         var options = {
                 target: null,
                 beforeSubmit: beforeSubmit,
@@ -60,10 +58,6 @@
     }
 
 </script>
-
-<div class="progress" id="progress-div">
-    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress"></div>
-</div>
 
 <!-- Add rummah -->
 <div class="container">

@@ -13,6 +13,25 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+
+        function afterSuccess(response)
+        {
+            // Get the URL.
+            var url = response.url;
+
+            $('#progress').removeClass('active');
+            $('#progress').addClass('progress-bar-success');
+            $('#upload-status-div').html('<div>تم رفع الصورة بنجاح و إدراج رابط الصورة في المحتوى.</div><br /><div><a class="btn btn-default" target="_blank" href="' + url + '">فتح الصورة في لسان جديد</a> <a class="btn btn-default" href="#" onclick="resetUpload()">رفع صورة أخرى</a></div>');
+
+            // Set the value of the field.
+            $('#content').val($('#content').val() + '= صورة وسطى ' + url);
+        }
+
+    </script>
+
+    @include('layouts.partials.admin.photos.upload')
+
     <div class="row">
         <div class="col-md-12">
             {{ Form::open(['route' => 'admin_news_store']) }}
@@ -26,7 +45,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::label('content', 'المحتوى') }}
-                            {{ Form::textarea('content', null, ['class' => 'form-control']) }}
+                            {{ Form::textarea('content', null, ['class' => 'form-control', 'id' => 'content']) }}
                         </div>
                     </div>
                     <div class="col-sm-12 text-right">

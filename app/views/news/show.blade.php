@@ -20,10 +20,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <p class="lead">
-                {{ nl2br($news->content) }}
-            </p>
+        <div class="col-md-12 lead">
+            {{ nl2br($news->parsedContent) }}
         </div>
     </div>
 </div><!-- Single news end-->

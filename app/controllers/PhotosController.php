@@ -369,4 +369,52 @@ class PhotosController extends \BaseController {
         return Redirect::route('admin_albums_index')->with('warning_message', 'تمّ حذف الصورة بنجاح.');
     }
 
+    public function upload()
+    {
+        $photo = Input::file('photo');
+
+        $validator = Validator::make([
+            'photo' => $photo,
+        ], [
+            'photo' => 'required|image',
+        ]);
+
+        if ($validator->fails())
+        {
+            // Response to the user with the occured error.
+            return Response::json([
+              'message' => 'There is an error with the requested data.',
+            ], 400);
+        }
+
+        $large_photo_url = null;
+
+        try
+        {
+            // Create the two photos, large and thumb.
+            $photo_name = Str::random(40) . '.png';
+
+            // Make the large photo first.
+            $large_photo = Image::make($photo->getRealPath());
+            $large_photo->save(public_path() . '/photos/large/' . $photo_name);
+
+            // Set the URLs for both, large and thumb.
+            $large_photo_url = url('/photos/large/' . $photo_name);
+        }
+        catch (Exception $exception)
+        {
+              // Log about the error.
+              Log::error($exception);
+
+              // Response to the user with the occured error.
+              return Response::json([
+                'message' => 'There is an internal error with the server.',
+              ], 500);
+        }
+
+        return Response::json([
+            'url' => $large_photo_url,
+        ], 200);
+
+    }
 }
