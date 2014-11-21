@@ -16,10 +16,10 @@
         <div class="col-md-12">
           @foreach ($results as $result)
             <p>
-              <b><a href="{{ url($result->uri) }}">{{ $result->title }}</a></b>
+              <b><a href="{{ url($result->uri) }}">{{ $result->getHighlightedTitle($keywords) }}</a></b>
             </p>
             <p>
-              {{ $result->snippet }}
+              {{ $result->getHighlightedSnippet($keywords) }}
             </p>
             <p class="text-warning">
               {{ $result->url }}

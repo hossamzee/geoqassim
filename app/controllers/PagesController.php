@@ -275,7 +275,7 @@ class PagesController extends \BaseController {
 
     public function search()
     {
-        $query = Input::get('query');
+        $query = Document::sanitize(Input::get('query'));
 
         // Validate the input.
         $validator = Validator::make([
@@ -299,7 +299,9 @@ class PagesController extends \BaseController {
             return Redirect::home()->with('warning_message', 'لم يتم العثور على نتائج لبحثك.');
         }
 
+        $keywords = explode(' ', $query);
+
         // If there is at least one result, show it.
-        return View::make('pages.search')->with('results', $results)->with('query', $query);
+        return View::make('pages.search')->with('results', $results)->with('query', $query)->with('keywords', $keywords);
     }
 }
