@@ -74,11 +74,8 @@
                 @endif
             </div>
             <div class="col-md-6">
-                @if ($last_video)
-                <!-- 4:3 aspect ratio -->
-                <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{ $last_video->youtube_id }}?rel=0&showinfo=0&controls=0" allowfullscreen></iframe>
-                </div>
+                @if ($random_photo)
+                  <a href="{{ route('photos_show', [$random_photo->album_id, $random_photo->id]) }}"><img src="{{ $random_photo->large_url }}" class="img-responsive" /></a>
                 @endif
             </div>
         </div>
