@@ -21,13 +21,7 @@
                 <li>{{ link_to_route('pages_show', 'وراج', ['3']) }}</li>
                 <li>{{ link_to_route('albums_index', 'الصور') }}</li>
                 <li>{{ link_to_route('videos_index', 'الفيديو') }}</li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">الخرائط <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">خرائط Google</a></li>
-                        <li><a href="#">خرائط الجمعية</a></li>
-                    </ul>
-                </li>
+                <li>{{ link_to_route('pages_show', 'الخرائط', ['5']) }}</li>
                 <li>{{ link_to_route('pages_show', 'الخدمات', ['4']) }}</li>
                 <li>{{ link_to_route('contact_get', 'اتصل بنا') }}</li>
             </ul>

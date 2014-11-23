@@ -113,12 +113,17 @@ class PhotosController extends \BaseController {
 
             // Make the large photo first.
             $large_photo = Image::make($photo->getRealPath());
+
+            $large_photo->widen(Photo::PHOTO_LARGE_WIDTH, function ($constraint) {
+              $constraint->upsize();
+            });
+
             $large_photo->save(public_path() . '/photos/large/' . $photo_name);
 
             // Make the thumb photo secondly.
             $thumb_photo = Image::make($photo->getRealPath());
 
-            $thumb_photo->widen(Photo::PHOTO_WIDTH, function ($constraint) {
+            $thumb_photo->widen(Photo::PHOTO_THUMB_WIDTH, function ($constraint) {
               $constraint->upsize();
             });
 
@@ -194,12 +199,17 @@ class PhotosController extends \BaseController {
 
                 // Make the large photo first.
                 $large_photo = Image::make($photo->getRealPath());
+
+                $large_photo->widen(Photo::PHOTO_LARGE_WIDTH, function ($constraint) {
+                  $constraint->upsize();
+                });
+
                 $large_photo->save(public_path() . '/photos/large/' . $photo_name);
 
                 // Make the thumb photo secondly.
                 $thumb_photo = Image::make($photo->getRealPath());
 
-                $thumb_photo->widen(Photo::PHOTO_WIDTH, function ($constraint) {
+                $thumb_photo->widen(Photo::PHOTO_THUMB_WIDTH, function ($constraint) {
                   $constraint->upsize();
                 });
 
@@ -312,12 +322,17 @@ class PhotosController extends \BaseController {
 
                 // Make the large photo first.
                 $large_photo = Image::make($photo->getRealPath());
+
+                $large_photo->widen(Photo::PHOTO_LARGE_WIDTH, function ($constraint) {
+                  $constraint->upsize();
+                });
+
                 $large_photo->save(public_path() . '/photos/large/' . $photo_name);
 
                 // Make the thumb photo secondly.
                 $thumb_photo = Image::make($photo->getRealPath());
 
-                $thumb_photo->widen(165, function ($constraint) {
+                $thumb_photo->widen(Photo::PHOTO_THUMB_WIDTH, function ($constraint) {
                   $constraint->upsize();
                 });
 
@@ -396,7 +411,21 @@ class PhotosController extends \BaseController {
 
             // Make the large photo first.
             $large_photo = Image::make($photo->getRealPath());
+
+            $large_photo->widen(Photo::PHOTO_LARGE_WIDTH, function ($constraint) {
+              $constraint->upsize();
+            });
+
             $large_photo->save(public_path() . '/photos/large/' . $photo_name);
+
+            // Make the thumb photo secondly.
+            $thumb_photo = Image::make($photo->getRealPath());
+
+            $thumb_photo->widen(Photo::PHOTO_THUMB_WIDTH, function ($constraint) {
+              $constraint->upsize();
+            });
+
+            $thumb_photo->save(public_path() . '/photos/thumb/' . $photo_name);
 
             // Set the URLs for both, large and thumb.
             $large_photo_url = url('/photos/large/' . $photo_name);

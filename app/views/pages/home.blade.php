@@ -30,7 +30,7 @@
                     })
                 </script>
 
-                <a href="#" class="btn btn-link" title="معلومات الطقس مقدّمة من openweathermap.org">القصيم</a>
+                <a href="#" class="btn btn-link" title="معلومات الطقس مقدّمة من openweathermap.org">طقس القصيم</a>
                 <a href="#" class="btn btn-link disabled" id="waiting">يجري جلب معلومات الطقس...</a>
                 <a href="#" class="btn btn-link not-ready-link" title="درجة الحرارة"><i class="fa fa-sun-o"></i> <span id="weather-temp"></span></a>
                 <a href="#" class="btn btn-link not-ready-link" title="الضغط الجوّي"><i class="fa fa-cloud-download"></i> <span id="weather-pressure"></span></a>

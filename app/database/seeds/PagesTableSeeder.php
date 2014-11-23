@@ -37,6 +37,12 @@ class PagesTableSeeder extends Seeder {
           'title' => 'Services',
         ]);
 
+        // Maps.
+        // 5
+        Page::create([
+          'slug' => 'maps',
+          'title' => 'Maps',
+        ]);
     }
 
 }
