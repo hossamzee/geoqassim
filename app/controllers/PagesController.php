@@ -272,6 +272,9 @@ class PagesController extends \BaseController {
 
     public function search()
     {
+        // Start calculating the execution time.
+        $start = microtime(true);
+
         $query = Document::sanitize(Input::get('query'));
 
         // Validate the input.
@@ -298,7 +301,11 @@ class PagesController extends \BaseController {
 
         $keywords = explode(' ', $query);
 
+        $finish = microtime(true);
+
+        $taken_time = round(($finish-$start), 3);
+
         // If there is at least one result, show it.
-        return View::make('pages.search')->with('results', $results)->with('query', $query)->with('keywords', $keywords);
+        return View::make('pages.search')->with(compact('results', 'query', 'keywords', 'taken_time'));
     }
 }

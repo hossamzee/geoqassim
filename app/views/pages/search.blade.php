@@ -8,7 +8,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <h3>نتائج البحث عن <b>{{ e($query) }}</b> <small>({{ $results->count() }})</small></h3>
+                <h3>نتائج البحث عن <b>{{ e($query) }}</b>
+                  <small>({{ $results->count() }})</small>
+                  <div class="pull-left">
+                      <a href="#" class="btn btn-default" title="ثانية"><i class="fa fa-cogs"></i> {{ $taken_time }}</a>
+                  </div>
+                </h3>
             </div>
         </div>
     </div>
