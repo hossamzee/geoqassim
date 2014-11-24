@@ -30,7 +30,7 @@
                     })
                 </script>
 
-                <a href="#" class="btn btn-link" title="معلومات الطقس مقدّمة من openweathermap.org">طقس القصيم</a>
+                <a href="#" class="btn btn-link" title="معلومات الطقس مقدّمة من openweathermap.org">طقس القصيم الآن</a>
                 <a href="#" class="btn btn-link disabled" id="waiting">يجري جلب معلومات الطقس...</a>
                 <a href="#" class="btn btn-link not-ready-link" title="درجة الحرارة"><i class="fa fa-sun-o"></i> <span id="weather-temp"></span></a>
                 <a href="#" class="btn btn-link not-ready-link" title="الضغط الجوّي"><i class="fa fa-cloud-download"></i> <span id="weather-pressure"></span></a>
@@ -56,22 +56,20 @@
     </div>
 </header>
 
-<!-- Latest news and latest videos. -->
+<!-- Latest news and a random photo -->
 <div class="jumbotron">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                @if ($last_news)
-                <h1>{{ link_to_route('news_show', $last_news->title, [$last_news->id]) }}</h1>
-                <p>
-                    <i class="fa fa-calendar-o"></i> نشر {{ $last_news->readable_created_at }}
-                </p>
-                <p>{{ $last_news->snippet }}</p>
-                <p>
-                {{ link_to_route('news_show', 'المزيد', [$last_news->id], ['class' => 'btn btn-primary btn-lg', 'role' => 'button']) }}
-                {{ link_to_route('news_index', 'المزيد من الأخبار', null, ['class' => 'btn btn-default btn-lg', 'role' => 'button']) }}
-                </p>
-                @endif
+                @foreach ($last_news as $single_last_news)
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>{{ $single_last_news->title }}</h4>
+                    </div>
+                </div>
+
+                @endforeach
             </div>
             <div class="col-md-6">
                 @if ($random_photo)
@@ -101,7 +99,7 @@
         </div>
         <div class="col-md-4">
             <h2>{{ link_to_route('rummahs_index', 'نشرة الرمة') }}</h2>
-            <p>كلمة الرمة باسم الله نبدأ، وبحمد لله نستفتح العدد الأول من نشرة «الرمة», الصادرة عن قسم الجغرافيا بجامعة القصيم، وهي وريقات جغرافية متواضعة، تعكس صورة ما جرى من قبل وما يجري حالياً في فلك الجغرافيين في القسم من أنشطة علمية، وأخبار جغرافية، ومخرجات معرفية، ورحلات ميد</p>
+            <p>نشرة «الرمة» تصدر عن قسم الجغرافيا بجامعة القصيم، وهي وريقات جغرافية متواضعة، تعكس صورة ما جرى من قبل، وما يجري حالياً في فلك الجغرافيين في القسم من أنشطة علمية، وأخبار جغرافية، ومخرجات معرفية، ورحلات ميدانية، نستهدف بها، ونأمل منها مد جسر التوصل مع الأقسام والكليات والعمادات بجامعة القصيم أولاً، والجامعات الأخرى ثانياً، وعموم المتابعين ثالثاً، وتجدر الإشارة إلى أن مشاركات الزملاء تم اختصارها واختزالها بصورة نرجو ألا تكون مخلة، بسبب ضيق المساحة. مع تحية، الرمّة.</p>
             <p>
                 @if ($last_rummah)
                 {{ link_to_route('rummahs_show', 'تحميل آخر نسخة (PDF)', [$last_rummah->id], ['class' => 'btn btn-primary']) }}

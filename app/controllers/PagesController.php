@@ -6,7 +6,7 @@ class PagesController extends \BaseController {
     {
         // Get the latest everything has been added.
         // The view hanldes the exception that is being throwing when there is no news.
-        $last_news = News::orderBy('created_at', 'DESC')->first();
+        $last_news = News::orderBy('created_at', 'DESC')->limit(3)->get();
         $last_rummah = Rummah::orderBy('created_at', 'DESC')->first();
         $random_photo = Photo::orderBy(DB::raw('RAND()'))->first();
 
