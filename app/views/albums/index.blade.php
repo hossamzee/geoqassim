@@ -30,7 +30,7 @@
                     @if ($album['last_photo'])
                       <img src="{{ $album['last_photo']['thumb_url'] }}" class="img-thumbnail" alt="{{ $album['title'] }}" />
                     @else
-                      <img src="/assets/images/default-thumb-photo.png" class="img-thumbnail" alt="{{ $album['title'] }}" />
+                      <img src="/assets/images/default-thumb.png" class="img-thumbnail" alt="{{ $album['title'] }}" />
                     @endif
                   </div>
                 </a>
