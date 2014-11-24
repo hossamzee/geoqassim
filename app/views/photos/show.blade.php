@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'الألبومات - ' . $album->title . ' - ' . $photo->title)
+@section('title', 'الألبومات - ' . $album->title . ' - ' . Str::words($photo->description, 10))
 @section('content')
 
 <style>
@@ -17,7 +17,7 @@
                 <div class="col-md-12">
                     <div class="page-header">
                         <h3>
-                            {{ link_to_route('albums_index', 'الألبومات') }} - {{ $album->title }} - {{ $photo->title }}
+                            {{ link_to_route('albums_index', 'الألبومات') }} - {{ $album->title }}
                             <div class="pull-left">
                                 <a href="#" class="btn btn-default"><i class="fa fa-eye"></i> {{ $photo->views_count }}</a>
                                 <a href="{{ route('photos_like', [$photo->id]) }}" class="btn btn-default"><i class="fa fa-thumbs-up"></i> {{ $photo->likes_count }}</a>
@@ -42,6 +42,12 @@
                     @endif
                 </div>
             </div>
+
+            <hr />
+
+            <p>
+                {{ $photo->description  }}
+            </p>
 
             <hr />
 

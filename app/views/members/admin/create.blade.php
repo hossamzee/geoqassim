@@ -29,19 +29,19 @@
                             {{ Form::select('role', $roles, null, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('bio', 'لمحة') }}
                             {{ Form::textarea('bio', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('cv', 'السيرة الذاتية') }}
                             {{ Form::textarea('cv', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('photo', 'الصورة الشخصيّة') }}
                             {{ Form::file('photo') }}
@@ -65,7 +65,7 @@
                             {{ Form::text('linkedin_account', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12 text-right">
+                    <div class="col-md-12 text-right">
                         {{ Form::submit('إضافة العضو', ['class' => 'btn btn-primary btn-lg']) }}
                     </div>
                 </div>

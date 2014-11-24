@@ -86,16 +86,13 @@ class PhotosController extends \BaseController {
     {
         // Validate and all.
         $photo = Input::file('photo');
-        $title = Input::get('title');
         $description = Input::get('description');
 
         $validator = Validator::make([
             'photo' => $photo,
-            'title' => $title,
             'description' => $description,
         ], [
             'photo' => 'required|image',
-            'title' => 'required',
             'description' => 'required',
         ]);
 
@@ -134,13 +131,13 @@ class PhotosController extends \BaseController {
             $thumb_photo_url = url('/photos/thumb/' . $photo_name);
 
             // After everything, save the photo in photos table.
-            $photo = new Photo();
-            $photo->album_id = $album_id;
-            $photo->title = $title;
-            $photo->description = $description;
-            $photo->large_url = $large_photo_url;
-            $photo->thumb_url = $thumb_photo_url;
-            $photo->save();
+            $_photo = new Photo();
+            $_photo->album_id = $album_id;
+            $_photo->title = $photo->getClientOriginalName();
+            $_photo->description = $description;
+            $_photo->large_url = $large_photo_url;
+            $_photo->thumb_url = $thumb_photo_url;
+            $_photo->save();
         }
         catch (Exception $exception)
         {
@@ -298,11 +295,9 @@ class PhotosController extends \BaseController {
 
         $validator = Validator::make([
             'photo' => $photo,
-            'title' => $title,
             'description' => $description,
         ], [
             'photo' => 'image',
-            'title' => 'required',
             'description' => 'required',
         ]);
 
@@ -344,9 +339,9 @@ class PhotosController extends \BaseController {
 
                 $current_photo->large_url = $large_photo_url;
                 $current_photo->thumb_url = $thumb_photo_url;
+                $current_photo->title = $photo->getClientOriginalName();
             }
 
-            $current_photo->title = $title;
             $current_photo->description = $description;
             $current_photo->save();
         }

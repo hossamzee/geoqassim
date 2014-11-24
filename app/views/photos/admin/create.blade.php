@@ -18,25 +18,19 @@
             {{ Form::open(['route' => ['admin_photos_store', $album->id], 'files' => true]) }}
 
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('photo', 'الصورة') }}
                             {{ Form::file('photo') }}
                         </div>
                     </div>
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::label('title', 'العنوان') }}
-                            {{ Form::text('title', null, ['class' => 'form-control']) }}
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('description', 'الوصف') }}
                             {{ Form::textarea('description', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12 text-right">
+                    <div class="col-md-12 text-right">
                         {{ Form::submit('إضافة الصورة', ['class' => 'btn btn-primary btn-lg']) }}
                     </div>
                 </div>

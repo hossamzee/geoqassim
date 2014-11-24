@@ -88,25 +88,25 @@ $(function(){
         <div class="col-md-12">
             {{ Form::open(['route' => ['admin_videos_update', $video->id]]) }}
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('url', 'الرابط') }}
                             {{ Form::text('url', $video->url, ['class' => 'form-control', 'id' => 'v_url']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('title', 'العنوان') }}
                             {{ Form::text('title', $video->title, ['class' => 'form-control', 'id' => 'v_title']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('description', 'الوصف') }}
                             {{ Form::textarea('description', $video->description, ['class' => 'form-control', 'id' => 'v_description']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12 text-right">
+                    <div class="col-md-12 text-right">
                         {{ Form::submit('تعديل الفيديو', ['class' => 'btn btn-primary btn-lg']) }}
                     </div>
                 </div>

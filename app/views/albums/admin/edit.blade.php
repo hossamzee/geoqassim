@@ -17,19 +17,19 @@
         <div class="col-md-12">
             {{ Form::open(['route' => ['admin_albums_update', $album->id]]) }}
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('title', 'العنوان') }}
                             {{ Form::text('title', $album->title, ['class' => 'form-control', 'id' => 'v_title']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('description', 'الوصف') }}
                             {{ Form::textarea('description', $album->description, ['class' => 'form-control', 'id' => 'v_description']) }}
                         </div>
                     </div>
-                    <div class="col-sm-12 text-right">
+                    <div class="col-md-12 text-right">
                         {{ Form::submit('تعديل الألبوم', ['class' => 'btn btn-primary btn-lg']) }}
                     </div>
                 </div>
