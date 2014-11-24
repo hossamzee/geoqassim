@@ -14,7 +14,7 @@ class News extends BaseModel
 
     public function getSnippetAttribute()
     {
-      return Str::words(preg_replace(array_keys(self::$markdowns), '', $this->content));
+      return Str::words(preg_replace(array_keys(self::$markdowns), '', $this->content), 72);
     }
 
     public function getSearchableUri()

@@ -65,7 +65,20 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h4>{{ $single_last_news->title }}</h4>
+
+                        <h4>
+                          {{ link_to_route('news_show', $single_last_news->title, [$single_last_news->id]) }}
+                        </h4>
+
+                        <p>
+                          {{ $single_last_news->snippet }}
+                        </p>
+
+                        <p>
+                          {{ link_to_route('news_show', 'المزيد', [$single_last_news->id], ['class' => 'btn btn-primary', 'role' => 'button']) }}
+                          <a href="#" class="btn btn-link disabled"><i class="fa fa-calendar-o"></i> نشر {{ $single_last_news->readable_created_at }}</a>
+                        </p>
+
                     </div>
                 </div>
 
