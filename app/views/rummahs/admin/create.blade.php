@@ -120,7 +120,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{ Form::label('cover', 'صورة الغلاف'); }}
+                            {{ Form::label('cover', 'صورة الغلاف (اختياري)'); }}
                             {{ Form::file('cover') }}
                         </div>
                     </div>

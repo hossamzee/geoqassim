@@ -18,7 +18,7 @@ class CreateRummahsTable extends Migration {
 			$table->string('slug')->nullable();
 			$table->string('title');
 			$table->mediumText('description')->nullable();
-			$table->string('cover_url');
+			$table->string('cover_url')->nullable();
 			$table->string('url');
 			$table->string('version');
 			$table->integer('views_count')->default(0);

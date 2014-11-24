@@ -33,7 +33,11 @@
 
               <a href="{{ route('rummahs_show', [$rummah['id']]) }}">
                 <div class="rummah-div">
-                  <img src="{{ $rummah['cover_url'] }}" class="img-thumbnail" alt="{{ $rummah['title'] }}" />
+                  @if ($rummah['cover_url'])
+                    <img src="{{ $rummah['cover_url'] }}" class="img-thumbnail" alt="{{ $rummah['title'] }}" />
+                  @else
+                    <img src="/assets/images/default-thumb.png" class="img-thumbnail" alt="{{ $rummah['title'] }}" />
+                  @endif
                 </div>
               </a>
 

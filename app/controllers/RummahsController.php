@@ -41,7 +41,7 @@ class RummahsController extends \BaseController {
             'version' => 'required',
             'description' => 'required',
             'url' => 'required|url',
-            'cover' => 'required|image',
+            'cover' => 'image',
         ]);
 
         if ($validator->fails())
@@ -53,27 +53,31 @@ class RummahsController extends \BaseController {
         // Create a new rummah table record.
         try
         {
-            // Create a new cover, or upload it.
-            $cover_name = Str::random(40) . '.png';
-
-            // Make the thumb photo secondly.
-            $thumb_cover = Image::make($cover->getRealPath());
-
-            $thumb_cover->widen(Rummah::PHOTO_WIDTH, function ($constraint) {
-              $constraint->upsize();
-            });
-
-            $thumb_cover->save(public_path() . '/photos/thumb/' . $cover_name);
-
-            $thumb_cover_url = url('/photos/thumb/' . $cover_name);
-
             // After everything, save the rummah into the database.
             $rummah = new Rummah();
             $rummah->title = $title;
             $rummah->version = $version;
             $rummah->description = $description;
-            $rummah->cover_url = $thumb_cover_url;
             $rummah->url = $url;
+
+            if ($cover)
+            {
+                // Create a new cover, or upload it.
+                $cover_name = Str::random(40) . '.png';
+
+                // Make the thumb photo secondly.
+                $thumb_cover = Image::make($cover->getRealPath());
+
+                $thumb_cover->widen(Rummah::PHOTO_WIDTH, function ($constraint) {
+                  $constraint->upsize();
+                });
+
+                $thumb_cover->save(public_path() . '/photos/thumb/' . $cover_name);
+
+                $thumb_cover_url = url('/photos/thumb/' . $cover_name);
+                $rummah->cover_url = $thumb_cover_url;
+            }
+
             $rummah->save();
         }
         catch (Exception $exception)
