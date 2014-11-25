@@ -62,7 +62,11 @@
                   </div>
                   <div class="col-md-12">
                       <div class="form-group">
-                          <img src="{{ $rummah->cover_url }}" class="img-responsive" />
+                          @if ($rummah->cover_url)
+                            <img src="{{ $rummah->cover_url }}" class="img-responsive" />
+                          @else
+                            <img src="/assets/images/default-thumb.png" class="img-responsive" />
+                          @endif
                       </div>
                   </div>
                   <div class="col-md-12">

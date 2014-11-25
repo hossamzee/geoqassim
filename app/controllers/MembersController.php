@@ -49,7 +49,7 @@ class MembersController extends \BaseController {
             'role' => 'required|in:' . $roles_as_string,
             'bio' => 'required',
             'cv' => 'required',
-            'photo' => 'required|image',
+            'photo' => 'image',
             'email' => 'email',
         ]);
 
@@ -62,30 +62,34 @@ class MembersController extends \BaseController {
         // Create a new member table record.
         try
         {
-            // Create a new photo, or upload it.
-            $photo_name = Str::random(40) . '.png';
-
-            // Make the thumb photo secondly.
-            $thumb_photo = Image::make($photo->getRealPath());
-
-            $thumb_photo->widen(Member::PHOTO_WIDTH, function ($constraint) {
-              $constraint->upsize();
-            });
-
-            $thumb_photo->save(public_path() . '/photos/thumb/' . $photo_name);
-
-            $thumb_photo_url = url('/photos/thumb/' . $photo_name);
-
             // After everything, save the member into the database.
             $member = new Member();
             $member->name = $name;
             $member->role = $role;
             $member->bio = $bio;
             $member->cv = $cv;
-            $member->photo_url = $thumb_photo_url;
             $member->email = $email;
             $member->twitter_account = $twitter_account;
             $member->linkedin_account = $linkedin_account;
+
+            if ($photo)
+            {
+                // Create a new photo, or upload it.
+                $photo_name = Str::random(40) . '.png';
+
+                // Make the thumb photo secondly.
+                $thumb_photo = Image::make($photo->getRealPath());
+
+                $thumb_photo->widen(Member::PHOTO_WIDTH, function ($constraint) {
+                  $constraint->upsize();
+                });
+
+                $thumb_photo->save(public_path() . '/photos/thumb/' . $photo_name);
+
+                $thumb_photo_url = url('/photos/thumb/' . $photo_name);
+                $member->photo_url = $thumb_photo_url;
+            }
+
             $member->save();
         }
         catch (Exception $exception)

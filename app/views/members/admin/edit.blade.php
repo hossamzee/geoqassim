@@ -43,12 +43,16 @@
                   </div>
                   <div class="col-md-12">
                       <div class="form-group">
-                          <img src="{{ $member->photo_url }}" class="img-responsive" />
+                          @if ($member->photo_url)
+                            <img src="{{ $member->photo_url }}" class="img-responsive" />
+                          @else
+                            <img src="/assets/images/default-thumb.png" class="img-responsive" />
+                          @endif
                       </div>
                   </div>
                   <div class="col-md-12">
                       <div class="form-group">
-                          {{ Form::label('photo', 'الصورة الشخصيّة') }}
+                          {{ Form::label('photo', 'الصورة الشخصيّة (اختيارية)') }}
                           {{ Form::file('photo') }}
                       </div>
                   </div>

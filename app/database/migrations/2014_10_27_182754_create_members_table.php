@@ -19,7 +19,7 @@ class CreateMembersTable extends Migration {
 			$table->enum('role', ['member', 'head'])->default('member');
 			$table->mediumText('bio');
 			$table->text('cv');
-      $table->string('photo_url');
+      $table->string('photo_url')->nullable();
       $table->string('email')->nullable();
 			$table->string('twitter_account')->nullable();
 			$table->string('linkedin_account')->nullable();

@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{ Form::label('photo', 'الصورة الشخصيّة') }}
+                            {{ Form::label('photo', 'الصورة الشخصيّة (اختيارية)') }}
                             {{ Form::file('photo') }}
                         </div>
                     </div>
