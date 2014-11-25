@@ -57,7 +57,7 @@ function confirm_delete(id)
             @foreach($rummahs as $rummah)
                 <tr>
                     <td>{{ $rummah->id }}</td>
-                    <td><a href="{{ $rummah->url }}">{{ $rummah->title }}</a><br /><span class="text-muted">{{ $rummah->description }}</span></td>
+                    <td>{{ link_to_route('rummahs_show', $rummah->title, [$rummah->id]) }}<br /><span class="text-muted">{{ $rummah->description }}</span></td>
                     <td>{{ $rummah->created_at }}</td>
                     <td>{{ $rummah->views_count }}</td>
                     <td>{{ $rummah->likes_count }}</td>
