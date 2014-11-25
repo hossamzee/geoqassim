@@ -96,7 +96,7 @@ class BaseModel extends Eloquent
             return null;
         }
 
-        $up = static::where('position', '>', $this->position)->orderBy('position', 'DESC')->first();
+        $up = static::where('position', '>', $this->position)->orderBy('position', 'ASC')->first();
 
         // Do the sorting, the current entity should go up and the up one should come down.
         $previous_position = $this->position;

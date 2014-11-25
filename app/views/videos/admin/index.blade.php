@@ -36,9 +36,9 @@ function confirm_delete(id)
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>م</th>
-                        <th class="col-md-6">العنوان (الوصف)</th>
-                        <th class="hidden-xs">الرابط</th>
+                        <th></th>
+                        <th class="col-md-5">العنوان (الوصف)</th>
+                        <th class="col-md-2 hidden-xs">الرابط</th>
                         <th>التاريخ</th>
                         <th class="col-md-2">الإجراءات</th>
                     </tr>
@@ -55,7 +55,10 @@ function confirm_delete(id)
 
             @foreach($videos as $video)
                 <tr>
-                    <td>{{ $video->id }}</td>
+                    <td>
+                      <a href="{{ route('admin_videos_moveup', [$video->id]) }}" class="btn btn-link"><i class="fa fa-arrow-up"></i></a>
+                      <a href="{{ route('admin_videos_movedown', [$video->id]) }}" class="btn btn-link"><i class="fa fa-arrow-down"></i></a>
+                    </td>
                     <td><strong>{{ $video->title }}</strong><br /><span class="text-muted">{{ $video->description }}</span></td>
                     <td class="hidden-xs"><a href="{{ $video->url }}" target="_blank"><i class="fa fa-external-link"></i> {{ $video->url }}</a></td>
                     <td>{{ $video->created_at }}</td>

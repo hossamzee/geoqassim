@@ -297,6 +297,16 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
         'uses' => 'VideosController@destroy'
     ]);
 
+    Route::get('videos/{id}/moveup', [
+        'as' => 'admin_videos_moveup',
+        'uses' => 'VideosController@moveUp'
+    ]);
+
+    Route::get('videos/{id}/movedown', [
+        'as' => 'admin_videos_movedown',
+        'uses' => 'VideosController@moveDown'
+    ]);
+
     /*
      * Albums.
      */

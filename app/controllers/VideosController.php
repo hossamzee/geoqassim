@@ -5,14 +5,14 @@ class VideosController extends \BaseController {
     public function index()
     {
         // Get the videos.
-        $videos = Video::orderBy('created_at', 'DESC')->get();
+        $videos = Video::orderBy('position', 'DESC')->get();
         return View::make('videos.index')->with('videos', $videos);
     }
 
     public function adminIndex()
     {
         return View::make('videos.admin.index')
-            ->with('videos', Video::orderBy('created_at', 'DESC')->get());
+            ->with('videos', Video::orderBy('position', 'DESC')->get());
     }
 
     public function create()
@@ -159,6 +159,46 @@ class VideosController extends \BaseController {
         }
 
         return Redirect::route('admin_videos_index')->with('warning_message', 'تمّ حذف الفيديو بنجاح.');
+    }
+
+    public function moveUp($id)
+    {
+        $video = Video::find($id);
+
+        if (!$video)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف فيديو صحيح.');
+        }
+
+        // Check if the sorting/moving up process went okay.
+        $moved_video = $video->moveUp();
+
+        if (is_null($moved_video))
+        {
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك الفيديو للأعلى ربما لأنّه هو الأوّل.');
+        }
+
+        return Redirect::route('admin_videos_index')->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
+    }
+
+    public function moveDown($id)
+    {
+        $video = Video::find($id);
+
+        if (!$video)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف فيديو صحيح.');
+        }
+
+        // Check if the sorting/moving down process went okay.
+        $moved_video = $video->moveDown();
+
+        if (is_null($moved_video))
+        {
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك الفيديو إلى الأسفل ربما لأنّه الأخير.');
+        }
+
+        return Redirect::route('admin_videos_index')->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
     }
 
 }
