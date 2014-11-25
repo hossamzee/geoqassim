@@ -27,7 +27,11 @@
               <a href="{{ route('members_show', [$member['id']]) }}">
 
                 <div class="member-div">
-                  <img src="{{ $member['photo_url'] }}" class="img-thumbnail" alt="{{ $member['name'] }}" />
+                  @if ($member['photo_url'])
+                    <img src="{{ $member['photo_url'] }}" class="img-thumbnail" alt="{{ $member['name'] }}" />
+                  @else
+                    <img src="/assets/images/default-thumb.png" class="img-thumbnail" alt="{{ $member['name'] }}" />
+                  @endif
                 </div>
               </a>
               <h4><a href="{{ route('members_show', [$member['id']]) }}">{{ $member['name'] }} <small>({{ $member['readable_role'] }})</small></a></h4>

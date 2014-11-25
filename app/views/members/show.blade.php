@@ -8,7 +8,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-              <center><img src="{{ $member->photo_url }}" class="img-thumbnail" alt="{{ $member->name }}" /></center>
+              <center>
+                @if ($member->photo_url)
+                  <img src="{{ $member->photo_url }}" class="img-thumbnail" alt="{{ $member->name }}" />
+                @else
+                  <img src="/assets/images/default-thumb.png" class="img-thumbnail" alt="{{ $member->name }}" />
+                @endif
+              </center>
             </div>
         </div>
     </div>
