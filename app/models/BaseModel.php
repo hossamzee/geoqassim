@@ -14,6 +14,14 @@ class BaseModel extends Eloquent
     {
         Lang::setLocale('ar');
 
+        // Whenever we are about to create a new row.
+        static::creating(
+            function ($model) {
+                $max_position = static::max('position');
+                $model->position = $max_position + 1;
+            }
+        );
+
         // Listen when the user created a new model.
         static::created(function($model)
         {
@@ -79,5 +87,47 @@ class BaseModel extends Eloquent
     public function getSearchableUri()
     {
         //
+    }
+
+    public function moveUp()
+    {
+        if (static::count() == 1 || static::max('position') == $this->position)
+        {
+            return null;
+        }
+
+        $up = static::where('position', '>', $this->position)->orderBy('position', 'DESC')->first();
+
+        // Do the sorting, the current entity should go up and the up one should come down.
+        $previous_position = $this->position;
+
+        $this->position = $up->position;
+        $this->save();
+
+        $up->position = $previous_position;
+        $up->save();
+
+        return $this;
+    }
+
+    public function moveDown()
+    {
+        if (static::count() == 1 || static::min('position') == $this->position)
+        {
+            return null;
+        }
+
+        $down = static::where('position', '<', $this->position)->orderBy('position', 'DESC')->first();
+
+        // Do the sorting, the current entity should go down and the down one should come up.
+        $previous_position = $this->position;
+
+        $this->position = $down->position;
+        $this->save();
+
+        $down->position = $previous_position;
+        $down->save();
+
+        return $this;
     }
 }

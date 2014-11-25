@@ -98,14 +98,22 @@
     <div class="row">
         <div class="col-md-4">
             <h2>{{ link_to_route('pages_show', 'الجغرافيا في القصيم', ['1']) }}</h2>
-            <p>{{ $about_snippet }}</p>
+
+            @if ($about_page)
+            <p>{{ $about_page->snippet }}</p>
+            @endif
+
             <p>
                 {{ link_to_route('pages_show', 'المزيد', ['1'], ['class' => 'btn btn-default']) }}
             </p>
         </div>
         <div class="col-md-4">
             <h2>{{ link_to_route('pages_show', 'وراج', ['3']) }} <small>(وحدة الرحلات الاستكشافية الجغرافية)</small></h2>
-            <p>{{ $wraj_snippet }}</p>
+
+            @if ($wraj_page)
+            <p>{{ $wraj_page->snippet }}</p>
+            @endif
+
             <p>
                 {{ link_to_route('pages_show', 'المزيد', ['3'], ['class' => 'btn btn-default']) }}
             </p>

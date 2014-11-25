@@ -414,6 +414,16 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
         'uses' => 'MembersController@destroy'
     ]);
 
+    Route::get('members/{id}/moveup', [
+        'as' => 'admin_members_moveup',
+        'uses' => 'MembersController@moveUp'
+    ]);
+
+    Route::get('members/{id}/movedown', [
+        'as' => 'admin_members_movedown',
+        'uses' => 'MembersController@moveDown'
+    ]);
+
     /*
      * Rummahs.
      */

@@ -20,6 +20,7 @@ class CreateNewsTable extends Migration {
 			$table->text('content');
 			$table->integer('views_count')->default(0);
 			$table->integer('likes_count')->default(0);
+			$table->integer('position')->default(0);
 			$table->timestamps();
 		});
 	}

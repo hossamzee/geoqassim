@@ -5,14 +5,14 @@ class MembersController extends \BaseController {
     public function index()
     {
         // Get the members.
-        $members = Member::all();
+        $members = Member::orderBy('position', 'DESC')->get();
         return View::make('members.index')->with('members', $members);
     }
 
     public function adminIndex()
     {
         return View::make('members.admin.index')
-            ->with('members', Member::orderBy('created_at', 'DESC')->get());
+            ->with('members', Member::orderBy('position', 'DESC')->get());
     }
 
     public function create()
@@ -236,6 +236,46 @@ class MembersController extends \BaseController {
         }
 
         return Redirect::route('admin_members_index')->with('warning_message', 'تمّ حذف العضو بنجاح.');
+    }
+
+    public function moveUp($id)
+    {
+        $member = Member::find($id);
+
+        if (!$member)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف عضو صحيح.');
+        }
+
+        // Check if the sorting/moving up process went okay.
+        $moved_member = $member->moveUp();
+
+        if (is_null($moved_member))
+        {
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك العضو للأعلى ربما لأنّه هو الأوّل.');
+        }
+
+        return Redirect::route('admin_members_index')->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
+    }
+
+    public function moveDown($id)
+    {
+        $member = Member::find($id);
+
+        if (!$member)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف عضو صحيح.');
+        }
+
+        // Check if the sorting/moving down process went okay.
+        $moved_member = $member->moveDown();
+
+        if (is_null($moved_member))
+        {
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك العضو إلى الأسفل ربما لأنّه الأخير.');
+        }
+
+        return Redirect::route('admin_members_index')->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
     }
 
 }

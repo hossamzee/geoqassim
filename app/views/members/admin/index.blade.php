@@ -36,7 +36,7 @@ function confirm_delete(id)
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>م</th>
+                        <th></th>
                         <th class="col-md-6">اسم العضو (لمحة)</th>
                         <th>الدور</th>
                         <th>البريد الإلكتروني</th>
@@ -55,7 +55,10 @@ function confirm_delete(id)
 
             @foreach($members as $member)
                 <tr>
-                    <td>{{ $member->id }}</td>
+                    <td>
+                      <a href="{{ route('admin_members_moveup', [$member->id]) }}" class="btn btn-link"><i class="fa fa-arrow-up"></i></a>
+                      <a href="{{ route('admin_members_movedown', [$member->id]) }}" class="btn btn-link"><i class="fa fa-arrow-down"></i></a>
+                    </td>
                     <td>{{ link_to_route('members_show', $member->name, [$member->id]) }}<br /><span class="text-muted">{{ $member->bio }}</span></td>
                     <td>{{ $member->readable_role }}</td>
                     <td><a href="mailto:{{ $member->email }}">{{ $member->email }}</a></td>

@@ -19,6 +19,7 @@ class CreateDocumentsTable extends Migration {
 			$table->string('uri')->unique();
 			$table->string('title');
 			$table->text('content')->nullable();
+			$table->integer('position')->default(0);
 			$table->timestamps();
 		});
 

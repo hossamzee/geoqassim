@@ -23,6 +23,7 @@ class CreateMembersTable extends Migration {
       $table->string('email')->nullable();
 			$table->string('twitter_account')->nullable();
 			$table->string('linkedin_account')->nullable();
+			$table->integer('position')->default(0);
 			$table->timestamps();
 		});
 	}

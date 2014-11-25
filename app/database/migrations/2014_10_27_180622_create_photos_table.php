@@ -23,6 +23,7 @@ class CreatePhotosTable extends Migration {
 			$table->mediumText('description')->nullable();
 			$table->integer('views_count')->default(0);
 			$table->integer('likes_count')->default(0);
+			$table->integer('position')->default(0);
 			$table->timestamps();
 		});
 	}

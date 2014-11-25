@@ -18,6 +18,7 @@ class CreateSubscribersTable extends Migration {
 			$table->string('email')->unique();
 			$table->string('token')->unique();
 			$table->boolean('is_active')->default(true);
+			$table->integer('position')->default(0);
 			$table->timestamps();
 		});
 	}
