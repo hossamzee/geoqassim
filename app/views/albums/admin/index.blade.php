@@ -36,8 +36,8 @@ function confirm_delete(id)
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>م</th>
-                        <th class="col-md-6">العنوان (الوصف)</th>
+                        <th></th>
+                        <th class="col-md-5">العنوان (الوصف)</th>
                         <th>التاريخ</th>
                         <th>الصور</th>
                         <th>المشاهدات</th>
@@ -57,7 +57,10 @@ function confirm_delete(id)
 
             @foreach($albums as $album)
                 <tr>
-                    <td>{{ $album->id }}</td>
+                    <td>
+                      <a href="{{ route('admin_albums_moveup', [$album->id]) }}" class="btn btn-link"><i class="fa fa-arrow-up"></i></a>
+                      <a href="{{ route('admin_albums_movedown', [$album->id]) }}" class="btn btn-link"><i class="fa fa-arrow-down"></i></a>
+                    </td>
                     <td>{{ link_to_route('admin_photos_index', $album->title, [$album->id]) }}<br /><span class="text-muted">{{ $album->description }}</span></td>
                     <td>{{ $album->created_at }}</td>
                     <td>{{ count($album->photos) }}</td>

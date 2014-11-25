@@ -341,6 +341,16 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
         'uses' => 'AlbumsController@destroy'
     ]);
 
+    Route::get('albums/{id}/moveup', [
+        'as' => 'admin_albums_moveup',
+        'uses' => 'AlbumsController@moveUp'
+    ]);
+
+    Route::get('albums/{id}/movedown', [
+        'as' => 'admin_albums_movedown',
+        'uses' => 'AlbumsController@moveDown'
+    ]);
+
     /*
      * Photos.
      */
@@ -388,6 +398,16 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
     Route::get('photos/{id}/delete', [
         'as' => 'admin_photos_destroy',
         'uses' => 'PhotosController@destroy'
+    ]);
+
+    Route::get('photos/{id}/moveup', [
+        'as' => 'admin_photos_moveup',
+        'uses' => 'PhotosController@moveUp'
+    ]);
+
+    Route::get('photos/{id}/movedown', [
+        'as' => 'admin_photos_movedown',
+        'uses' => 'PhotosController@moveDown'
     ]);
 
     /*

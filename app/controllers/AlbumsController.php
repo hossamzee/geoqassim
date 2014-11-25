@@ -5,14 +5,14 @@ class AlbumsController extends \BaseController {
     public function index()
     {
         // Get the albums.
-        $albums = Album::orderBy('created_at', 'DESC')->with('photos')->get();
+        $albums = Album::orderBy('position', 'DESC')->with('photos')->get();
         return View::make('albums.index')->with('albums', $albums);
     }
 
     public function adminIndex()
     {
         return View::make('albums.admin.index')
-            ->with('albums', Album::orderBy('created_at', 'DESC')
+            ->with('albums', Album::orderBy('position', 'DESC')
             ->with('photos')->get());
     }
 
@@ -167,6 +167,46 @@ class AlbumsController extends \BaseController {
         }
 
         return Redirect::route('admin_albums_index')->with('warning_message', 'تمّ حذف الألبوم بنجاح.');
+    }
+
+    public function moveUp($id)
+    {
+        $album = Album::find($id);
+
+        if (!$album)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف ألبوم صحيح.');
+        }
+
+        // Check if the sorting/moving up process went okay.
+        $moved_album = $album->moveUp();
+
+        if (is_null($moved_album))
+        {
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك الألبوم للأعلى ربما لأنّه هو الأوّل.');
+        }
+
+        return Redirect::route('admin_albums_index')->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
+    }
+
+    public function moveDown($id)
+    {
+        $album = Album::find($id);
+
+        if (!$album)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف ألبوم صحيح.');
+        }
+
+        // Check if the sorting/moving down process went okay.
+        $moved_album = $album->moveDown();
+
+        if (is_null($moved_album))
+        {
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك الألبوم إلى الأسفل ربما لأنّه الأخير.');
+        }
+
+        return Redirect::route('admin_albums_index')->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
     }
 
 }
