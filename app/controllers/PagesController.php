@@ -9,8 +9,10 @@ class PagesController extends \BaseController {
         $last_news = News::orderBy('created_at', 'DESC')->limit(3)->get();
         $last_rummah = Rummah::orderBy('created_at', 'DESC')->first();
         $random_photo = Photo::orderBy(DB::raw('RAND()'))->first();
+        $about_snippet = Page::find(1)->snippet;
+        $wraj_snippet = Page::find(3)->snippet;
 
-        return View::make('pages.home')->with(compact('last_news', 'last_rummah', 'random_photo'));
+        return View::make('pages.home')->with(compact('last_news', 'last_rummah', 'random_photo', 'about_snippet', 'wraj_snippet'));
     }
 
     public function adminHome()

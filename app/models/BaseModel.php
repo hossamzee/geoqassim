@@ -4,6 +4,12 @@ class BaseModel extends Eloquent
 {
     protected $searchable = true;
 
+    public static $markdowns = [
+      '/= صورة وسطى ([^$\s\n]*)/' => '<center><img src="$1" class="img-responsive img-spacing" /></center>',
+      '/= صورة يمنى ([^$\s\n]*)/' => '<img src="$1" class="img-responsive pull-right img-spacing" />',
+      '/= صورة يسرى ([^$\s\n]*)/' => '<img src="$1" class="img-responsive pull-left img-spacing" />',
+    ];
+
     public static function boot()
     {
         Lang::setLocale('ar');
