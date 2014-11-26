@@ -18,6 +18,6 @@ class Album extends BaseModel
 
     public function getLastPhotoAttribute()
     {
-        return $this->photos()->orderBy('created_at', 'DESC')->first();
+        return $this->photos()->orderBy('position', 'DESC')->first();
     }
 }

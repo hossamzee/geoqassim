@@ -43,8 +43,8 @@ function confirm_delete(id)
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>م</th>
-                        <th class="col-md-6">الصورة</th>
+                        <th></th>
+                        <th class="col-md-5">الصورة</th>
                         <th>التاريخ</th>
                         <th>الصور</th>
                         <th>المشاهدات</th>
@@ -64,7 +64,10 @@ function confirm_delete(id)
 
             @foreach($photos as $photo)
                 <tr>
-                    <td>{{ $photo->id }}</td>
+                    <td>
+                      <a href="{{ route('admin_photos_moveup', [$photo->id]) }}" class="btn btn-link"><i class="fa fa-arrow-up"></i></a>
+                      <a href="{{ route('admin_photos_movedown', [$photo->id]) }}" class="btn btn-link"><i class="fa fa-arrow-down"></i></a>
+                    </td>
                     <td>
                       <div class="media">
                         <a class="pull-right" href="{{ route('photos_show', [$photo->album_id, $photo->id]) }}">

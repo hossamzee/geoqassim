@@ -23,11 +23,11 @@ class PhotosController extends \BaseController {
         // Get the chosen or the latest photo.
         if ($id == null)
         {
-            $photo = Photo::where('album_id', '=', $album->id)->orderBy('id', 'DESC')->first();
+            $photo = Photo::where('album_id', '=', $album->id)->orderBy('position', 'DESC')->first();
         }
         else
         {
-            $photo = Photo::where('album_id', '=', $album->id)->where('id', '=', $id)->orderBy('id', 'DESC')->first();
+            $photo = Photo::where('album_id', '=', $album->id)->where('id', '=', $id)->orderBy('position', 'DESC')->first();
         }
 
         if ($photo == null)
@@ -40,10 +40,10 @@ class PhotosController extends \BaseController {
         $photo->save();
 
         // Get the previous photos.
-        $previous_photos = Photo::where('album_id', '=', $album->id)->where('id', '<', $photo->id)->orderBy('id', 'DESC')->limit(Photo::PHOTOS_PER_PAGE/2)->get();
+        $previous_photos = Photo::where('album_id', '=', $album->id)->where('position', '<', $photo->position)->orderBy('position', 'DESC')->limit(Photo::PHOTOS_PER_PAGE/2)->get();
 
         // Get the next photos.
-        $next_photos = Photo::where('album_id', '=', $album->id)->where('id', '>', $photo->id)->orderBy('id', 'ASC')->limit(Photo::PHOTOS_PER_PAGE/2)->get();
+        $next_photos = Photo::where('album_id', '=', $album->id)->where('position', '>', $photo->position)->orderBy('position', 'ASC')->limit(Photo::PHOTOS_PER_PAGE/2)->get();
 
         // Set the related photos.
         $related_photos = $previous_photos->merge($next_photos);
@@ -66,7 +66,7 @@ class PhotosController extends \BaseController {
         }
 
         return View::make('photos.admin.index')
-            ->with('photos', Photo::where('album_id', '=', $album->id)->orderBy('created_at', 'DESC')->get())
+            ->with('photos', Photo::where('album_id', '=', $album->id)->orderBy('position', 'DESC')->get())
             ->with('album', $album);
     }
 
@@ -440,5 +440,45 @@ class PhotosController extends \BaseController {
             'url' => $large_photo_url,
         ], 200);
 
+    }
+
+    public function moveUp($id)
+    {
+        $photo = Photo::find($id);
+
+        if (!$photo)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صورة صحيح.');
+        }
+
+        // Check if the sorting/moving up process went okay.
+        $moved_photo = $photo->moveUp();
+
+        if (is_null($moved_photo))
+        {
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك الصورة للأعلى ربما لأنّه هو الأوّل.');
+        }
+
+        return Redirect::route('admin_photos_index', [$photo->album_id])->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
+    }
+
+    public function moveDown($id)
+    {
+        $photo = Photo::find($id);
+
+        if (!$photo)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف صورة صحيح.');
+        }
+
+        // Check if the sorting/moving down process went okay.
+        $moved_photo = $photo->moveDown();
+
+        if (is_null($moved_photo))
+        {
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك الصورة إلى الأسفل ربما لأنّه الأخير.');
+        }
+
+        return Redirect::route('admin_photos_index', [$photo->album_id])->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
     }
 }
