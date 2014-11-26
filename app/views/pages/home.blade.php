@@ -70,13 +70,21 @@
                           {{ link_to_route('news_show', $single_last_news->title, [$single_last_news->id]) }}
                         </h4>
 
+                        <div class="pull-right">
+                          @if ($single_last_news->main_photo)
+                            <img src="{{ $single_last_news->main_photo }}" class="img-thumbnail img-latest-news" />
+                          @else
+                            <img src="/assets/images/default-thumb.png" class="img-thumbnail img-latest-news" />
+                          @endif
+                        </div>
+
                         <p>
                           {{ $single_last_news->snippet }}
                         </p>
 
-                        <p>
-                          {{ link_to_route('news_show', 'المزيد', [$single_last_news->id], ['class' => 'btn btn-primary', 'role' => 'button']) }}
+                        <p class="text-left">
                           <a href="#" class="btn btn-link disabled"><i class="fa fa-calendar-o"></i> نشر {{ $single_last_news->readable_created_at }}</a>
+                          {{ link_to_route('news_show', 'المزيد', [$single_last_news->id], ['class' => 'btn btn-primary', 'role' => 'button']) }}
                         </p>
 
                     </div>
