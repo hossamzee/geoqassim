@@ -18,7 +18,9 @@ class News extends BaseModel
 
     public function getParsedContentAttribute()
     {
-        return preg_replace(array_keys(self::$markdowns), array_values(self::$markdowns), $this->content);
+        $content = preg_replace(array_keys(self::$markdowns), array_values(self::$markdowns), $this->content);
+        $content = preg_replace('/(\\r\\n)+</', "\r\n<", $content);
+        return $content;
     }
 
     public function getMainPhotoAttribute()

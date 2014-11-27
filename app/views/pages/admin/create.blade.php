@@ -3,37 +3,6 @@
 @section('title', 'إضافة صفحة')
 @section('content')
 
-<script type="text/javascript">
-
-$(function(){
-
-  $("textarea").keydown(function(e) {
-
-      if(e.keyCode === 9) { // tab was pressed
-          // get caret position/selection
-          var start = this.selectionStart;
-          var end = this.selectionEnd;
-
-          var $this = $(this);
-          var value = $this.val();
-
-          // set textarea value to: text before caret + tab + text after caret
-          $this.val(value.substring(0, start)
-                      + "\t"
-                      + value.substring(end));
-
-          // put caret at right position again (add one for the tab)
-          this.se lectionStart = this.selectionEnd = start + 1;
-
-          // prevent the focus lose
-          e.preventDefault();
-      }
-  });
-
-});
-
-</script>
-
 <!-- Add page -->
 <div class="container">
     <div class="row">
@@ -44,20 +13,43 @@ $(function(){
         </div>
     </div>
 
+    <script type="text/javascript">
+
+        function afterSuccess(response)
+        {
+            // Get the URL.
+            var url = response.url;
+
+            $('#progress').removeClass('active');
+            $('#progress').addClass('progress-bar-success');
+            $('#upload-status-div').html('<div>تم رفع الصورة بنجاح و إدراج رابط الصورة في المحتوى.</div><br /><div><a class="btn btn-default" target="_blank" href="' + url + '">فتح الصورة في لسان جديد</a> <a class="btn btn-default" href="#" onclick="resetUpload()">رفع صورة أخرى</a></div>');
+
+            // Set the value of the field.
+            $('#content').val($('#content').val() + '= صورة وسطى ' + url);
+        }
+
+    </script>
+
+    @include('layouts.partials.admin.photos.upload')
+
     <div class="row">
         <div class="col-md-12">
             {{ Form::open(['route' => 'admin_pages_store']) }}
                 <div class="row">
+
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('title', 'العنوان') }}
                             {{ Form::text('title', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
+
+                    @include('layouts.partials.admin.markdowns')
+
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('content', 'المحتوى') }}
-                            {{ Form::textarea('content', null, ['class' => 'form-control']) }}
+                            {{ Form::textarea('content', null, ['class' => 'form-control', 'id' => 'content']) }}
                         </div>
                     </div>
                     <div class="col-md-12 text-right">

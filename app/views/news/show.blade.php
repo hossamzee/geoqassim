@@ -21,7 +21,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 lead">
-            {{ nl2br($news->parsedContent) }}
+            {{ nl2br($news->parsed_content) }}
         </div>
     </div>
 </div><!-- Single news end-->

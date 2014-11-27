@@ -8,6 +8,7 @@ class BaseModel extends Eloquent
       '/= صورة وسطى ([^$\s\n]*)/' => '<center><img src="$1" class="img-responsive img-spacing" /></center>',
       '/= صورة يمنى ([^$\s\n]*)/' => '<img src="$1" class="img-responsive pull-right img-spacing" />',
       '/= صورة يسرى ([^$\s\n]*)/' => '<img src="$1" class="img-responsive pull-left img-spacing" />',
+      '/= رابط \((.*)\) \((.*)\)/' => '<a href="$2">$1</a>',
     ];
 
     public static function boot()

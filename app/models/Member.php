@@ -40,7 +40,6 @@ class Member extends BaseModel
         $cv = $this->cv;
 
         // Try to get the lists out of the cv.
-        //preg_match_all('/\= ([^\\n]*)\\n([^=]*)/is', $cv, $matches);
         preg_match_all('/\= ([^\\n]*)\\n(.*?(?=\= |$))/is', $cv, $matches);
 
         $headings = $matches[1];
