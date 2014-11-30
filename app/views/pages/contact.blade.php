@@ -60,7 +60,7 @@
                 <li><i class="ion-home"></i> المملكة العربية السعودية، بريدة.</li>
                 <li><i class="ion-ios7-mobile"></i> <strong>الجوّال:</strong> +911234567890</li>
                 <li><i class="ion-ios7-telephone"></i> <strong>الهاتف:</strong> +911234567890</li>
-                <li><i class="ion-ios7-email"></i> <strong>البريد الإلكتروني:</strong> mail@domain.com</li>
+                <li><i class="ion-ios7-email"></i> <strong>البريد الإلكتروني:</strong> {{ $mail_address }}</li>
             </ul>
         </div>
     </div>

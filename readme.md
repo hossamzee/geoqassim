@@ -11,6 +11,7 @@ composer install --env=production
 php artisan key:generate
 php artisan migrate --force --env=production
 php artisan db:seed --env=production
+php artisan versioning:update `git describe --tags`
 
 ## TODO - Minor Changes
 

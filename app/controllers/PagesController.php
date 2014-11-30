@@ -45,7 +45,8 @@ class PagesController extends \BaseController {
 
     public function getContact()
     {
-        return View::make('pages.contact');
+        $mail_address = Config::get('mail.from.address');
+        return View::make('pages.contact')->with('mail_address', $mail_address);
     }
 
     public function postContact()
