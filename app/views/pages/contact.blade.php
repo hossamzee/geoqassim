@@ -58,8 +58,8 @@
             </p>
             <ul class="list-unstyled contact-list margin-btm20">
                 <li><i class="ion-home"></i> المملكة العربية السعودية، بريدة.</li>
-                <li><i class="ion-ios7-mobile"></i> <strong>الجوّال:</strong> +911234567890</li>
-                <li><i class="ion-ios7-telephone"></i> <strong>الهاتف:</strong> +911234567890</li>
+                <li><i class="ion-ios7-mobile"></i> <strong>الجوّال:</strong> +966505130320</li>
+                <!--<li><i class="ion-ios7-telephone"></i> <strong>الهاتف:</strong> +911234567890</li>-->
                 <li><i class="ion-ios7-email"></i> <strong>البريد الإلكتروني:</strong> {{ $mail_address }}</li>
             </ul>
         </div>
