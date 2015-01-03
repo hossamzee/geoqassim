@@ -18,10 +18,10 @@
 
                         $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=26.33&lon=43.97&units=metric', function(data){
 
-                            $('#weather-temp').html(data.main.temp + '°م');
-                            $('#weather-pressure').html(data.main.pressure + 'م');
-                            $('#weather-humidity').html(data.main.humidity + '%');
-                            $('#weather-wind').html(data.wind.speed + 'كم، ' + data.wind.deg + '°');
+                            $('#weather-temp').html(Math.round(data.main.temp) + '°م');
+                            $('#weather-pressure').html(Math.round(data.main.pressure) + 'م');
+                            $('#weather-humidity').html(Math.round(data.main.humidity) + '%');
+                            $('#weather-wind').html(Math.round(data.wind.speed) + 'كم، ' + Math.round(data.wind.deg) + '°');
 
                             // Show the icons and hide the waiting link.
                             $('.not-ready-link').show();
