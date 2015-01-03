@@ -25,10 +25,10 @@ class PagesTableSeeder extends Seeder {
 
         // WRAJ.
         // 3.
-        Page::create([
-          'slug' => 'wraj',
-          'title' => 'WRAJ',
-        ]);
+        // Page::create([
+        //   'slug' => 'wraj',
+        //   'title' => 'WRAJ',
+        // ]);
 
         // Services.
         // 4

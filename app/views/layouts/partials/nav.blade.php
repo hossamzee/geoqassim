@@ -18,7 +18,6 @@
                 <li>{{ link_to_route('news_index', 'الأخبار') }}</li>
                 <li>{{ link_to_route('pages_show', 'الماجستير', ['2']) }}</li>
                 <li>{{ link_to_route('rummahs_index', 'الرمّة') }}</li>
-                <li>{{ link_to_route('pages_show', 'وراج', ['3']) }}</li>
                 <li>{{ link_to_route('albums_index', 'الصور') }}</li>
                 <li>{{ link_to_route('videos_index', 'الفيديو') }}</li>
                 <li>{{ link_to_route('pages_show', 'الخرائط', ['5']) }}</li>
