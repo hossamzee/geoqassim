@@ -20,9 +20,10 @@
                 <li>{{ link_to_route('admin_albums_index', 'الصور') }}</li>
                 <li>{{ link_to_route('admin_videos_index', 'الفيديو') }}</li>
                 <li>{{ link_to_route('admin_rummahs_index', 'الرمّة') }}</li>
-                <li>{{ link_to_route('admin_newsletters_index', 'القائمة البريديّة') }}</li>
+                <!--<li>{{ link_to_route('admin_newsletters_index', 'القائمة البريديّة') }}</li>-->
+                <li>{{ link_to_route('admin_researches_index', 'الأبحاث و الدراسات') }}</li>
                 <li>{{ link_to_route('admin_users_index', 'المستخدمون') }}</li>
-                <li>{{ link_to_route('admin_users_logout', 'تسجيل الخروج') }}</li>
+                <li><a href="{{ route('admin_users_logout') }}"><i class="fa fa-sign-out"></i></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-->

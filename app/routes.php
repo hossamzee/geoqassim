@@ -145,6 +145,25 @@ Route::get('rummahs/{id}/like', [
 ]);
 
 /*
+ * Researches (and studies).
+ */
+
+Route::get('researches', [
+    'as' => 'researches_index',
+    'uses' => 'ResearchesController@index'
+]);
+
+Route::get('researches/{id}', [
+    'as' => 'researches_show',
+    'uses' => 'ResearchesController@show'
+]);
+
+Route::get('researches/{id}/like', [
+    'as' => 'researches_like',
+    'uses' => 'ResearchesController@like'
+]);
+
+/*
  * Users
  */
 
@@ -491,6 +510,45 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
     Route::get('rummahs/{id}/delete', [
         'as' => 'admin_rummahs_destroy',
         'uses' => 'RummahsController@destroy'
+    ]);
+
+    /*
+     * Researches.
+     */
+
+    Route::get('researches', [
+        'as' => 'admin_researches_index',
+        'uses' => 'ResearchesController@adminIndex'
+    ]);
+
+    Route::get('researches/create', [
+        'as' => 'admin_researches_create',
+        'uses' => 'ResearchesController@create'
+    ]);
+
+    Route::post('researches/create', [
+        'as' => 'admin_researches_store',
+        'uses' => 'ResearchesController@store'
+    ]);
+
+    Route::post('researches/upload', [
+        'as' => 'admin_researches_upload',
+        'uses' => 'ResearchesController@upload'
+    ]);
+
+    Route::get('researches/{id}/edit', [
+        'as' => 'admin_researches_edit',
+        'uses' => 'ResearchesController@edit'
+    ]);
+
+    Route::post('researches/{id}/edit', [
+        'as' => 'admin_researches_update',
+        'uses' => 'ResearchesController@update'
+    ]);
+
+    Route::get('researches/{id}/delete', [
+        'as' => 'admin_researches_destroy',
+        'uses' => 'ResearchesController@destroy'
     ]);
 
     /*

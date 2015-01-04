@@ -100,7 +100,7 @@
             </p>
         </div>
         @endif
-        <div class="col-md-3">
+        <!--<div class="col-md-3">
             <h3>القائمة البريديّة <small>({{ $subscribers_count }})</small></h3>
             <p>
                 إرسال رسائل إلى القائمة البريديّة، مع إمكانيّة معرفة حالة قراءة الرسالة من عدمها، و غيرها.
@@ -108,6 +108,16 @@
             <p>
                 {{ link_to_route('admin_newsletters_index', 'عرض المشتركين', null, ['class' => 'btn btn-default']) }}
                 <a href="#" class="btn btn-primary disabled">إرسال رسالة</a>
+            </p>
+        </div>-->
+        <div class="col-md-3">
+            <h3>الداراسات و الأبحاث <small>({{ $researches_count }})</small></h3>
+            <p>
+                إدارة الدراسات و الأبحاث من خلال الإضافة أو التعديل أو الحذف، يتطلب الأمر رفع الدراسة و البحث (PDF) سابقاً تفاديّاً لمشاكل التأخير بالنسبة للملفات ذات الأحجام الكبيرة.
+            </p>
+            <p>
+                {{ link_to_route('admin_researches_index', 'عرض', null, ['class' => 'btn btn-default']) }}
+                {{ link_to_route('admin_researches_create', 'إضافة', null, ['class' => 'btn btn-primary']) }}
             </p>
         </div>
 
