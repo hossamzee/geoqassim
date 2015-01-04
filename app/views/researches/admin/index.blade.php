@@ -36,7 +36,7 @@ function confirm_delete(id)
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>م</th>
+                        <th></th>
                         <th class="col-md-6">العنوان (المؤلف)</th>
                         <th>التاريخ</th>
                         <th>القراءات</th>
@@ -56,7 +56,10 @@ function confirm_delete(id)
 
             @foreach($researches as $research)
                 <tr>
-                    <td>{{ $research->id }}</td>
+                    <td>
+                      <a href="{{ route('admin_researches_moveup', [$research->id]) }}" class="btn btn-link"><i class="fa fa-arrow-up"></i></a>
+                      <a href="{{ route('admin_researches_movedown', [$research->id]) }}" class="btn btn-link"><i class="fa fa-arrow-down"></i></a>
+                    </td>
                     <td>{{ link_to_route('researches_show', $research->title, [$research->id]) }}<br /><span class="text-muted">{{ $research->author }}</span></td>
                     <td>{{ $research->created_at }}</td>
                     <td>{{ $research->views_count }}</td>

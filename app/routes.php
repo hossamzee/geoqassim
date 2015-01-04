@@ -551,6 +551,16 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
         'uses' => 'ResearchesController@destroy'
     ]);
 
+    Route::get('researches/{id}/moveup', [
+        'as' => 'admin_researches_moveup',
+        'uses' => 'ResearchesController@moveUp'
+    ]);
+
+    Route::get('researches/{id}/movedown', [
+        'as' => 'admin_researches_movedown',
+        'uses' => 'ResearchesController@moveDown'
+    ]);
+
     /*
      * Users.
      */

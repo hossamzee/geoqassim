@@ -235,4 +235,44 @@ class ResearchesController extends \BaseController {
         return Redirect::route('admin_researches_index')->with('warning_message', 'تمّ حذف البحث و الدراسة بنجاح.');
     }
 
+    public function moveUp($id)
+    {
+        $research = Research::find($id);
+
+        if (!$research)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف بحث و دراسة صحيح.');
+        }
+
+        // Check if the sorting/moving up process went okay.
+        $moved_research = $research->moveUp();
+
+        if (is_null($moved_research))
+        {
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك البحث و الدراسة للأعلى ربما لأنّها هي الأوّل.');
+        }
+
+        return Redirect::route('admin_researches_index')->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
+    }
+
+    public function moveDown($id)
+    {
+        $research = Research::find($id);
+
+        if (!$research)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف بحث و دراسة صحيح.');
+        }
+
+        // Check if the sorting/moving down process went okay.
+        $moved_research = $research->moveDown();
+
+        if (is_null($moved_research))
+        {
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك البحث و الدراسة إلى الأسفل ربما لأنّها الأخيرة.');
+        }
+
+        return Redirect::route('admin_researches_index')->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
+    }
+
 }
