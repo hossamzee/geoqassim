@@ -5,14 +5,14 @@ class ResearchesController extends \BaseController {
     public function index()
     {
         // Get the researches.
-        $researches = Research::all();
+        $researches = Research::orderBy('position', 'DESC')->get();
         return View::make('researches.index')->with('researches', $researches);
     }
 
     public function adminIndex()
     {
         return View::make('researches.admin.index')
-            ->with('researches', Research::orderBy('created_at', 'DESC')->get());
+            ->with('researches', Research::orderBy('position', 'DESC')->get());
     }
 
     public function create()
