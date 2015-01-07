@@ -145,17 +145,32 @@ Route::get('rummahs/{id}/like', [
 ]);
 
 /*
- * Researches (and studies).
+ * Categories & Researches (and studies).
  */
 
-Route::get('researches', [
+Route::get('categories', [
+    'as' => 'categories_index',
+    'uses' => 'CategoriesController@index'
+]);
+
+Route::get('categories/{id}/researches', [
     'as' => 'researches_index',
     'uses' => 'ResearchesController@index'
 ]);
 
-Route::get('researches/{id}', [
+Route::get('categories/{category_id}/researches/{id}', [
     'as' => 'researches_show',
     'uses' => 'ResearchesController@show'
+]);
+
+Route::get('categories/{category_id}/researches/{id}', [
+    'as' => 'researches_show',
+    'uses' => 'ResearchesController@show'
+]);
+
+Route::get('categories/{id}/like', [
+    'as' => 'categories_like',
+    'uses' => 'CategoriesController@like'
 ]);
 
 Route::get('researches/{id}/like', [
@@ -513,15 +528,59 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
     ]);
 
     /*
+     * Categories.
+     */
+
+    Route::get('categories', [
+        'as' => 'admin_categories_index',
+        'uses' => 'CategoriesController@adminIndex'
+    ]);
+
+    Route::get('categories/create', [
+        'as' => 'admin_categories_create',
+        'uses' => 'CategoriesController@create'
+    ]);
+
+    Route::post('categories/create', [
+        'as' => 'admin_categories_store',
+        'uses' => 'CategoriesController@store'
+    ]);
+
+    Route::get('categories/{id}/edit', [
+        'as' => 'admin_categories_edit',
+        'uses' => 'CategoriesController@edit'
+    ]);
+
+    Route::post('categories/{id}/edit', [
+        'as' => 'admin_categories_update',
+        'uses' => 'CategoriesController@update'
+    ]);
+
+    Route::get('categories/{id}/delete', [
+        'as' => 'admin_categories_destroy',
+        'uses' => 'CategoriesController@destroy'
+    ]);
+
+    Route::get('categories/{id}/moveup', [
+        'as' => 'admin_categories_moveup',
+        'uses' => 'CategoriesController@moveUp'
+    ]);
+
+    Route::get('categories/{id}/movedown', [
+        'as' => 'admin_categories_movedown',
+        'uses' => 'CategoriesController@moveDown'
+    ]);
+
+    /*
      * Researches.
      */
 
-    Route::get('researches', [
+    Route::get('categories/{id}/researches', [
         'as' => 'admin_researches_index',
         'uses' => 'ResearchesController@adminIndex'
     ]);
 
-    Route::get('researches/create', [
+    Route::get('categories/{id}/researches/create', [
         'as' => 'admin_researches_create',
         'uses' => 'ResearchesController@create'
     ]);

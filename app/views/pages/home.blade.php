@@ -94,7 +94,7 @@
             </div>
             <div class="col-md-6">
                 @if ($random_photo)
-                  <a href="{{ route('photos_show', [$random_photo->album_id, $random_photo->id]) }}"><img src="{{ $random_photo->large_url }}" class="img-responsive img-featured" /></a>
+                  <a href="{{ route('photos_show', [$random_photo->album_id, $random_photo->id]) }}"><img src="{{ $random_photo->thumb_url }}" class="img-responsive img-featured" /></a>
                 @endif
             </div>
         </div>

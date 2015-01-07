@@ -2,39 +2,83 @@
 
 class ResearchesController extends \BaseController {
 
-    public function index()
+    public function index($category_id)
     {
+        // Check if the category does exist.
+        $category = Category::find($category_id);
+
+        if (!$category)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكّد من طلب معرّف تصنيف أبحاث و دراسات صحيح.');
+        }
+
+        $category->views_count++;
+        $category->save();
+
         // Get the researches.
-        $researches = Research::orderBy('position', 'DESC')->get();
-        return View::make('researches.index')->with('researches', $researches);
+        $researches = Research::where('category_id', '=', $category->id)->orderBy('position', 'DESC')->get();
+
+        return View::make('researches.index')->with(compact('category', 'researches'));
     }
 
-    public function adminIndex()
+    public function adminIndex($category_id)
     {
-        return View::make('researches.admin.index')
-            ->with('researches', Research::orderBy('position', 'DESC')->get());
+        // Check if the category does exist.
+        $category = Category::find($category_id);
+
+        if (!$category)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكّد من طلب معرّف تصنيف أبحاث و دراسات صحيح.');
+        }
+
+        $researches = Research::where('category_id', '=', $category->id)->orderBy('position', 'DESC')->get();
+
+        return View::make('researches.admin.index')->with(compact('category', 'researches'));
     }
 
-    public function create()
+    public function create($category_id)
     {
+        // Check if the category does exist.
+        $category = Category::find($category_id);
+
+        if (!$category)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكّد من طلب معرّف تصنيف أبحاث و دراسات صحيح.');
+        }
+
+        $categories = [];
+
+        foreach (Category::all() as $one_category)
+        {
+            $categories[$one_category->id] = $one_category->title;
+        }
+
+        // For uploading purposes.
         $token = Session::token();
-        return View::make('researches.admin.create')->with('token', $token);
+
+        return View::make('researches.admin.create')->with(compact('category', 'categories', 'token'));
     }
 
     public function store()
     {
         // Validate and all.
         $title = Input::get('title');
+        $category_id = Input::get('category_id');
         $author = Input::get('author');
+        $publish_year = Input::get('publish_year');
         $url = Input::get('url');
 
         $validator = Validator::make([
+            'category_id' => $category_id,
             'title' => $title,
             'author' => $author,
+            'publish_year' => $publish_year,
             'url' => $url,
         ], [
+            'category_id' => 'required',
             'title' => 'required',
             'author' => 'required',
+            'publish_year' => 'required|numeric',
             'url' => 'required|url',
         ]);
 
@@ -49,8 +93,10 @@ class ResearchesController extends \BaseController {
         {
             // After everything, save the research into the database.
             $research = new Research();
+            $research->category_id = $category_id;
             $research->title = $title;
             $research->author = $author;
+            $research->publish_year = $publish_year;
             $research->url = $url;
 
             $research->save();
@@ -58,11 +104,12 @@ class ResearchesController extends \BaseController {
         catch (Exception $exception)
         {
             // Log about the error.
-            Log::error($exception);
+            //Log::error($exception);
+            dd($exception);
             return Redirect::home()->with('error_message', 'يبدو أنّه هناك خطأ في الخادم.');
         }
 
-        return Redirect::route("admin_researches_index")->with('success_message', 'تمّ إضافة البحث و الدراسة بنجاح.');
+        return Redirect::route("admin_researches_index", [$category_id])->with('success_message', 'تمّ إضافة البحث و الدراسة بنجاح.');
     }
 
     public function upload()
@@ -108,8 +155,20 @@ class ResearchesController extends \BaseController {
         ], 200);
     }
 
-    public function show($id)
+    public function show($category_id, $id)
     {
+        // Check if the category does exist.
+        $category = Category::find($category_id);
+
+        if (!$category)
+        {
+            return Redirect::home()->with('error_message', 'الرجاء التأكّد من طلب معرّف تصنيف أبحاث و دراسات صحيح.');
+        }
+
+        $category->views_count++;
+        $category->save();
+
+        // Check if the research does exist.
         $research = Research::find($id);
 
         if (!$research)
@@ -139,7 +198,7 @@ class ResearchesController extends \BaseController {
 
         if ($researches_like)
         {
-            return Redirect::route('researches_index')->with('error_message', 'لقد أبديت إعجابك مسبقاً بهذا البحث و الدراسة.');
+            return Redirect::route('researches_index', [$research->category_id])->with('error_message', 'لقد أبديت إعجابك مسبقاً بهذا البحث و الدراسة.');
         }
 
         // Make it forever.
@@ -148,11 +207,18 @@ class ResearchesController extends \BaseController {
         $research->likes_count++;
         $research->save();
 
-        return Redirect::route('researches_index')->with('success_message', 'تمّ تسجيل إعجابك بالبحث و الدراسة بنجاح.')->withCookie($cookie);
+        return Redirect::route('researches_index', [$research->category_id])->with('success_message', 'تمّ تسجيل إعجابك بالبحث و الدراسة بنجاح.')->withCookie($cookie);
     }
 
     public function edit($id)
     {
+        $categories = [];
+
+        foreach (Category::all() as $one_category)
+        {
+            $categories[$one_category->id] = $one_category->title;
+        }
+
         $research = Research::find($id);
 
         if (!$research)
@@ -160,7 +226,7 @@ class ResearchesController extends \BaseController {
             return Redirect::home()->with('error_message', 'الرجاء التأكد من طلب معرّف بحث و دراسة صحيح.');
         }
 
-        return View::make('researches.admin.edit')->with('research', $research);
+        return View::make('researches.admin.edit')->with(compact('categories', 'research'));
     }
 
     public function update($id)
@@ -174,16 +240,22 @@ class ResearchesController extends \BaseController {
 
         // Validate and all.
         $title = Input::get('title');
+        $category_id = Input::get('category_id');
         $author = Input::get('author');
+        $publish_year = Input::get('publish_year');
         $url = Input::get('url');
 
         $validator = Validator::make([
+            'category_id' => $category_id,
             'title' => $title,
             'author' => $author,
+            'publish_year' => $publish_year,
             'url' => $url,
         ], [
+            'category_id' => 'required',
             'title' => 'required',
             'author' => 'required',
+            'publish_year' => 'required|numeric',
             'url' => 'required|url',
         ]);
 
@@ -196,8 +268,10 @@ class ResearchesController extends \BaseController {
         // Update the current research.
         try
         {
+            $research->category_id = $category_id;
             $research->title = $title;
             $research->author = $author;
+            $research->publish_year = $publish_year;
             $research->url = $url;
             $research->save();
         }
@@ -208,7 +282,7 @@ class ResearchesController extends \BaseController {
             return Redirect::home()->with('error_message', 'يبدو أنّه هناك خطأ في الخادم.');
         }
 
-        return Redirect::route('admin_researches_index')->with('success_message', 'تمّ تحديث البحث و الدراسة بنجاح.');
+        return Redirect::route('admin_researches_index', [$research->category_id])->with('success_message', 'تمّ تحديث البحث و الدراسة بنجاح.');
     }
 
     public function destroy($id)
@@ -232,7 +306,7 @@ class ResearchesController extends \BaseController {
             return Redirect::home()->with('error_message', 'يبدو أنّه هناك خطأ في الخادم.');
         }
 
-        return Redirect::route('admin_researches_index')->with('warning_message', 'تمّ حذف البحث و الدراسة بنجاح.');
+        return Redirect::route('admin_researches_index', [$research->category_id])->with('warning_message', 'تمّ حذف البحث و الدراسة بنجاح.');
     }
 
     public function moveUp($id)
@@ -249,10 +323,10 @@ class ResearchesController extends \BaseController {
 
         if (is_null($moved_research))
         {
-            return Redirect::back()->with('error_message', 'لا يمكن تحريك البحث و الدراسة للأعلى ربما لأنّها هي الأوّل.');
+            return Redirect::back()->with('error_message', 'لا يمكن تحريك البحث و الدراسة للأعلى ربما لأنّها هي الأوّلى.');
         }
 
-        return Redirect::route('admin_researches_index')->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
+        return Redirect::route('admin_researches_index', [$research->category_id])->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
     }
 
     public function moveDown($id)
@@ -272,7 +346,7 @@ class ResearchesController extends \BaseController {
             return Redirect::back()->with('error_message', 'لا يمكن تحريك البحث و الدراسة إلى الأسفل ربما لأنّها الأخيرة.');
         }
 
-        return Redirect::route('admin_researches_index')->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
+        return Redirect::route('admin_researches_index', [$research->category_id])->with('success_message', 'تمّ إعادة الترتيب بنجاح.');
     }
 
 }

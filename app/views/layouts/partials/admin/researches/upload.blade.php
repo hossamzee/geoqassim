@@ -45,7 +45,7 @@
     //
     //     $('#progress').removeClass('active');
     //     $('#progress').addClass('progress-bar-success');
-    //     $('#upload-div').html('تم رفع البحث و دراسة بنجاح و إدراج رابط النشرة في الأسفل.<br /><a target="_blank" href="' + url + '" class="btn btn-link">' + url + '</a>');
+    //     $('#upload-div').html('تم رفعالبحث و الدراسة بنجاح و إدراج رابط النشرة في الأسفل.<br /><a target="_blank" href="' + url + '" class="btn btn-link">' + url + '</a>');
     //
     //     // Set the value of the field.
     //     $('#url').val(url);

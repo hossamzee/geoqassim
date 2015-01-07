@@ -22,7 +22,7 @@
 
             $('#progress').removeClass('active');
             $('#progress').addClass('progress-bar-success');
-            $('#upload-status-div').html('<div>تم رفع البحث و الدراسة بنجاح و إدراج رابط البحث و دراسة في الأسفل.</div><br /><div><a class="btn btn-default" target="_blank" href="' + url + '">فتح البحث و دراسة في لسان جديد</a> <a class="btn btn-default" href="#" onclick="resetUpload()">رفع بحث و دراسة أخرى</a></div>');
+            $('#upload-status-div').html('<div>تم رفع البحث و الدراسة بنجاح و إدراج رابط البحث و الدراسة في الأسفل.</div><br /><div><a class="btn btn-default" target="_blank" href="' + url + '">فتح البحث و الدراسة في لسان جديد</a> <a class="btn btn-default" href="#" onclick="resetUpload()">رفع بحث و دراسة أخرى</a></div>');
 
             // Set the value of the field.
             $('#url').val(url);
@@ -36,24 +36,36 @@
         <div class="col-md-12">
             {{ Form::open(['route' => ['admin_researches_update', $research->id], 'files' => true]) }}
               <div class="row">
-                  <div class="col-sm-8">
+                  <div class="col-md-6">
                       <div class="form-group">
                           {{ Form::label('title', 'العنوان') }}
                           {{ Form::text('title', $research->title, ['class' => 'form-control']) }}
                       </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-md-2">
+                        <div class="form-group">
+                            {{ Form::label('publish_year', 'سنة النشر') }}
+                            {{ Form::text('publish_year', $research->publish_year, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                  <div class="col-md-4">
                       <div class="form-group">
                           {{ Form::label('author', 'المؤلف') }}
                           {{ Form::text('author', $research->author, ['class' => 'form-control']) }}
                       </div>
                   </div>
-                  <div class="col-md-12">
+                  <div class="col-md-8">
                       <div class="form-group">
                           {{ Form::label('url', 'رابط البحث و الدراسة (PDF)'); }}
                           {{ Form::text('url', $research->url, ['class' => 'form-control', 'id' => 'url']) }}
                       </div>
                   </div>
+                  <div class="col-md-4">
+                        <div class="form-group">
+                            {{ Form::label('category_id', 'التصنيف') }}
+                            {{ Form::select('category_id', $categories, $research->category_id, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
                   <div class="col-md-12 text-right">
                       {{ Form::submit('تعديل البحث و الدراسة', ['class' => 'btn btn-primary btn-lg']) }}
                   </div>

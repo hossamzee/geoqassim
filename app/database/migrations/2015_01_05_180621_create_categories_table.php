@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateResearchesTable extends Migration {
+class CreateCategoriesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,11 @@ class CreateResearchesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('researches', function(Blueprint $table)
+		Schema::create('categories', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('category_id');
 			$table->string('slug')->nullable();
 			$table->string('title');
-			$table->string('author')->nullable();
-			$table->integer('publish_year')->nullable();
-			$table->string('url');
 			$table->integer('views_count')->default(0);
 			$table->integer('likes_count')->default(0);
 			$table->integer('position')->default(0);
@@ -36,7 +32,7 @@ class CreateResearchesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('researches');
+		Schema::drop('categories');
 	}
 
 }

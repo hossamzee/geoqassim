@@ -1,6 +1,6 @@
 @extends('layouts.admin.default')
 
-@section('title', 'الأبحاث و الدراسات')
+@section('title', 'الأبحاث و الدراسات - ' . $category->title)
 @section('content')
 
 <!-- TODO: Show alert to check if the user is sure to delete the researches. -->
@@ -27,7 +27,9 @@ function confirm_delete(id)
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <h3>البحث و الدراسة {{ link_to_route('admin_researches_create', 'إضافة', null, ['class' => 'btn btn-primary pull-left']) }}</h3>
+                <h3>
+                    {{ link_to_route('admin_categories_index', 'تصنيفات الأبحاث و الدراسات') }} - {{ $category->title }}
+                    {{ link_to_route('admin_researches_create', 'إضافة', [$category->id], ['class' => 'btn btn-primary pull-left']) }}</h3>
             </div>
         </div>
     </div>
@@ -60,7 +62,7 @@ function confirm_delete(id)
                       <a href="{{ route('admin_researches_moveup', [$research->id]) }}" class="btn btn-link"><i class="fa fa-arrow-up"></i></a>
                       <a href="{{ route('admin_researches_movedown', [$research->id]) }}" class="btn btn-link"><i class="fa fa-arrow-down"></i></a>
                     </td>
-                    <td>{{ link_to_route('researches_show', $research->title, [$research->id]) }}<br /><span class="text-muted">{{ $research->author }}</span></td>
+                    <td>{{ link_to_route('researches_show', $research->title, [$research->category_id, $research->id]) }}<br /><span class="text-muted">{{ $research->author }}</span></td>
                     <td>{{ $research->created_at }}</td>
                     <td>{{ $research->views_count }}</td>
                     <td>{{ $research->likes_count }}</td>
