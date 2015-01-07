@@ -44,6 +44,7 @@ class BaseModel extends Eloquent
             {
                 // Update the document to be used for searching.
                 $affected_rows = Document::where('uri', '=', $model->getSearchableUri())->update([
+                    'uri' => $model->getSearchableUri(),
                     'title' => Document::sanitize($model->getSearchableTitle()),
                     'content' => Document::sanitize($model->getSearchableContent()),
                 ]);
