@@ -116,8 +116,8 @@
                 إدارة الدراسات و الأبحاث من خلال الإضافة أو التعديل أو الحذف، يتطلب الأمر رفع الدراسة و البحث (PDF) سابقاً تفاديّاً لمشاكل التأخير بالنسبة للملفات ذات الأحجام الكبيرة.
             </p>
             <p>
-                {{ link_to_route('admin_researches_index', 'عرض', null, ['class' => 'btn btn-default']) }}
-                {{ link_to_route('admin_researches_create', 'إضافة', null, ['class' => 'btn btn-primary']) }}
+                {{ link_to_route('admin_categories_index', 'عرض', null, ['class' => 'btn btn-default']) }}
+                {{ link_to_route('admin_categories_create', 'إضافة', null, ['class' => 'btn btn-primary']) }}
             </p>
         </div>
 
