@@ -120,6 +120,22 @@
                 {{ link_to_route('admin_categories_create', 'إضافة', null, ['class' => 'btn btn-primary']) }}
             </p>
         </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <h3>الإعلانات <small>({{ $ads_count }})</small></h3>
+            <p>
+                إدارة الإعلانات من خلال الإضافة أو التعديل أو الحذف.
+            </p>
+            <p>
+                {{ link_to_route('admin_ads_index', 'عرض', null, ['class' => 'btn btn-default']) }}
+                {{ link_to_route('admin_ads_create', 'إضافة', null, ['class' => 'btn btn-primary']) }}
+            </p>
+        </div>
 
     </div>
 

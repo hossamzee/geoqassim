@@ -31,6 +31,25 @@ Route::get('news/{id}/like', [
 ]);
 
 /*
+ * Ads.
+ */
+
+Route::get('ads', [
+    'as' => 'ads_index',
+    'uses' => 'AdsController@index'
+]);
+
+Route::get('ads/{id}', [
+    'as' => 'ads_show',
+    'uses' => 'AdsController@show'
+]);
+
+Route::get('ads/{id}/like', [
+    'as' => 'ads_like',
+    'uses' => 'AdsController@like'
+]);
+
+/*
  * Pages.
  */
 
@@ -256,6 +275,40 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
     Route::get('news/{id}/delete', [
         'as' => 'admin_news_destroy',
         'uses' => 'NewsController@destroy'
+    ]);
+
+    /*
+     * Ads.
+     */
+
+    Route::get('ads', [
+        'as' => 'admin_ads_index',
+        'uses' => 'AdsController@adminIndex'
+    ]);
+
+    Route::get('ads/create', [
+        'as' => 'admin_ads_create',
+        'uses' => 'AdsController@create'
+    ]);
+
+    Route::post('ads/create', [
+        'as' => 'admin_ads_store',
+        'uses' => 'AdsController@store'
+    ]);
+
+    Route::get('ads/{id}/edit', [
+         'as' => 'admin_ads_edit',
+         'uses' => 'AdsController@edit'
+    ]);
+
+    Route::post('ads/{id}/edit', [
+        'as' => 'admin_ads_update',
+        'uses' => 'AdsController@update'
+    ]);
+
+    Route::get('ads/{id}/delete', [
+        'as' => 'admin_ads_destroy',
+        'uses' => 'AdsController@destroy'
     ]);
 
     /*
