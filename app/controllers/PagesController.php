@@ -30,9 +30,10 @@ class PagesController extends \BaseController {
         $subscribers_count = Subscriber::count();
         $researches_count = Research::count();
         $ads_count = Ad::count();
+        $students_count = Student::count();
 
         return View::make('pages.admin.home')->with(compact('user', 'news_count', 'albums_count', 'photos_count', 'videos_count',
-            'pages_count', 'rummahs_count', 'members_count', 'users_count', 'subscribers_count', 'researches_count', 'ads_count'));
+            'pages_count', 'rummahs_count', 'members_count', 'users_count', 'subscribers_count', 'researches_count', 'ads_count', 'students_count'));
     }
 
     public function getContact()

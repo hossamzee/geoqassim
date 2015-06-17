@@ -137,6 +137,17 @@
             </p>
         </div>
 
+        <div class="col-md-3">
+            <h3>الطلاّب <small>({{ $students_count }})</small></h3>
+            <p>
+                إدارة الطلاّب من خلال الإضافة أو التعديل أو الحذف.
+            </p>
+            <p>
+                {{ link_to_route('admin_students_index', 'عرض', null, ['class' => 'btn btn-default']) }}
+                {{ link_to_route('admin_students_create', 'إضافة', null, ['class' => 'btn btn-primary']) }}
+            </p>
+        </div>
+
     </div>
 
 </div><!-- Pages end -->

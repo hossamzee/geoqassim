@@ -145,6 +145,20 @@ Route::get('members/{id}', [
 ]);
 
 /*
+ * Students.
+ */
+
+Route::get('students', [
+    'as' => 'students_index',
+    'uses' => 'StudentsController@index'
+]);
+
+Route::get('students/{id}', [
+    'as' => 'students_show',
+    'uses' => 'StudentsController@show'
+]);
+
+/*
  * Rummahs.
  */
 
@@ -539,6 +553,50 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
     Route::get('members/{id}/movedown', [
         'as' => 'admin_members_movedown',
         'uses' => 'MembersController@moveDown'
+    ]);
+
+    /*
+     * Students.
+     */
+
+    Route::get('students', [
+        'as' => 'admin_students_index',
+        'uses' => 'StudentsController@adminIndex'
+    ]);
+
+    Route::get('students/create', [
+        'as' => 'admin_students_create',
+        'uses' => 'StudentsController@create'
+    ]);
+
+    Route::post('students/create', [
+        'as' => 'admin_students_store',
+        'uses' => 'StudentsController@store'
+    ]);
+
+    Route::get('students/{id}/edit', [
+        'as' => 'admin_students_edit',
+        'uses' => 'StudentsController@edit'
+    ]);
+
+    Route::post('students/{id}/edit', [
+        'as' => 'admin_students_update',
+        'uses' => 'StudentsController@update'
+    ]);
+
+    Route::get('students/{id}/delete', [
+        'as' => 'admin_students_destroy',
+        'uses' => 'StudentsController@destroy'
+    ]);
+
+    Route::get('students/{id}/moveup', [
+        'as' => 'admin_students_moveup',
+        'uses' => 'StudentsController@moveUp'
+    ]);
+
+    Route::get('students/{id}/movedown', [
+        'as' => 'admin_students_movedown',
+        'uses' => 'StudentsController@moveDown'
     ]);
 
     /*
